@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aleksandr Mežennõi — Graphic & Web Designer, Tallinn</title>
+<meta name="description" content="Aleksandr Mežennõi — graphic and web designer from Tallinn, Estonia. Websites, social media, packaging and visual systems.">
+<meta name="author" content="Aleksandr Mežennõi">
+<meta name="theme-color" content="#0F0F0F">
+<link rel="canonical" href="https://sanya-boss.github.io/portfolio/">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aleksandr Mežennõi">
+<meta property="og:title" content="Aleksandr Mežennõi — Graphic & Web Designer, Tallinn">
+<meta property="og:description" content="Aleksandr Mežennõi — graphic and web designer from Tallinn, Estonia. Websites, social media, packaging and visual systems.">
+<meta property="og:url" content="https://sanya-boss.github.io/portfolio/">
+<meta property="og:image" content="https://sanya-boss.github.io/portfolio/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aleksandr Mežennõi — Graphic &amp; Web Designer from Tallinn">
+<meta name="twitter:card" content="summary_large_image">
 <script src="lib/support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>Aleksandr Mežennõi — Graphic & Web Designer, Tallinn</title>
-<meta name="description" content="Aleksandr Mežennõi — graphic and web designer from Tallinn, Estonia. Websites, social media, packaging and visual systems.">
-<meta name="author" content="Aleksandr Mežennõi">
-<meta property="og:title" content="Aleksandr Mežennõi — Graphic & Web Designer">
-<meta property="og:description" content="Websites, social media, packaging and visual systems — from idea to finished result.">
 <link rel="stylesheet" href="design-system/tokens/fonts.css">
 <link rel="stylesheet" href="design-system/tokens/colors.css">
 <link rel="stylesheet" href="design-system/tokens/typography.css">
@@ -499,7 +510,7 @@ class Component extends DCLogic {
     const el = document.createElement('div'); el.className = 'am-tlgif'; el.setAttribute('aria-hidden', 'true');
     const img = document.createElement('img'); img.alt = ''; el.appendChild(img);
     const blobs = {}; let cur = '', curSrc = '';
-    ['assets/easter-eggs/estonia.gif', 'assets/easter-eggs/ai-slop.png', 'assets/easter-eggs/kv-meme.png'].forEach(u => fetch(u).then(r => r.blob()).then(b => { blobs[u] = b; }).catch(() => {}));
+    ['assets/easter-eggs/estonia.webp', 'assets/easter-eggs/ai-slop.webp', 'assets/easter-eggs/kv-meme.webp'].forEach(u => fetch(u).then(r => r.blob()).then(b => { blobs[u] = b; }).catch(() => {}));
     const restart = src => {
       if (cur && cur.startsWith('blob:')) URL.revokeObjectURL(cur);
       cur = blobs[src] ? URL.createObjectURL(blobs[src]) : src + '?t=' + Date.now();
@@ -524,7 +535,7 @@ class Component extends DCLogic {
       const tag = e.target.closest && e.target.closest('#about .am-tag');
       const ai = tag && /Claude (Code|Design)/.test(tag.textContent);
       const hit = (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || kv;
-      const src = ai ? 'assets/easter-eggs/ai-slop.png' : kv ? 'assets/easter-eggs/kv-meme.png' : 'assets/easter-eggs/estonia.gif';
+      const src = ai ? 'assets/easter-eggs/ai-slop.webp' : kv ? 'assets/easter-eggs/kv-meme.webp' : 'assets/easter-eggs/estonia.webp';
       tx = e.clientX + 18; ty = e.clientY + 18;
       const w = 182, hh = el.offsetHeight || 160;
       if (tx + w > window.innerWidth - 8) tx = e.clientX - w - 18;
@@ -563,6 +574,7 @@ class Component extends DCLogic {
       const v = document.createElement('video');
       Object.assign(v, { muted: true, loop: true, playsInline: true, preload: 'metadata' });
       v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+      v.poster = src.replace('video/', 'video/posters/').replace('.mp4', '.webp');
       v.src = src;
       if (GIF_VIDEOS[card.getAttribute('aria-label')]) {
         v.setAttribute('data-gif', ''); v.disablePictureInPicture = true; v.controls = false;
