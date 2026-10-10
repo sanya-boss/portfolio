@@ -510,10 +510,10 @@ class Component extends DCLogic {
     const el = document.createElement('div'); el.className = 'am-tlgif'; el.setAttribute('aria-hidden', 'true');
     const img = document.createElement('img'); img.alt = ''; el.appendChild(img);
     const blobs = {}; let cur = '', curSrc = '';
-    ['assets/easter-eggs/estonia.webp', 'assets/easter-eggs/ai-slop.webp', 'assets/easter-eggs/kv-meme.webp'].forEach(u => fetch(u).then(r => r.blob()).then(b => { blobs[u] = b; }).catch(() => {}));
+    ['assets/easter-eggs/estonia.webp', 'assets/easter-eggs/ai-slop.webp', 'assets/easter-eggs/kv-meme.webp', 'assets/easter-eggs/america.webp'].forEach(u => fetch(u).then(r => r.blob()).then(b => { blobs[u] = b; }).catch(() => {}));
     const restart = src => {
       if (cur && cur.startsWith('blob:')) URL.revokeObjectURL(cur);
-      cur = blobs[src] ? URL.createObjectURL(blobs[src]) : src + '?t=' + Date.now();
+      cur = blobs[src] ? URL.createObjectURL(blobs[src]) : /estonia\.webp$/.test(src) ? src + '?t=' + Date.now() : src;
       curSrc = src; img.src = cur;
     };
     const stop = () => { setTimeout(() => { if (!el.classList.contains('is-on')) { img.removeAttribute('src'); if (cur && cur.startsWith('blob:')) URL.revokeObjectURL(cur); cur = ''; curSrc = ''; } }, 220); };
@@ -530,12 +530,13 @@ class Component extends DCLogic {
       const row = e.target.closest && e.target.closest('#contact .am-row');
       const lang = e.target.closest && e.target.closest('#basics .am-tag');
       const est = lang && /^(Estonian|Эстонский|Eesti)$/.test(lang.textContent.trim()) ? lang : null;
+      const eng = lang && /^(English|Английский|Inglise)$/.test(lang.textContent.trim()) ? lang : null;
       const kvOrg = e.target.closest && e.target.closest('#experience .am-exp');
       const kv = kvOrg && (e.target.closest('.am-exp__org') || e.target.closest('.am-exp__logo')) && /Kaitsev/.test(kvOrg.querySelector('.am-exp__org').textContent) ? kvOrg : null;
       const tag = e.target.closest && e.target.closest('#about .am-tag');
       const ai = tag && /Claude (Code|Design)/.test(tag.textContent);
-      const hit = (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || kv;
-      const src = ai ? 'assets/easter-eggs/ai-slop.webp' : kv ? 'assets/easter-eggs/kv-meme.webp' : 'assets/easter-eggs/estonia.webp';
+      const hit = (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || eng || kv;
+      const src = ai ? 'assets/easter-eggs/ai-slop.webp' : kv ? 'assets/easter-eggs/kv-meme.webp' : eng ? 'assets/easter-eggs/america.webp' : 'assets/easter-eggs/estonia.webp';
       tx = e.clientX + 18; ty = e.clientY + 18;
       const w = 182, hh = el.offsetHeight || 160;
       if (tx + w > window.innerWidth - 8) tx = e.clientX - w - 18;
