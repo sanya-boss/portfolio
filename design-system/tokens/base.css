@@ -4,3 +4,9 @@ body{margin:0;background:var(--surface-page);color:var(--text-body);font:var(--t
 a{color:var(--link);text-decoration:underline;text-decoration-color:var(--border-strong);text-underline-offset:3px;transition:color var(--dur-fast) var(--ease-out),text-decoration-color var(--dur-fast)}
 a:hover{color:var(--link-hover);text-decoration-color:var(--text-muted)}
 ::selection{background:var(--gray-0);color:var(--gray-1000)}
+/* No browser-default blue flash on tap/click: neutral greyscale feedback only */
+html{-webkit-tap-highlight-color:transparent}
+button,a,[role="button"],[tabindex],summary,label{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+button,[role="button"],.am-iconbtn,.am-btn,.am-tag,.am-badge{-webkit-user-select:none;user-select:none}
+:focus:not(:focus-visible){outline:none}
+:focus-visible{outline:2px solid var(--border-focus);outline-offset:2px}
