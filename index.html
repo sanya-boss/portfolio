@@ -694,10 +694,18 @@ class Component extends DCLogic {
     };
     this.colRaf = requestAnimationFrame(step);
   }
+  // Ignore repeated toggles while an expand/collapse animation is running
+  busy = (key, ms) => { if (this.locks && this.locks[key] > Date.now()) return true; (this.locks = this.locks || {})[key] = Date.now() + ms; return false; };
   onDetailClick = e => {
     if (this.passClick) return;
     const head = e.target.closest && e.target.closest('.am-exp__rolehead'); if (!head) return;
-    const d = head.parentElement.querySelector('.am-exp__detail'); if (!d || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!head.querySelector('.am-icon')) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const d = head.parentElement.querySelector('.am-exp__detail');
+    if (reduce) return;
+    const key = 'detail:' + (head.closest('.am-exp') ? [...document.querySelectorAll('.am-exp__rolehead')].indexOf(head) : 0);
+    if (this.busy(key, d ? 420 : 400)) { e.stopPropagation(); e.preventDefault(); return; }
+    if (!d) return;
     e.stopPropagation(); e.preventDefault();
     const icon = head.querySelector('.am-icon'); if (icon) icon.style.transform = 'none';
     const a = d.animate([{ maxHeight: d.offsetHeight + 'px', opacity: 1 }, { maxHeight: '0px', marginTop: '0px', marginBottom: '0px', opacity: 0 }], { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' });
@@ -849,7 +857,7 @@ class Component extends DCLogic {
       toolsOpen: this.state.toolsOpen, toolsHidden: !this.state.toolsOpen,
       toolsRows: this.state.toolsOpen ? '1fr' : '0fr', toolsOpacity: this.state.toolsOpen ? 1 : 0,
       toolsBtn: this.state.toolsOpen ? T.showLess : T.showAll, toolsIcon: this.state.toolsOpen ? 'chevron-up' : 'chevron-right',
-      toggleTools: () => this.setState(s => ({ toolsOpen: !s.toolsOpen })),
+      toggleTools: () => { if (this.busy('tools', 440)) return; this.setState(s => ({ toolsOpen: !s.toolsOpen })); },
       rounds: this.state.rounds, lastHit: this.state.last, lastColor: this.state.last >= 150 ? (theme === 'light' ? 'oklch(0.58 0.12 80)' : 'oklch(0.84 0.13 85)') : this.state.last > 0 ? 'var(--text-strong)' : 'var(--text-subtle)', setLastEl: this.setLastEl,
       dockItems: NAV.map(([id, icon], i) => ({ id, icon, label: T.nav[i] })),
       go: id => this.scrollTo(id), goTop: this.link('top'), goProjects: this.link('projects'), goContact: this.link('contact'),
@@ -889,6 +897,7 @@ class Component extends DCLogic {
       plinkoHidden: !plinkoOpen, setCollapse: this.setCollapse,
       mainPadB: mobile ? '112px' : '24px',
       togglePlinko: () => {
+        if (this.busy('plinko', 480)) return;
         const open = !this.state.plinkoOpen;
         this.setState({ plinkoOpen: open });
         if (open && this.cv) this.layoutPlinko();
