@@ -1,18 +1,911 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=./cv.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#111110" />
-    <meta name="robots" content="index,follow" />
-    <meta name="author" content="Aleksandr Mežennõi" />
-    <title>Aleksandr Mežennõi | Graphic / Web Designer & Portfolio</title>
-    <meta name="description" content="Graphic and web designer from Tallinn, Estonia. Portfolio, projects, and CV." />
-    <link rel="icon" type="image/png" href="./favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="./favicon.png" />
-  </head>
-  <body>
-    <p><a href="./cv.html">Open portfolio</a></p>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="lib/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Aleksandr Mežennõi — Graphic & Web Designer, Tallinn</title>
+<meta name="description" content="Aleksandr Mežennõi — graphic and web designer from Tallinn, Estonia. Websites, social media, packaging and visual systems.">
+<meta name="author" content="Aleksandr Mežennõi">
+<meta property="og:title" content="Aleksandr Mežennõi — Graphic & Web Designer">
+<meta property="og:description" content="Websites, social media, packaging and visual systems — from idea to finished result.">
+<link rel="stylesheet" href="design-system/tokens/fonts.css">
+<link rel="stylesheet" href="design-system/tokens/colors.css">
+<link rel="stylesheet" href="design-system/tokens/typography.css">
+<link rel="stylesheet" href="design-system/tokens/spacing.css">
+<link rel="stylesheet" href="design-system/tokens/effects.css">
+<link rel="stylesheet" href="design-system/tokens/base.css">
+<link rel="stylesheet" href="design-system/components/components.css">
+<link rel="stylesheet" href="design-system/styles.css">
+<script src="design-system/_ds_bundle.js"></script>
+<script src="lib/image-slot.js"></script>
+<style>
+:root{--font-mono:var(--font-sans) !important}
+html,body{margin:0;background:var(--surface-page);color:var(--text-body);overflow-x:clip}
+body{overflow-y:visible !important;height:auto !important;min-height:100%}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+.am-exp__roles{border-left-color:transparent !important}
+.am-exp__role:not(:last-child)::after{content:"";position:absolute;left:-26px;top:0;bottom:0;border-left:1px solid var(--border-default)}
+.am-exp__detail{overflow:hidden;animation:amDetailIn 380ms cubic-bezier(.22,1,.36,1) both}
+@keyframes amDetailIn{from{max-height:0;margin-top:0;margin-bottom:0;opacity:0;transform:translateY(-4px)}to{max-height:600px;opacity:1;transform:none}}
+.am-iconbtn{display:inline-flex;align-items:center;justify-content:center}
+.sc-host-x:has(> .am-iconbtn){display:flex;align-items:center;justify-content:center}
+.sc-host-x > .am-iconbtn{width:34px;height:34px;flex:none}
+[style*="width:44px;height:44px;flex:none"] .am-iconbtn{width:44px !important;height:44px !important}
+.am-iconbtn{transition:background-color 160ms,color 160ms,border-color 160ms,transform 160ms}
+.am-iconbtn:active{transform:scale(.88)}
+::view-transition-old(root),::view-transition-new(root){animation-duration:380ms;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+[data-lang-slot]>*{display:flex;width:100%;height:100%}
+[data-lang-slot] .am-btn{width:100%;height:100%}
+@media (max-width:899px){button[data-theme-btn]{width:44px !important;height:44px !important}}
+@media (max-width:899px){[data-plinko-aside]{display:none}}
+@media (max-width:899px){[data-fit]{white-space:nowrap}#top h1{font-size:34px !important;line-height:1.12 !important}}
+html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
+@media (max-width:899px){[data-hero-cta]{flex-wrap:nowrap !important;gap:6px !important}[data-hero-cta] .am-btn--lg{padding:0 12px}}
+.am-exp__logo img{object-fit:contain !important;padding:4px;box-sizing:border-box}
+.am-proj__media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05);transition:filter 420ms cubic-bezier(.22,1,.36,1),transform 420ms cubic-bezier(.22,1,.36,1)}
+.am-proj:hover .am-proj__media video{filter:grayscale(0);transform:scale(1.02)}
+.am-proj__media video[data-gif]{filter:none !important;transform:none !important;pointer-events:none}
+.am-proj__media:has(video) .am-proj__ph{display:none}
+.am-proj__media:has(video){aspect-ratio:16/9;align-self:center}
+.am-proj__media video[data-gif]{object-fit:contain;background:var(--surface-sunken)}
+.am-stack{display:flex;flex-wrap:nowrap;align-items:center;padding-left:6px}
+.am-stack__i{position:relative;display:inline-flex;align-items:center;gap:0;height:28px;padding:0 6px;margin-left:-8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-raised);box-shadow:0 0 0 2px var(--surface-card);color:var(--text-strong);font:var(--fw-medium, 500) var(--fs-12, 12px)/1 var(--font-sans);white-space:nowrap;transition:margin 420ms cubic-bezier(.22,1,.36,1),gap 420ms cubic-bezier(.22,1,.36,1),padding 420ms cubic-bezier(.22,1,.36,1),border-color 120ms,background-color 120ms}
+.am-stack__i:nth-child(1){z-index:6}.am-stack__i:nth-child(2){z-index:5}.am-stack__i:nth-child(3){z-index:4}.am-stack__i:nth-child(4){z-index:3}.am-stack__i:nth-child(5){z-index:2}.am-stack__i:nth-child(6){z-index:1}
+.am-stack__g{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none}
+.am-stack__m{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:4px;background:var(--surface-inverse);color:var(--text-inverse);font:700 8.5px/1 var(--font-sans);letter-spacing:-0.02em}
+.am-stack__ic{width:14px;height:14px;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.am-stack__t{display:inline-block;max-width:0;overflow:hidden;opacity:0;transition:max-width 420ms cubic-bezier(.22,1,.36,1),opacity 240ms cubic-bezier(.22,1,.36,1)}
+.am-stack:hover .am-stack__i{margin-left:4px}
+.am-stack:hover .am-stack__i:first-child{margin-left:-8px}
+.am-stack__i:hover,.am-stack__i:focus-visible,.am-stack__i.is-open{gap:6px;padding:0 10px 0 6px;border-color:var(--border-strong);background:var(--surface-hover)}
+.am-stack__i:hover .am-stack__t,.am-stack__i:focus-visible .am-stack__t,.am-stack__i.is-open .am-stack__t{max-width:120px;opacity:1}
+@media (max-width:899px), (hover:none){
+.am-stack{flex-wrap:wrap;gap:6px;padding-left:0}
+.am-stack .am-stack__i,.am-stack:hover .am-stack__i,.am-stack:hover .am-stack__i:first-child{margin-left:0;gap:6px;height:28px;padding:0 10px 0 6px;transition:none;border-color:var(--border-default);background:var(--surface-raised);box-shadow:none}
+.am-stack .am-stack__t{max-width:none;opacity:1;transition:none}
+}
+#projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions a{pointer-events:none;cursor:not-allowed;opacity:.55;border-style:dashed}
+#projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions{cursor:not-allowed}
+.am-tlgif{position:fixed;left:0;top:0;z-index:60;width:180px;pointer-events:none;border-radius:var(--radius-md);border:1px solid var(--border-default);box-shadow:var(--shadow-lg);overflow:hidden;background:var(--surface-card);opacity:0;transform:translate3d(-999px,-999px,0) scale(.85);transition:opacity 200ms cubic-bezier(.22,1,.36,1)}
+.am-tlgif img{display:block;width:100%;height:auto}
+.am-tlgif.is-on{opacity:1}
+[data-tallinn]{cursor:default}
+@media (hover:none){.am-tlgif{display:none}}
+.am-exp .am-dot{color:var(--signal-live);box-shadow:0 0 0 0 currentColor;animation:am-pulse 2s var(--ease-out, cubic-bezier(.22,1,.36,1)) infinite}
+.am-iconbtn .am-icon{transition:transform 200ms cubic-bezier(.22,1,.36,1)}
+.am-back{transition:color 120ms cubic-bezier(.22,1,.36,1)}
+.am-back .am-icon{transition:transform 200ms cubic-bezier(.22,1,.36,1)}
+.am-back:hover{color:var(--text-strong) !important}
+.am-back:hover .am-icon{transform:translateX(-3px)}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-body);font:var(--type-body);letter-spacing:var(--ls-body)">
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div role="group" aria-label="Language" ref="{{ setVGroup }}" style="position:relative;display:flex;flex-direction:column;gap:6px">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ vInd.w }};height:{{ vInd.h }};transform:{{ vInd.tr }};border-radius:{{ vIndRadius }}"></span>
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <div data-lang-slot="1" style="position:relative;display:flex;width:44px;height:{{ l.slotH }}">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;height:100%;min-width:0;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;font-family:var(--font-mono);transition:color 120ms;color:{{ l.color }}" hint-size="44px,28px">{{ l.label }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+      <span style="width:18px;height:1px;background:var(--border-default)"></span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" active="{{ true }}" data-nav="1" on-click="{{ goTop }}" hint-size="34px,34px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="user" label="{{ t.aboutBtn }}" data-nav="1" on-click="{{ goAboutPage }}" hint-size="34px,34px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="file-text" label="CV" data-nav="1" on-click="{{ goCv }}" hint-size="34px,34px"></x-import>
+      <span style="width:18px;height:1px;background:var(--border-default)"></span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="{{ themeIcon }}" label="{{ themeLabel }}" data-theme-btn="1" on-click="{{ toggleTheme }}" hint-size="34px,34px"></x-import>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <div data-lang-slot="1" style="position:relative;display:flex;align-items:center;width:44px;height:44px">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;min-width:0;height:44px;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;font-family:var(--font-mono);transition:color 120ms;color:{{ l.color }}" hint-size="52px,44px">{{ l.label }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+      <span style="width:1px;height:18px;background:var(--border-default)"></span>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="user" label="{{ t.aboutBtn }}" data-nav="1" on-click="{{ goAboutPage }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="file-text" label="CV" data-nav="1" on-click="{{ goCv }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="{{ themeIcon }}" label="{{ themeLabel }}" data-theme-btn="1" on-click="{{ toggleTheme }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+    </div>
+  </sc-if>
+
+  <main id="top" style="max-width:var(--container);margin:0 auto;padding:112px 20px 128px;padding-top:{{ mainPadT }};padding-bottom:{{ mainPadB }};box-sizing:border-box">
+
+    <header style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:32px">
+      <div style="flex:1 1 340px;min-width:0">
+        <h1 style="margin:0;font:var(--type-display);letter-spacing:var(--ls-display);color:var(--text-strong);text-wrap:balance">
+          <span style="display:block;text-wrap:balance">{{ t.hi }}</span>
+          <span style="display:block;margin-top:10px;color:var(--text-subtle)" data-fit="shrink">{{ t.role }} <span class="am-hl" data-city="1" data-tallinn="1" style="color:var(--text-strong);white-space:nowrap">{{ t.city }}</span></span>
+        </h1>
+        <p style="margin:20px 0 0;color:var(--text-muted);text-wrap:pretty">
+          <sc-for list="{{ t.lead }}" as="p" hint-placeholder-count="1"><sc-if value="{{ p.b }}"><b style="color:var(--text-strong);font-weight:500">{{ p.t }}</b></sc-if><sc-if value="{{ p.n }}">{{ p.t }}</sc-if></sc-for>
+        </p>
+        <div style="margin-top:12px;font:var(--type-meta);color:var(--text-subtle)"><span data-tallinn="1">Tallinn, Estonia · 59.43°N 24.72°E</span></div>
+        <div data-hero-cta="1" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" href="about/" hint-size="110px,42px">{{ t.aboutBtn }}</x-import>
+          <button type="button" class="am-btn am-btn--lg" onClick="{{ copyEmail }}" aria-label="{{ copyLabel }}" title="{{ copyLabel }}">
+            <span style="position:relative;display:inline-block;width:16px;height:16px;flex:none">
+              <span style="position:absolute;inset:0;display:flex;transition:opacity 260ms cubic-bezier(.22,1,.36,1), transform 360ms cubic-bezier(.22,1,.36,1);opacity:{{ copyIconA.o }};transform:{{ copyIconA.t }}">
+                <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Icon" name="copy" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+              </span>
+              <span style="position:absolute;inset:0;display:flex;transition:opacity 260ms cubic-bezier(.22,1,.36,1), transform 360ms cubic-bezier(.34,1.56,.64,1);opacity:{{ copyIconB.o }};transform:{{ copyIconB.t }}">
+                <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Icon" name="check" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+              </span>
+            </span>
+            <span>Email</span>
+          </button>
+          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="lg" icon="file-text" href="{{ cvUrl }}" on-click="{{ goCvLink }}" hint-size="70px,42px">CV</x-import>
+        </div>
+      </div>
+    </header>
+
+
+    <section id="about" style="margin-top:var(--section-gap);scroll-margin-top:80px">
+      <h2 style="margin:0 0 10px;font:var(--type-h2, 400 var(--fs-24)/1.2 var(--font-serif));font-family:var(--font-serif);letter-spacing:var(--ls-heading);color:var(--text-strong)">{{ t.toolsTitle }}</h2>
+      <p style="margin:0;color:var(--text-muted);line-height:2.05;text-wrap:pretty">
+        <sc-for list="{{ toolText }}" as="seg" hint-placeholder-count="1"><sc-if value="{{ seg.isText }}">{{ seg.t }}</sc-if><sc-if value="{{ seg.isTool }}"><span class="am-tag" style="vertical-align:middle;margin:0 2px;color:var(--text-strong);font-weight:500;gap:6px"><sc-if value="{{ seg.mark }}"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none;border-radius:4px;background:var(--surface-inverse);color:var(--text-inverse);font:700 8.5px/1 var(--font-sans);letter-spacing:-0.02em">{{ seg.mark }}</span></sc-if><sc-if value="{{ seg.icon }}"><span class="am-icon" aria-hidden="true" style="width:14px;height:14px;color:var(--text-strong);--am-icon:{{ seg.icon }}"></span></sc-if>{{ seg.name }}</span></sc-if></sc-for>
+      </p>
+      <div style="display:grid;transition:grid-template-rows 420ms cubic-bezier(.22,1,.36,1), opacity 320ms cubic-bezier(.22,1,.36,1);grid-template-rows:{{ toolsRows }};opacity:{{ toolsOpacity }}" aria-hidden="{{ toolsHidden }}">
+        <div style="min-height:0;overflow:hidden">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;padding-top:14px">
+            <sc-for list="{{ allTools }}" as="tl" hint-placeholder-count="6">
+              <span class="am-tag" style="gap:6px"><sc-if value="{{ tl.mark }}"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none;border-radius:4px;background:var(--surface-inverse);color:var(--text-inverse);font:700 8.5px/1 var(--font-sans);letter-spacing:-0.02em">{{ tl.mark }}</span></sc-if><sc-if value="{{ tl.icon }}"><span class="am-icon" aria-hidden="true" style="width:14px;height:14px;color:var(--text-strong);--am-icon:{{ tl.icon }}"></span></sc-if>{{ tl.name }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;margin-top:14px">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" size="sm" icon-right="{{ toolsIcon }}" on-click="{{ toggleTools }}" aria-expanded="{{ toolsOpen }}" style="display:flex;align-items:center" hint-size="90px,28px">{{ toolsBtn }}</x-import>
+      </div>
+    </section>
+
+    <section id="experience" style="margin-top:var(--section-gap);scroll-margin-top:80px">
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.SectionHeader" title="{{ t.expTitle }}" lead="{{ t.expLead }}" hint-size="100%,52px"></x-import>
+      <div style="display:grid;gap:20px;margin-top:8px">
+        <sc-for list="{{ t.exp }}" as="e" hint-placeholder-count="4">
+          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ExperienceItem" org="{{ e.org }}" logo="{{ e.logo }}" roles="{{ e.roles }}" current="{{ e.current }}" hint-size="100%,84px"></x-import>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="basics" style="margin-top:var(--section-gap);scroll-margin-top:80px">
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.SectionHeader" title="{{ t.basicsTitle }}" hint-size="100%,32px"></x-import>
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;padding:16px 0;border-top:1px solid var(--border-subtle)">
+          <h3 style="margin:0;font:var(--type-meta);color:var(--text-subtle)">{{ t.eduLabel }}</h3>
+          <div style="grid-column:span 2;min-width:0">
+            <div style="font:var(--type-h3);color:var(--text-strong)">{{ t.school1 }}</div>
+            <div style="margin-top:4px;font:var(--type-small);font-size:var(--fs-14);color:var(--text-muted)">{{ t.edu }}</div>
+            <div style="margin-top:4px;font:var(--type-small);font-size:var(--fs-14);color:var(--text-subtle);text-wrap:pretty">{{ t.eduNote }}</div>
+            <div style="margin-top:16px;font:var(--type-h3);color:var(--text-strong)">{{ t.school2 }}</div>
+            <div style="margin-top:4px;font:var(--type-small);font-size:var(--fs-14);color:var(--text-muted)">{{ t.edu2 }}</div>
+            <div style="margin-top:4px;font:var(--type-small);font-size:var(--fs-14);color:var(--text-subtle);text-wrap:pretty">{{ t.edu2note }}</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;padding:16px 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+          <h3 style="margin:0;font:var(--type-meta);color:var(--text-subtle)">{{ t.langsLabel }}</h3>
+          <div style="grid-column:span 2;min-width:0;display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ t.spoken }}" as="sp" hint-placeholder-count="3">
+              <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Tag" hint-size="80px,24px">{{ sp }}</x-import>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" style="margin-top:var(--section-gap);scroll-margin-top:80px">
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.SectionHeader" title="{{ t.projTitle }}" lead="{{ t.projLead }}" hint-size="100%,52px"></x-import>
+      <div style="display:grid;gap:12px">
+        <sc-for list="{{ projects }}" as="pr" hint-placeholder-count="3">
+          <div aria-label="{{ pr.title }}" style="display:block;color:inherit;border-radius:var(--radius-lg)">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ProjectCard" title="{{ pr.title }}" description="{{ pr.description }}" tags="{{ pr.tags }}" image="{{ pr.image }}" stacked="{{ mobile }}" links="{{ pr.links }}" hint-size="100%,220px"></x-import>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:16px 0 0;font:var(--type-small);color:var(--text-muted)">{{ t.onRequest }} <span style="font-family:var(--font-serif);font-style:italic;font-size:var(--fs-15);color:var(--text-subtle)">{{ t.serviceNote }}</span></p>
+    </section>
+
+    <section id="contact" style="margin-top:96px;scroll-margin-top:80px">
+      <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
+      <p style="margin:12px 0 24px;color:var(--text-muted)">{{ t.contactLead }}</p>
+      <div>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="mail" title="{{ email }}" subtitle="Email" href="{{ mailHref }}" style="overflow-wrap:anywhere" hint-size="100%,70px"></x-import>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="phone" title="{{ phone }}" subtitle="{{ t.phone }}" href="{{ telHref }}" hint-size="100%,70px"></x-import>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="map-pin" title="Tallinn, Estonia" subtitle="{{ t.location }}" data-tallinn="1" meta="{{ tallinnTime }}" hint-size="100%,70px"></x-import>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+        <button type="button" class="am-btn am-btn--lg" onClick="{{ copyEmail }}" aria-label="{{ copyLabel }}" title="{{ copyLabel }}">
+            <span style="position:relative;display:inline-block;width:16px;height:16px;flex:none">
+              <span style="position:absolute;inset:0;display:flex;transition:opacity 260ms cubic-bezier(.22,1,.36,1), transform 360ms cubic-bezier(.22,1,.36,1);opacity:{{ copyIconA.o }};transform:{{ copyIconA.t }}">
+                <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Icon" name="copy" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+              </span>
+              <span style="position:absolute;inset:0;display:flex;transition:opacity 260ms cubic-bezier(.22,1,.36,1), transform 360ms cubic-bezier(.34,1.56,.64,1);opacity:{{ copyIconB.o }};transform:{{ copyIconB.t }}">
+                <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Icon" name="check" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+              </span>
+            </span>
+            <span>Email</span>
+          </button>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="lg" icon="file-text" href="{{ cvUrl }}" on-click="{{ goCvLink }}" hint-size="120px,42px">CV</x-import>
+      </div>
+    </section>
+
+    <footer style="margin-top:96px;padding-top:20px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
+      <span>© 2026 Aleksandr Mežennõi</span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" icon="arrow-up" href="#top" on-click="{{ goTop }}" style="display:flex;align-items:center" hint-size="90px,36px">{{ t.top }}</x-import>
+    </footer>
+
+    <section id="plinko" aria-label="Plinko" style="margin-top:24px;padding:4px;border-radius:var(--radius-lg);border:1px solid var(--border-default);background:var(--surface-card);box-shadow:var(--inset-highlight)">
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 10px 10px 14px">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0;flex:1">
+        <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius-md);background:var(--surface-raised);border:1px solid var(--border-default);color:var(--text-muted)">
+          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Icon" name="circle-dot" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+        </span>
+        <div style="min-width:0;flex:1">
+          <div style="font:var(--type-h3);color:var(--text-strong)">Plinko <span data-plinko-aside="1" style="font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--text-muted)">— {{ t.plinkoAside }}</span></div>
+          <div aria-hidden="{{ plinkoOpen }}" style="display:flex;align-items:baseline;gap:8px;overflow:hidden;font:var(--type-meta);color:var(--text-subtle);transition:max-height 420ms cubic-bezier(.22,1,.36,1), margin-top 420ms cubic-bezier(.22,1,.36,1), opacity 240ms cubic-bezier(.22,1,.36,1), transform 420ms cubic-bezier(.22,1,.36,1);max-height:{{ hdrScore.mh }};margin-top:{{ hdrScore.mt }};opacity:{{ hdrScore.o }};transform:{{ hdrScore.t }}">
+            <span>{{ t.score }}</span>
+            <span style="font-variant-numeric:tabular-nums">{{ score }}</span>
+          </div>
+        </div>
+        </div>
+        <div style="display:flex;align-items:center;flex:none">
+          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" size="sm" icon="{{ plinkoIcon }}" on-click="{{ togglePlinko }}" aria-expanded="{{ plinkoOpen }}" style="display:flex;align-items:center" hint-size="80px,36px">{{ plinkoToggle }}</x-import>
+        </div>
+      </div>
+      <div ref="{{ setCollapse }}" aria-hidden="{{ plinkoHidden }}" style="height:0px;overflow:hidden;opacity:0"><div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));border-radius:var(--radius-md);border:1px solid var(--border-subtle);background:var(--surface-sunken);overflow:hidden">
+          <div style="grid-column:span 2;min-width:0">
+            <canvas ref="{{ setCanvas }}" style="display:block;width:100%;height:300px;touch-action:pan-y"></canvas>
+          </div>
+          <div style="min-width:0;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:24px;border-left:1px solid var(--border-subtle)">
+            <div style="display:flex;gap:28px;align-items:flex-end">
+              <div style="display:grid;gap:6px">
+                <span style="font:var(--type-meta);text-transform:uppercase;letter-spacing:.06em;color:var(--text-subtle)">{{ t.score }}</span>
+                <span ref="{{ setScoreEl }}" aria-live="polite" style="display:inline-block;font:var(--fw-semibold, 600) 40px/1 var(--font-sans);letter-spacing:-0.03em;font-variant-numeric:tabular-nums;color:var(--text-strong);transform-origin:left 80%">{{ shownScore }}</span>
+              </div>
+              <div style="display:grid;gap:6px">
+                <span style="font:var(--type-meta);text-transform:uppercase;letter-spacing:.06em;color:var(--text-subtle)">{{ t.rounds }}</span>
+                <span style="font:400 var(--fs-20)/1 var(--font-mono);color:var(--text-muted);font-variant-numeric:tabular-nums">{{ rounds }}</span>
+              </div>
+            </div>
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" size="lg" block="{{ true }}" icon="arrow-down" on-click="{{ drop }}" style="font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em" hint-size="100%,42px">{{ t.drop }}</x-import>
+            <span ref="{{ setLastEl }}" style="display:inline-block;font:500 var(--fs-14)/1 var(--font-mono);text-transform:uppercase;letter-spacing:.04em;color:{{ lastColor }};transform-origin:left center">+{{ lastHit }} {{ t.points }}</span>
+          </div>
+        </div>
+      </div></div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;email&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacts&quot;},&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacts&quot;},&quot;cvUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contacts&quot;},&quot;sarleUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project links&quot;},&quot;queenUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project links&quot;},&quot;ameztransUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project links&quot;},&quot;antarraUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project links&quot;},&quot;sarleImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project images&quot;},&quot;queenImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project images&quot;},&quot;ameztransImage&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project images&quot;}}">
+const md = s => s.split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(x => x.startsWith('**') ? { t: x.slice(2, -2), b: true } : { t: x, n: true });
+
+const I18N = {
+  en: {
+    nav: ['Top', 'About', 'Experience', 'Basics', 'Projects', 'Contact'],
+    theme: 'Theme', light: 'Light theme', dark: 'Dark theme', soundOn: 'Sound on', soundOff: 'Sound off', settings: 'Settings', language: 'Language',
+    hi: "Hi, I'm Aleksandr.", role: 'Designer from', city: 'Tallinn',
+    lead: 'I create **visual identities**, **packaging**, **websites** and **graphics** for print and social media — since before the AI boom. I combine design and IT to bring ideas to life: from first sketches to a finished product.',
+    aboutBtn: 'About me', navHome: 'Portfolio', copied: 'Email copied', copyEmail: 'Copy email',
+    plinkoAside: 'if you suddenly got bored', score: 'Score', rounds: 'Rounds', points: 'points', play: 'Play', hide: 'Hide', drop: 'Drop the ball', plinkoHint: 'Points only. Nothing at stake.',
+    toolsTitle: 'Tools I use?', toolsK: 'Tools', areasK: 'Areas', pride: 'my pride', showAll: 'Show all', showLess: 'Show less',
+    toolsText: 'I work across branding, packaging, print, social media and web design. [ai] is my starting point for exploring ideas and developing them into logos, visual identities and graphics. [ps] is where I edit photos, build compositions and create mockups. For web projects, I shape the layout in [figma], then build and refine the site with [cd] and [cc] before publishing it through [gh]. The tools depend on the task — from a business card or campaign visual to packaging or a complete website.',
+    aboutTitle: 'A bit about me', aboutLead: "I've worked both **in a company** and **freelance**, in design and IT.",
+    about: [
+      ['Approach', 'I adapt fast, step outside a narrow specialisation when the work needs it, talk to clients directly and see every job through to the result.'],
+      ['Areas', 'Graphic and web design, branding, packaging, advertising materials, social media — plus system and network tasks.'],
+      ['Attitude', "I listen closely to the request and aim to make what's actually needed."]
+    ],
+    expTitle: 'Story so far', expLead: '5+ years of hands-on experience.',
+    exp: [
+      { org: 'Freelance', current: true, roles: [{ title: 'Freelance Designer', detail: 'Building this landing page and continuing freelance work.', meta: 'Present · Remote · Full-time' }] },
+      { org: 'Kaitsevägi', roles: [{ title: 'Conscript service', meta: '01.2026 — 08.2026', detail: 'I served in the Estonian Defence Forces, first in the Kuperjanov Infantry Battalion in Võru and then in the Staff and Signal Company in Tartu. Whenever possible, I kept working as a freelance designer alongside my service — collaborating with existing clients and taking on new projects.' }] },
+      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 months · Full-time', bullets: ['Designed user interfaces with a focus on clear layouts and visual consistency.', 'Created print materials, from initial concepts to production-ready artwork.', 'Developed social media graphics, promotional visuals and presentations.', 'Designed packaging, balancing brand identity, readability and product presentation.', 'Worked across digital and print formats, adapting designs to different channels and requirements.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Office 365'], areas: ['UI Design', 'Print Design', 'Social Media', 'Packaging', 'Presentations'] }] },
+      { org: 'Freelance', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Remote' }] }
+    ],
+    basicsTitle: 'Basics', eduLabel: 'Education', toolsLabel: 'Tools & skills', langsLabel: 'Languages',
+    school1: 'Tallinn Polytechnic School', school2: 'Tallinn Old Town Art Centre Design School',
+    edu: 'Vocational secondary education · IT specialist', eduNote: 'System and network administration',
+    edu2: 'Continuing education in Media Design · Graphic & Web Design', edu2note: 'Coursework in drawing, painting, colour theory, composition and graphic design software.',
+    spoken: ['Russian', 'Estonian', 'English'],
+    projTitle: 'Selected work', visit: 'Visit site', wip: 'Work in progress', projLead: 'My recent projects.',
+    proj: ['Art gallery in Tallinn Old Town', 'International beauty pageant', 'Transport company', 'Cattery of Oriental and Siamese cats in Estonia'],
+    onRequest: 'More work is available on request.', serviceNote: 'Part of it was made alongside my service.',
+    line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.',
+    phone: 'Phone', location: 'Location', openCv: 'Open CV', write: 'Write', top: 'Back to top'
+  },
+  ru: {
+    nav: ['Наверх', 'Обо мне', 'Опыт', 'Основы', 'Проекты', 'Контакты'],
+    theme: 'Тема', light: 'Светлая тема', dark: 'Тёмная тема', soundOn: 'Звук вкл.', soundOff: 'Звук выкл.', settings: 'Настройки', language: 'Язык',
+    hi: 'Привет, я Саня.', role: 'Дизайнер из', city: 'Таллина',
+    lead: 'Создаю **айдентику**, **упаковку**, **сайты** и **графику** для печати и соцсетей — ещё до бума ИИ. Соединяю дизайн и IT, чтобы доводить идеи до результата: от первых набросков до готового продукта.',
+    aboutBtn: 'Обо мне', navHome: 'Портфолио', copied: 'Email скопирован', copyEmail: 'Скопировать email',
+    plinkoAside: 'если вдруг стало скучно', score: 'Счёт', rounds: 'Раунды', points: 'очков', play: 'Играть', hide: 'Скрыть', drop: 'Бросить шар', plinkoHint: 'Только очки. Без ставок.',
+    toolsTitle: 'Чем я пользуюсь?', toolsK: 'Инструменты', areasK: 'Направления', pride: 'моя гордость', showAll: 'Показать всё', showLess: 'Свернуть',
+    toolsText: 'Я работаю с брендингом, упаковкой, полиграфией, соцсетями и веб-дизайном. [ai] — моя отправная точка: здесь я исследую идеи и развиваю их в логотипы, фирменные стили и графику. В [ps] я обрабатываю фото, собираю композиции и делаю мокапы. Для веб-проектов я выстраиваю макет в [figma], затем собираю и дорабатываю сайт с помощью [cd] и [cc] и публикую его через [gh]. Инструменты зависят от задачи — от визитки или рекламного визуала до упаковки или полноценного сайта.',
+    aboutTitle: 'Немного обо мне', aboutLead: 'У меня есть опыт работы **в компании** и **на фрилансе** — в дизайне и IT.',
+    about: [
+      ['Подход', 'Быстро адаптируюсь, готов выходить за рамки узкой специализации, общаюсь с клиентами напрямую и довожу работу до результата.'],
+      ['Направления', 'Графический и веб-дизайн, брендинг, упаковка, рекламные материалы, социальные сети, а также системные и сетевые задачи.'],
+      ['Отношение к работе', 'Внимательно слушаю запрос и стараюсь сделать то, что действительно нужно.']
+    ],
+    expTitle: 'Опыт', expLead: 'Практический опыт 5+ лет.',
+    exp: [
+      { org: 'Фриланс', current: true, roles: [{ title: 'Freelance Designer', detail: 'Создаю этот лендинг и продолжаю работать на фрилансе.', meta: 'Сейчас · Удалённо · Полная занятость' }] },
+      { org: 'Kaitsevägi', roles: [{ title: 'Срочная служба', meta: '01.2026 — 08.2026', detail: 'Служил в Силах обороны Эстонии — сначала в пехотном батальоне Куперьянова в Выру, затем в штабной роте и роте связи в Тарту. При возможности параллельно со службой продолжал работать фриланс-дизайнером: сотрудничал с текущими клиентами и брал новые заказы.' }] },
+      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 месяцев · Полная занятость', bullets: ['Проектировал интерфейсы с упором на понятную вёрстку и визуальную целостность.', 'Создавал полиграфию — от первых концепций до макетов, готовых к печати.', 'Разрабатывал графику для соцсетей, рекламные визуалы и презентации.', 'Проектировал упаковку, балансируя айдентику бренда, читаемость и подачу продукта.', 'Работал с цифровыми и печатными форматами, адаптируя дизайн под разные каналы и требования.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Office 365'], areas: ['UI-дизайн', 'Полиграфия', 'Соцсети', 'Упаковка', 'Презентации'] }] },
+      { org: 'Фриланс', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Удалённо' }] }
+    ],
+    basicsTitle: 'Основы', eduLabel: 'Образование', toolsLabel: 'Инструменты и навыки', langsLabel: 'Языки',
+    school1: 'Таллинский политехникум', school2: 'Школа дизайна Художественного центра Старого Таллина',
+    edu: 'Профессиональное среднее образование · IT specialist', eduNote: 'Системное и сетевое администрирование',
+    edu2: 'Дополнительное образование в медиадизайне · Graphic & Web Design', edu2note: 'Курсы по рисунку, живописи, теории цвета, композиции и программам для графического дизайна.',
+    spoken: ['Русский', 'Эстонский', 'Английский'],
+    projTitle: 'Избранные работы', visit: 'Открыть сайт', wip: 'В работе', projLead: 'Мои недавние проекты.',
+    proj: ['Художественная галерея в Старом Таллинне', 'Международный конкурс красоты', 'Транспортная компания', 'Питомник ориентальных и сиамских кошек в Эстонии'],
+    onRequest: 'Другие работы — по запросу.', serviceNote: 'Часть из них сделана параллельно со службой.',
+    line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.',
+    phone: 'Телефон', location: 'Город', openCv: 'Открыть CV', write: 'Написать', top: 'Наверх'
+  },
+  et: {
+    nav: ['Üles', 'Minust', 'Kogemus', 'Alused', 'Projektid', 'Kontakt'],
+    theme: 'Teema', light: 'Hele teema', dark: 'Tume teema', soundOn: 'Heli sees', soundOff: 'Heli väljas', settings: 'Seaded', language: 'Keel',
+    hi: 'Tere, nimi on Aleksandr.', role: 'Disainer', city: 'Tallinnast',
+    lead: 'Loon **identiteete**, **pakendeid**, **veebilehti** ja **graafikat** trükiseks ning sotsiaalmeediasse — juba enne tehisintellekti buumi. Ühendan disaini ja IT, et viia ideed tulemuseni: esimestest visanditest valmis tooteni.',
+    aboutBtn: 'Minust', navHome: 'Portfoolio', copied: 'E-post kopeeritud', copyEmail: 'Kopeeri e-post',
+    plinkoAside: 'kui äkki igav hakkas', score: 'Skoor', rounds: 'Voorud', points: 'punkti', play: 'Mängi', hide: 'Peida', drop: 'Viska pall', plinkoHint: 'Ainult punktid. Panuseid pole.',
+    toolsTitle: 'Millega ma töötan?', toolsK: 'Tööriistad', areasK: 'Valdkonnad', pride: 'minu uhkus', showAll: 'Näita kõiki', showLess: 'Peida',
+    toolsText: 'Töötan brändingu, pakendite, trükise, sotsiaalmeedia ja veebidisainiga. [ai] on minu lähtepunkt: seal uurin ideid ja arendan neist logosid, visuaalseid identiteete ja graafikat. [ps]-is töötlen fotosid, loon kompositsioone ja mockupe. Veebiprojektide puhul kujundan paigutuse [figma]-s, seejärel ehitan ja viimistlen lehe [cd] ja [cc] abil ning avaldan selle [gh] kaudu. Tööriistad sõltuvad ülesandest — visiitkaardist või kampaaniavisuaalist pakendi või terve veebileheni.',
+    aboutTitle: 'Natuke minust', aboutLead: 'Mul on kogemust nii **ettevõttes** kui ka **vabakutselisena** — disainis ja IT-s.',
+    about: [
+      ['Lähenemine', 'Kohanen kiiresti, olen valmis minema kitsast erialast kaugemale, suhtlen klientidega otse ja viin töö tulemuseni.'],
+      ['Suunad', 'Graafiline ja veebidisain, bränding, pakendid, reklaammaterjalid, sotsiaalmeedia ning süsteemi- ja võrguülesanded.'],
+      ['Suhtumine', 'Kuulan tähelepanelikult, mida küsitakse, ja püüan teha seda, mida päriselt vaja on.']
+    ],
+    expTitle: 'Kogemus', expLead: '5+ aastat praktilist kogemust.',
+    exp: [
+      { org: 'Vabakutseline', current: true, roles: [{ title: 'Freelance Designer', detail: 'Loon seda maandumislehte ja jätkan vabakutselisena.', meta: 'Praegu · Kaugtöö · Täistööaeg' }] },
+      { org: 'Kaitsevägi', roles: [{ title: 'Ajateenistus', meta: '01.2026 — 08.2026', detail: 'Teenisin Eesti Kaitseväes, algul Kuperjanovi jalaväepataljonis Võrus ning seejärel staabi- ja sidekompaniis Tartus. Võimaluse korral jätkasin teenistuse kõrvalt vabakutselise disainerina, tehes koostööd olemasolevate klientidega ja võttes vastu uusi tellimusi.' }] },
+      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 kuud · Täistööaeg', bullets: ['Kujundasin kasutajaliideseid, keskendudes selgele paigutusele ja visuaalsele järjepidevusele.', 'Lõin trükimaterjale algsetest kontseptsioonidest trükivalmis failideni.', 'Arendasin sotsiaalmeedia graafikat, reklaamvisuaale ja esitlusi.', 'Kujundasin pakendeid, tasakaalustades brändi identiteeti, loetavust ja toote esitlust.', 'Töötasin nii digitaalsete kui ka trükiformaatidega, kohandades disaini eri kanalite ja nõuete järgi.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Office 365'], areas: ['UI-disain', 'Trükidisain', 'Sotsiaalmeedia', 'Pakendid', 'Esitlused'] }] },
+      { org: 'Vabakutseline', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Kaugtöö' }] }
+    ],
+    basicsTitle: 'Alused', eduLabel: 'Haridus', toolsLabel: 'Tööriistad ja oskused', langsLabel: 'Keeled',
+    school1: 'Tallinna Polütehnikum', school2: 'Tallinna Vanalinna Kunstikeskuse Disainikool',
+    edu: 'Kutsekeskharidus · IT specialist', eduNote: 'Süsteemi- ja võrguadministreerimine',
+    edu2: 'Täiendõpe meediadisainis · Graphic & Web Design', edu2note: 'Õpingud joonistamises, maalimises, värviõpetuses, kompositsioonis ja graafilise disaini tarkvaras.',
+    spoken: ['Vene', 'Eesti', 'Inglise'],
+    projTitle: 'Valitud tööd', visit: 'Ava leht', wip: 'Töös', projLead: 'Minu hiljutised projektid.',
+    proj: ['Kunstigalerii Tallinna vanalinnas', 'Rahvusvaheline iludusvõistlus', 'Transpordiettevõte', 'Orientaal- ja siiami kasside kasvandus Eestis'],
+    onRequest: 'Rohkem töid saadan soovi korral.', serviceNote: 'Osa neist valmis ajateenistuse kõrvalt.',
+    line: 'Alati liinil.', almost: 'peaaegu alati', contactLead: 'Projekt mõttes? Kirjuta või helista — vastan ise.',
+    phone: 'Telefon', location: 'Asukoht', openCv: 'Ava CV', write: 'Kirjuta', top: 'Üles'
+  }
+};
+const LANGS = [['en', 'ENG'], ['et', 'EST'], ['ru', 'RUS']];
+const NAV = [['top', 'house'], ['about', 'user'], ['experience', 'briefcase'], ['basics', 'graduation-cap'], ['projects', 'layers'], ['contact', 'send']];
+const LIGHT = {
+  '--surface-page': '#F2F2F2', '--surface-sunken': '#EDEDED', '--surface-card': '#FFFFFF', '--surface-raised': '#F7F7F7', '--surface-hover': '#EDEDED',
+  '--surface-inverse': '#0F0F0F', '--surface-overlay': 'rgba(242,242,242,.78)',
+  '--text-strong': '#0A0A0A', '--text-body': '#1A1A1A', '--text-muted': '#4A4A4A', '--text-subtle': '#6B6B6B', '--text-disabled': '#A3A3A3', '--text-inverse': '#FFFFFF',
+  '--border-subtle': 'rgba(0,0,0,.08)', '--border-default': 'rgba(0,0,0,.12)', '--border-strong': 'rgba(0,0,0,.22)', '--border-focus': 'rgba(0,0,0,.55)',
+  '--gray-200': '#2E2E2E', '--gray-750': '#E3E3E3', '--signal-live': '#15803D', '--signal-live-dim': 'rgba(21,128,61,.12)',
+  '--inset-highlight': 'inset 0 1px 0 rgba(255,255,255,.8)', '--shadow-md': '0 4px 16px rgba(0,0,0,.08)', '--shadow-lg': '0 16px 48px rgba(0,0,0,.14)', '--link': '#0A0A0A', '--link-hover': '#4A4A4A'
+};
+const TOOLS = {
+  figma: { name: 'Figma', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/figma.svg)' }, ps: { name: 'Photoshop', mark: 'Ps' }, ai: { name: 'Illustrator', mark: 'Ai' },
+  claude: { name: 'Claude', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg)' }, cd: { name: 'Claude Design', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg)' },
+  cc: { name: 'Claude Code', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg)' }, gh: { name: 'GitHub', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/github.svg)' }
+};
+const ALL_TOOLS = ['ai', 'ps', 'figma', 'cd', 'cc', 'gh'];
+const TAG_META = {
+  'Adobe Illustrator': { mark: 'Ai' }, 'Adobe Photoshop': { mark: 'Ps' },
+  'UI Design': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/layout-template.svg)' }, 'UI-дизайн': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/layout-template.svg)' }, 'UI-disain': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/layout-template.svg)' },
+  'Print Design': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/printer.svg)' }, 'Полиграфия': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/printer.svg)' }, 'Trükidisain': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/printer.svg)' },
+  'Social Media': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' }, 'Соцсети': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' }, 'Sotsiaalmeedia': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' },
+  'Packaging': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' }, 'Упаковка': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' }, 'Pakendid': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' }
+};
+const PROJECT_VIDEOS = { SARLE: 'assets/video/sarle.mp4', 'QUEEN OF THE BALTIC': 'assets/video/queen.mp4', 'A-MEZTRANS': 'assets/video/ameztrans.mp4', 'BLACK ANTARRA': 'assets/video/antarra.mp4' };
+const GIF_VIDEOS = { 'BLACK ANTARRA': true, 'A-MEZTRANS': true, SARLE: true, 'QUEEN OF THE BALTIC': true };
+const CARD_TOOLS = [
+  { name: 'Illustrator', mark: 'Ai' }, { name: 'Photoshop', mark: 'Ps' },
+  { name: 'Claude Code', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg' }, { name: 'Web Design', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/monitor.svg' }, { name: 'Branding Design', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/gem.svg' }
+];
+const BINS = [150, 75, 40, 25, 0, 25, 40, 75, 150];
+
+class Component extends DCLogic {
+  state = {
+    lang: (() => { try { return localStorage.getItem('am_lang') || 'en'; } catch (e) { return 'en'; } })(),
+    theme: (() => { try { return localStorage.getItem('am_theme') || 'dark'; } catch (e) { return 'dark'; } })(),
+    sound: false, active: 'top', mobile: typeof window !== 'undefined' && window.innerWidth < 900,
+    menuOpen: false, plinkoOpen: false, toolsOpen: false, score: 0, shown: 0, rounds: 0, last: 0
+  };
+  componentDidMount() {
+    this.applyTheme(); this.applyLang();
+    this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m }); if (this.cv) this.layoutPlinko(); };
+    this.onScroll = () => {
+      let a = 'top';
+      for (const [id] of NAV.slice(1)) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < window.innerHeight * 0.4) a = id; }
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) a = 'contact';
+      if (a !== this.state.active) this.setState({ active: a });
+    };
+    window.addEventListener('resize', this.onResize); window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onKey = e => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); };
+    window.addEventListener('keydown', this.onKey);
+    window.addEventListener('click', this.onDetailClick, true);
+    this.onExtLink = e => { const a = e.target.closest && e.target.closest('.am-proj__actions a'); if (!a) return; const href = a.getAttribute('href'); if (!href || href === '#') { e.preventDefault(); return; } a.target = '_blank'; a.rel = 'noopener'; };
+    window.addEventListener('click', this.onExtLink, true);
+    this.clockT = setInterval(() => { const t = this.fmtTallinn(); if (t !== this.state.tlTime) this.setState({ tlTime: t }); }, 1000);
+    this.vidMO = new MutationObserver(() => this.mountVideos()); this.vidMO.observe(document.body, { childList: true, subtree: true });
+    this.mountVideos();
+    this.initTallinnGif();
+    this.fitFn = () => requestAnimationFrame(() => this.fitText());
+    window.addEventListener('resize', this.fitFn); this.fitFn();
+    document.fonts && document.fonts.ready.then(this.fitFn);
+  }
+  fmtTallinn() {
+    try {
+      const d = new Date();
+      const time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Tallinn', hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+      const tz = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Tallinn', timeZoneName: 'shortOffset' }).formatToParts(d).find(p => p.type === 'timeZoneName');
+      return time + ' · ' + (tz ? tz.value.replace('GMT', 'UTC') : 'EET');
+    } catch (e) { return ''; }
+  }
+  fitText() {
+    const mob = window.innerWidth < 900, els = [...document.querySelectorAll('[data-fit]')];
+    els.forEach(el => { el.style.fontSize = ''; });
+    if (!mob) return;
+    const need = el => {
+      const avail = el.parentElement.clientWidth, base = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = '100px'; const w = el.scrollWidth; el.style.fontSize = '';
+      return { base, size: avail && w ? Math.floor(100 * avail / w * 0.98 * 10) / 10 : base };
+    };
+    const hero = els.filter(el => el.dataset.fit === 'hero');
+    if (hero.length) {
+      const m = hero.map(need), size = Math.min(m[0].base, ...m.map(x => x.size));
+      hero.forEach(el => { el.style.fontSize = size + 'px'; });
+    }
+    els.filter(el => el.dataset.fit === 'shrink').forEach(el => { const m = need(el); if (m.size < m.base) el.style.fontSize = m.size + 'px'; });
+  }
+  initTallinnGif() {
+    if (this.tlEl || window.matchMedia('(hover: none)').matches) return;
+    const el = document.createElement('div'); el.className = 'am-tlgif'; el.setAttribute('aria-hidden', 'true');
+    const img = document.createElement('img'); img.alt = ''; el.appendChild(img);
+    const blobs = {}; let cur = '', curSrc = '';
+    ['assets/easter-eggs/estonia.gif', 'assets/easter-eggs/ai-slop.png', 'assets/easter-eggs/kv-meme.png'].forEach(u => fetch(u).then(r => r.blob()).then(b => { blobs[u] = b; }).catch(() => {}));
+    const restart = src => {
+      if (cur && cur.startsWith('blob:')) URL.revokeObjectURL(cur);
+      cur = blobs[src] ? URL.createObjectURL(blobs[src]) : src + '?t=' + Date.now();
+      curSrc = src; img.src = cur;
+    };
+    const stop = () => { setTimeout(() => { if (!el.classList.contains('is-on')) { img.removeAttribute('src'); if (cur && cur.startsWith('blob:')) URL.revokeObjectURL(cur); cur = ''; curSrc = ''; } }, 220); };
+    document.body.appendChild(el); this.tlEl = el;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let tx = 0, ty = 0, x = 0, y = 0, s = .85, ts = .85, on = false, raf = 0;
+    const tick = () => {
+      const k = reduce ? 1 : 0.18;
+      x += (tx - x) * k; y += (ty - y) * k; s += (ts - s) * (reduce ? 1 : 0.2);
+      el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) scale(' + s + ')';
+      if (on || Math.abs(tx - x) + Math.abs(ty - y) > 0.5 || Math.abs(ts - s) > 0.01) raf = requestAnimationFrame(tick); else raf = 0;
+    };
+    this.onTlMove = e => {
+      const row = e.target.closest && e.target.closest('#contact .am-row');
+      const lang = e.target.closest && e.target.closest('#basics .am-tag');
+      const est = lang && /^(Estonian|Эстонский|Eesti)$/.test(lang.textContent.trim()) ? lang : null;
+      const kvOrg = e.target.closest && e.target.closest('#experience .am-exp');
+      const kv = kvOrg && (e.target.closest('.am-exp__org') || e.target.closest('.am-exp__logo')) && /Kaitsev/.test(kvOrg.querySelector('.am-exp__org').textContent) ? kvOrg : null;
+      const tag = e.target.closest && e.target.closest('#about .am-tag');
+      const ai = tag && /Claude (Code|Design)/.test(tag.textContent);
+      const hit = (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || kv;
+      const src = ai ? 'assets/easter-eggs/ai-slop.png' : kv ? 'assets/easter-eggs/kv-meme.png' : 'assets/easter-eggs/estonia.gif';
+      tx = e.clientX + 18; ty = e.clientY + 18;
+      const w = 182, hh = el.offsetHeight || 160;
+      if (tx + w > window.innerWidth - 8) tx = e.clientX - w - 18;
+      if (ty + hh > window.innerHeight - 8) ty = e.clientY - hh - 18;
+      if (hit && (!on || src !== curSrc)) { if (!on) { on = true; if (!x && !y) { x = tx; y = ty; } } ts = 1; restart(src); el.classList.add('is-on'); }
+      else if (!hit && on) { on = false; ts = .85; el.classList.remove('is-on'); stop(); }
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+    this.onTlLeave = () => { on = false; ts = .85; el.classList.remove('is-on'); stop(); };
+    window.addEventListener('mousemove', this.onTlMove, { passive: true });
+    document.addEventListener('mouseleave', this.onTlLeave);
+  }
+  mountStacks() {
+    document.querySelectorAll('#projects .am-proj__body').forEach(body => {
+      if (body.querySelector('.am-stack')) return;
+      const s = document.createElement('div'); s.className = 'am-stack'; s.setAttribute('role', 'list'); s.setAttribute('aria-label', 'Tools');
+      CARD_TOOLS.forEach(t => {
+        const i = document.createElement('span'); i.className = 'am-stack__i'; i.setAttribute('role', 'listitem'); i.tabIndex = 0; i.title = t.name;
+        const g = document.createElement('span'); g.className = 'am-stack__g';
+        if (t.mark) { const m = document.createElement('span'); m.className = 'am-stack__m'; m.textContent = t.mark; g.appendChild(m); }
+        else { const ic = document.createElement('span'); ic.className = 'am-stack__ic'; ic.style.setProperty('--src', 'url(' + t.icon + ')'); g.appendChild(ic); }
+        const tx = document.createElement('span'); tx.className = 'am-stack__t'; tx.textContent = t.name;
+        i.append(g, tx); s.appendChild(i);
+
+      });
+      const actions = body.querySelector('.am-proj__actions');
+      actions ? body.insertBefore(s, actions) : body.appendChild(s);
+    });
+  }
+  mountVideos() {
+    this.mountStacks();
+    document.querySelectorAll('#projects [aria-label]').forEach(card => {
+      const src = PROJECT_VIDEOS[card.getAttribute('aria-label')]; if (!src) return;
+      const media = card.querySelector('.am-proj__media'); if (!media || media.querySelector('video')) return;
+      const v = document.createElement('video');
+      Object.assign(v, { muted: true, loop: true, playsInline: true, preload: 'metadata' });
+      v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+      v.src = src;
+      if (GIF_VIDEOS[card.getAttribute('aria-label')]) {
+        v.setAttribute('data-gif', ''); v.disablePictureInPicture = true; v.controls = false;
+        v.setAttribute('disablepictureinpicture', ''); v.setAttribute('disableremoteplayback', ''); v.setAttribute('tabindex', '-1');
+        v.addEventListener('pause', () => { if (v.dataset.inview === '1') v.play().catch(() => {}); });
+        v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
+        v.addEventListener('contextmenu', e => e.preventDefault());
+        if (!this.gifIO) this.gifIO = new IntersectionObserver(es => es.forEach(e => { const el = e.target; el.dataset.inview = e.isIntersecting ? '1' : '0'; if (e.isIntersecting) el.play().catch(() => {}); }), { threshold: 0.25 });
+        media.appendChild(v); this.gifIO.observe(v); return;
+      }
+      media.appendChild(v);
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return;
+      if (!this.vidIO) this.vidIO = new IntersectionObserver(es => es.forEach(e => { const el = e.target; e.isIntersecting ? el.play().catch(() => {}) : el.pause(); }), { threshold: 0.2 });
+      this.vidIO.observe(v);
+    });
+  }
+  componentWillUnmount() {
+    clearInterval(this.clockT); if (this.onTlMove) { window.removeEventListener('mousemove', this.onTlMove); document.removeEventListener('mouseleave', this.onTlLeave); } if (this.tlEl) this.tlEl.remove(); window.removeEventListener('resize', this.fitFn); if (this.vidIO) this.vidIO.disconnect(); if (this.gifIO) this.gifIO.disconnect(); if (this.vidMO) this.vidMO.disconnect();
+    window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('keydown', this.onKey); window.removeEventListener('click', this.onDetailClick, true); window.removeEventListener('click', this.onExtLink, true); clearTimeout(this.copyT);
+    cancelAnimationFrame(this.raf); cancelAnimationFrame(this.cntRaf);
+  }
+  componentDidUpdate(_, prev) {
+    if (prev.theme !== this.state.theme) { this.applyTheme(); if (this.cv) this.draw(); }
+    if (prev.lang !== this.state.lang) this.applyLang();
+  }
+  applyTheme(th = this.state.theme) {
+    const s = document.documentElement.style;
+    for (const k in LIGHT) th === 'light' ? s.setProperty(k, LIGHT[k]) : s.removeProperty(k);
+    document.documentElement.style.colorScheme = th;
+    try { localStorage.setItem('am_theme', th); } catch (e) {}
+  }
+  watchGroup(key, el) {
+    const ro = key + 'RO';
+    if (this[ro]) { this[ro].disconnect(); this[ro] = null; }
+    this[key + 'El'] = el;
+    if (el && window.ResizeObserver) {
+      this[ro] = new ResizeObserver(() => this.measureInd()); this[ro].observe(el);
+      new MutationObserver(() => { el.querySelectorAll('[data-lang-slot]').forEach(s => this[ro] && this[ro].observe(s)); this.measureInd(); }).observe(el, { childList: true, subtree: true });
+    }
+    if (el) { requestAnimationFrame(() => this.measureInd()); document.fonts && document.fonts.ready.then(() => this.measureInd()); }
+  }
+  setVGroup = el => { if (el !== this.vEl) this.watchGroup('v', el); };
+  setHGroup = el => { if (el !== this.hEl) this.watchGroup('h', el); };
+  measureInd() {
+    const i = Math.max(0, LANGS.findIndex(([c]) => c === this.state.lang)), next = {};
+    for (const k of ['v', 'h']) {
+      const g = this[k + 'El']; if (!g) continue;
+      const btns = g.querySelectorAll('[data-lang-slot]'); const b = btns[i]; if (!b) continue;
+      const gr = g.getBoundingClientRect(), r = b.getBoundingClientRect();
+      const ext = k === 'v' && i === 0 ? 10 : 0;
+      const s = 2;
+      const val = { w: (r.width - s * 2) + 'px', h: (r.height + ext - s * 2) + 'px', tr: `translate(${r.left - gr.left + s}px, ${r.top - gr.top - ext + s}px)` };
+      const cur = this.state[k + 'Ind'];
+      if (!cur || cur.w !== val.w || cur.h !== val.h || cur.tr !== val.tr) next[k + 'Ind'] = val;
+    }
+    if (Object.keys(next).length) this.setState(next);
+  }
+  scroller() {
+    const se = document.scrollingElement || document.documentElement, b = document.body;
+    if (se.scrollHeight > se.clientHeight + 1) return se;
+    const o = getComputedStyle(b).overflowY;
+    if ((o === 'auto' || o === 'scroll') && b.scrollHeight > b.clientHeight + 1) return b;
+    return se;
+  }
+  setCollapse = el => { this.collapseEl = el; };
+  setScoreEl = el => { this.scoreEl = el; };
+  richDetail(r, T) {
+    const E = React.createElement;
+    const row = (k, items) => E('span', { style: { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6 } },
+      E('span', { style: { font: 'var(--type-meta)', color: 'var(--text-subtle)', minWidth: 72 } }, k),
+      ...items.map((x, i) => {
+        const m = TAG_META[x] || {};
+        const glyph = m.mark
+          ? E('span', { style: { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 16, height: 16, flex: 'none', borderRadius: 4, background: 'var(--surface-inverse)', color: 'var(--text-inverse)', font: '700 8.5px/1 var(--font-sans)', letterSpacing: '-0.02em' } }, m.mark)
+          : m.icon ? E('span', { className: 'am-icon', 'aria-hidden': true, style: { width: 14, height: 14, color: 'var(--text-strong)', '--am-icon': m.icon } }) : null;
+        return E('span', { key: i, className: 'am-tag', style: { color: 'var(--text-muted)' } }, x);
+      }));
+    return E('span', { style: { display: 'grid', gap: 12 } },
+      E('span', { style: { display: 'grid', gap: 6 } }, ...r.bullets.map((b, i) => E('span', { key: i, style: { display: 'grid', gridTemplateColumns: '12px minmax(0,1fr)', gap: 4, textWrap: 'pretty' } }, E('span', { 'aria-hidden': true, style: { color: 'var(--text-subtle)' } }, '·'), E('span', null, b)))),
+      E('span', { style: { display: 'grid', gap: 8 } }, row(T.toolsK, r.tools), row(T.areasK, r.areas)));
+  }
+  setLastEl = el => { this.lastEl = el; };
+  addScore(n) {
+    this.setState(s => ({ score: s.score + n, rounds: s.rounds + 1, last: n }), () => {
+      if (this.lastEl && this.lastEl.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+        this.lastEl.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.22,1,.36,1)' });
+      const to = this.state.score, from = this.state.shown, t0 = performance.now(), dur = 520;
+      cancelAnimationFrame(this.cntRaf);
+      const step = now => {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(from + (to - from) * e);
+        if (val !== this.state.shown) this.setState({ shown: val });
+        if (p < 1) this.cntRaf = requestAnimationFrame(step);
+      };
+      this.cntRaf = requestAnimationFrame(step);
+      if (n > 0 && this.scoreEl && this.scoreEl.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+        this.scoreEl.animate([{ transform: 'scale(1)' }, { transform: 'scale(' + (1.15 + Math.min(n, 10) * 0.025) + ')', offset: .3 }, { transform: 'scale(1)' }], { duration: 480, easing: 'cubic-bezier(.22,1,.36,1)' });
+    });
+  }
+  animatePlinko(open) {
+    const el = this.collapseEl, sec = document.getElementById('plinko'); if (!el) return;
+    cancelAnimationFrame(this.colRaf);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const from = el.getBoundingClientRect().height, to = open ? el.firstElementChild.scrollHeight : 0;
+    const from_o = parseFloat(el.style.opacity || 0), to_o = open ? 1 : 0;
+    const dur = reduce ? 1 : 460, t0 = performance.now(), pad = this.state.mobile ? 112 : 24;
+    const ease = x => 1 - Math.pow(1 - x, 4);
+    const step = now => {
+      const p = Math.min(1, (now - t0) / dur), e = ease(p);
+      el.style.height = (from + (to - from) * e) + 'px';
+      el.style.opacity = from_o + (to_o - from_o) * Math.min(1, e * 1.4);
+      if (open) { const sc = this.scroller(); const over = sec.getBoundingClientRect().bottom + pad - window.innerHeight; if (over > 0.5) sc.scrollTop += over; }
+      if (p < 1) this.colRaf = requestAnimationFrame(step);
+      else if (open) el.style.height = 'auto';
+    };
+    this.colRaf = requestAnimationFrame(step);
+  }
+  onDetailClick = e => {
+    if (this.passClick) return;
+    const head = e.target.closest && e.target.closest('.am-exp__rolehead'); if (!head) return;
+    const d = head.parentElement.querySelector('.am-exp__detail'); if (!d || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.stopPropagation(); e.preventDefault();
+    const icon = head.querySelector('.am-icon'); if (icon) icon.style.transform = 'none';
+    const a = d.animate([{ maxHeight: d.offsetHeight + 'px', opacity: 1 }, { maxHeight: '0px', marginTop: '0px', marginBottom: '0px', opacity: 0 }], { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' });
+    a.onfinish = () => { this.passClick = true; head.click(); this.passClick = false; };
+  };
+  applyLang() {
+    if (this.fitFn) this.fitFn();
+    requestAnimationFrame(() => this.measureInd()); document.documentElement.lang = this.state.lang; try { localStorage.setItem('am_lang', this.state.lang); } catch (e) {} }
+  scrollTo(id) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const el = id === 'top' ? null : document.getElementById(id);
+    const sc = this.scroller();
+    const y = el ? el.getBoundingClientRect().top + sc.scrollTop - (this.state.mobile ? 20 : 32) : 0;
+    sc.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+    this.setState({ active: id, menuOpen: false });
+  }
+  link(id) { return e => { e && e.preventDefault && e.preventDefault(); this.scrollTo(id); }; }
+
+  // --- sound (off by default; only Plinko peg ticks) ---
+  tick() {
+    if (!this.state.sound || !this.ac) return;
+    const now = this.ac.currentTime; if (now - (this.lastTick || 0) < 0.04) return; this.lastTick = now;
+    const o = this.ac.createOscillator(), g = this.ac.createGain();
+    o.type = 'triangle'; o.frequency.value = 520 + Math.random() * 380;
+    g.gain.setValueAtTime(0.04, now); g.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+    o.connect(g).connect(this.ac.destination); o.start(now); o.stop(now + 0.09);
+  }
+
+  // --- Plinko ---
+  setCanvas = c => {
+    if (!c) { this.cv = null; cancelAnimationFrame(this.raf); this.raf = 0; return; }
+    if (c === this.cv) return;
+    this.cv = c; this.balls = []; this.flash = {}; this.fx = []; this.layoutPlinko();
+  };
+  layoutPlinko() {
+    const c = this.cv, W = c.clientWidth || 600, H = 300, dpr = window.devicePixelRatio || 1;
+    c.width = W * dpr; c.height = H * dpr; c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+    const rows = 9, gx = Math.min((W - 24) / (rows + 1), 44), gy = 24, y0 = 22;
+    this.geo = { W, H, gx, gy, y0, pegs: [], bins: [] };
+    for (let r = 0; r < rows; r++) { const n = r + 2; for (let i = 0; i < n; i++) this.geo.pegs.push({ x: W / 2 + (i - (n - 1) / 2) * gx, y: y0 + r * gy }); }
+    const last = this.geo.pegs.slice(-(rows + 1));
+    this.geo.pegs = this.geo.pegs.slice(2).filter(p => p !== last[0] && p !== last[last.length - 1]);
+    this.geo.binY = y0 + (rows - 1) * gy + 18;
+    for (let i = 0; i < last.length - 1; i++) this.geo.bins.push({ x0: last[i].x, x1: last[i + 1].x, v: BINS[i] });
+    this.geo.minX = last[0].x; this.geo.maxX = last[last.length - 1].x;
+    this.balls = []; this.draw();
+  }
+  drop = () => {
+    if (!this.geo) return;
+    if (this.balls.length > 6) return;
+    const gx = this.geo.gx, side = Math.random() < 0.5 ? -1 : 1;
+    const top = this.geo.pegs.length ? Math.min(...this.geo.pegs.map(p => p.y)) : 0;
+    const row = this.geo.pegs.filter(p => Math.abs(p.y - top) < 1);
+    const minX = Math.min(...row.map(p => p.x)), maxX = Math.max(...row.map(p => p.x)), cx = this.geo.W / 2;
+    const half = (maxX - minX) / 2 - 2;
+    const off = side * (gx * 0.15 + Math.random() * Math.max(0, half - gx * 0.15));
+    this.balls.push({ x: cx + off, y: 4, vx: side * Math.random() * 0.3, vy: 0 });
+    if (!this.raf) this.loop();
+  };
+  loop = () => {
+    const g = this.geo, R = 5, PR = 2.5;
+    for (const b of this.balls) {
+      const k = 0.8; b.vy += 0.16 * k; b.x += b.vx * k; b.y += b.vy * k; b.vx *= Math.pow(0.995, k);
+      for (const p of g.pegs) {
+        const dx = b.x - p.x, dy = b.y - p.y, d = Math.hypot(dx, dy);
+        if (d < R + PR && d > 0) {
+          const nx = dx / d, ny = dy / d, dot = b.vx * nx + b.vy * ny;
+          b.x = p.x + nx * (R + PR); b.y = p.y + ny * (R + PR);
+          if (dot < 0) { b.vx -= 1.5 * dot * nx; b.vy -= 1.5 * dot * ny; }
+          b.vx += (Math.random() - 0.5) * 1.2 + (Math.abs(dx) < 1 ? (Math.random() < 0.5 ? -0.8 : 0.8) : 0); this.tick();
+        }
+      }
+      {
+        const r = Math.max(0, (b.y - g.y0) / g.gy);
+        const half = Math.min((g.maxX - g.minX) / 2, (r + 1) / 2 * g.gx + g.gx * 0.15);
+        const cx = (g.minX + g.maxX) / 2, L = cx - half, Rr = cx + half;
+        if (b.x < L) { b.x = L; b.vx = Math.abs(b.vx) * 0.5 + 0.2; }
+        if (b.x > Rr) { b.x = Rr; b.vx = -Math.abs(b.vx) * 0.5 - 0.2; }
+      }
+      if (b.y > g.binY + 8) {
+        b.done = true;
+        const i = g.bins.findIndex(bn => b.x >= bn.x0 && b.x <= bn.x1);
+        const k = i < 0 ? Math.floor(g.bins.length / 2) : i, bn = g.bins[k]; this.flash[k] = 30;
+        this.fx.push({ x: (bn.x0 + bn.x1) / 2, y: g.binY + 14, v: bn.v, t: 0, w: bn.x1 - bn.x0 });
+        this.addScore(bn.v);
+      }
+    }
+    this.balls = this.balls.filter(b => !b.done);
+    for (const k in this.flash) if (--this.flash[k] <= 0) delete this.flash[k];
+    for (const f of this.fx) f.t++;
+    this.fx = this.fx.filter(f => f.t < 48);
+    this.draw();
+    this.raf = (this.balls.length || this.fx.length || Object.keys(this.flash).length) ? requestAnimationFrame(this.loop) : 0;
+  };
+  draw() {
+    const c = this.cv, g = this.geo; if (!c || !g) return;
+    const ctx = c.getContext('2d'), cs = getComputedStyle(document.documentElement);
+    const v = n => cs.getPropertyValue(n).trim();
+    ctx.clearRect(0, 0, g.W, g.H);
+    ctx.fillStyle = v('--text-subtle');
+    for (const p of g.pegs) { ctx.beginPath(); ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2); ctx.fill(); }
+    ctx.font = '500 ' + (g.gx < 34 ? 9 : 11) + 'px "Geist", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    g.bins.forEach((bn, i) => {
+      const f = this.flash[i] || 0, ph = f ? (30 - f) / 30 : 0;
+      const dip = f ? Math.sin(Math.min(1, ph * 2.2) * Math.PI) * 5 * (1 - ph * 0.6) : 0;
+      const x = bn.x0 + 2, w = bn.x1 - bn.x0 - 4, y = g.binY + 14 + dip, h = 26, on = f > 6;
+      ctx.fillStyle = on ? v('--surface-inverse') : v('--surface-raised');
+      ctx.strokeStyle = v('--border-default'); ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, 4) : ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = on ? v('--text-inverse') : v('--text-muted'); ctx.fillText('+' + bn.v, x + w / 2, y + h / 2 + 0.5);
+    });
+    ctx.fillStyle = v('--text-strong');
+    for (const b of this.balls) { ctx.beginPath(); ctx.arc(b.x, b.y, 5, 0, Math.PI * 2); ctx.fill(); }
+    const ink = v('--text-strong');
+    for (const fx of this.fx) {
+      const p = fx.t / 48, e = 1 - Math.pow(1 - p, 3);
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, 1 - p) * 0.55; ctx.strokeStyle = ink; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.ellipse(fx.x, fx.y + 13, fx.w * (0.3 + e * 0.9), 6 + e * 10, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = p < 0.15 ? p / 0.15 : Math.max(0, 1 - (p - 0.45) / 0.55);
+      ctx.fillStyle = ink; ctx.font = '600 ' + (13 + (1 - e) * 4) + 'px "Geist", sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('+' + fx.v, fx.x, fx.y - 8 - e * 26);
+      ctx.restore();
+    }
+  }
+
+  renderVals() {
+    const { lang, theme, sound, active, mobile, menuOpen, plinkoOpen, score } = this.state;
+    const T = I18N[lang] || I18N.en;
+    const p = this.props;
+    const email = p.email || 'aleks.mezenn@gmail.com', phone = p.phone || '+372 5822 6814';
+    const t = {
+      ...T, lead: md(T.lead), aboutLead: md(T.aboutLead),
+      exp: T.exp.map(e => ({ ...e, logo: e.org === 'Snape OÜ' ? 'assets/logos/logo-snape.png' : e.org === 'Kaitsevägi' ? 'assets/logos/logo-kaitsevagi.png' : undefined, org: e.org === 'Snape OÜ' ? React.createElement(React.Fragment, null, 'Snape OÜ', React.createElement('span', { className: 'am-badge am-badge--outline', style: { marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: -1 } }, 'Featured')) : e.org, roles: e.roles.map(r => r.bullets ? { ...r, detail: this.richDetail(r, T) } : r) })),
+      about: T.about.map(([title, text], i) => ({ n: '0' + (i + 1), title, text }))
+    };
+    const urls = [p.sarleUrl || 'https://sarle.ee', p.queenUrl, p.ameztransUrl || 'https://a-meztrans.ee', p.antarraUrl || 'https://antarra.ee'];
+    return {
+      tallinnTime: this.state.tlTime || this.fmtTallinn(),
+      t, mobile, desktop: !mobile, menuOpen, plinkoOpen, score, active, soundOn: sound,
+      shownScore: this.state.shown, setScoreEl: this.setScoreEl,
+      mainPadT: mobile ? '64px' : '112px',
+      hdrScore: plinkoOpen ? { mh: '0px', mt: '0px', o: 0, t: 'translateY(-4px)' } : { mh: '20px', mt: '4px', o: 1, t: 'none' },
+      toolText: T.toolsText.split(/(\[[a-z]+\])/).filter(Boolean).map(x => { const m = x.match(/^\[([a-z]+)\]$/); return m && TOOLS[m[1]] ? { isTool: true, ...TOOLS[m[1]] } : { isText: true, t: x }; }),
+      allTools: ALL_TOOLS.map(k => TOOLS[k]).concat([
+        { name: 'Graphic design', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/pen-tool.svg)' }, { name: 'Web design', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/monitor.svg)' }, { name: 'Packaging', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' },
+        { name: 'Branding', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/gem.svg)' }, { name: 'Print', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/printer.svg)' }, { name: 'SMM', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' }, { name: 'SEO', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/search.svg)' }
+      ]),
+      toolsOpen: this.state.toolsOpen, toolsHidden: !this.state.toolsOpen,
+      toolsRows: this.state.toolsOpen ? '1fr' : '0fr', toolsOpacity: this.state.toolsOpen ? 1 : 0,
+      toolsBtn: this.state.toolsOpen ? T.showLess : T.showAll, toolsIcon: this.state.toolsOpen ? 'chevron-up' : 'chevron-right',
+      toggleTools: () => this.setState(s => ({ toolsOpen: !s.toolsOpen })),
+      rounds: this.state.rounds, lastHit: this.state.last, lastColor: this.state.last >= 150 ? (theme === 'light' ? 'oklch(0.58 0.12 80)' : 'oklch(0.84 0.13 85)') : this.state.last > 0 ? 'var(--text-strong)' : 'var(--text-subtle)', setLastEl: this.setLastEl,
+      dockItems: NAV.map(([id, icon], i) => ({ id, icon, label: T.nav[i] })),
+      go: id => this.scrollTo(id), goTop: this.link('top'), goProjects: this.link('projects'), goContact: this.link('contact'),
+      ...(() => {
+        const i = Math.max(0, LANGS.findIndex(([c]) => c === lang)), last = i === LANGS.length - 1;
+        return {
+          vIndRadius: i === 0 ? '20px 20px 7px 7px' : '7px',
+          hIndRadius: i === 0 ? '22px 6px 6px 22px' : last ? '6px 22px 22px 6px' : '6px'
+        };
+      })(),
+      vInd: this.state.vInd || { w: '0px', h: '0px', tr: 'none' },
+      hInd: this.state.hInd || { w: '0px', h: '0px', tr: 'none' },
+      setVGroup: this.setVGroup, setHGroup: this.setHGroup,
+      langs: LANGS.map(([code, label], li) => ({ label, slotH: '28px', on: code === lang, color: code === lang ? 'var(--text-strong)' : 'var(--text-subtle)', pick: () => this.setState({ lang: code }, () => this.applyLang()) })),
+      themeIcon: theme === 'dark' ? 'sun' : 'moon', themeLabel: theme === 'dark' ? T.light : T.dark,
+      toggleTheme: () => {
+        const next = this.state.theme === 'dark' ? 'light' : 'dark';
+        const run = () => this.applyTheme(next);
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (document.startViewTransition && !reduce) document.startViewTransition(run); else run();
+        this.setState({ theme: next }, () => {
+          if (this.cv) this.draw();
+          if (reduce) return;
+          document.querySelectorAll('[data-theme-btn] .am-icon').forEach(ic => {
+            ic.animate([{ transform: 'rotate(-120deg) scale(.3)', opacity: 0 }, { transform: 'rotate(10deg) scale(1.1)', opacity: 1, offset: .7 }, { transform: 'none', opacity: 1 }], { duration: 520, easing: 'cubic-bezier(.22,1,.36,1)' });
+          });
+        });
+      },
+      soundIcon: sound ? 'volume-2' : 'volume-x', soundLabel: sound ? T.soundOn : T.soundOff,
+      toggleSound: () => {
+        if (!this.ac) { try { this.ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+        if (this.ac && this.ac.state === 'suspended') this.ac.resume();
+        this.setState(s => ({ sound: !s.sound }));
+      },
+      menuIcon: menuOpen ? 'x' : 'settings-2', toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      plinkoIcon: plinkoOpen ? 'chevron-up' : 'play', plinkoToggle: plinkoOpen ? T.hide : T.play,
+      plinkoHidden: !plinkoOpen, setCollapse: this.setCollapse,
+      mainPadB: mobile ? '112px' : '24px',
+      togglePlinko: () => {
+        const open = !this.state.plinkoOpen;
+        this.setState({ plinkoOpen: open });
+        if (open && this.cv) this.layoutPlinko();
+        this.animatePlinko(open);
+      },
+      goAbout: this.link('about'),
+      goAboutPage: () => { window.location.href = 'about/'; },
+      goCv: () => { window.location.href = 'cv/'; },
+      goCvLink: e => { if (e && e.preventDefault) e.preventDefault(); window.location.href = p.cvUrl || 'cv/'; },
+      copyLabel: this.state.copied ? T.copied : T.copyEmail,
+      copyIconA: this.state.copied ? { o: 0, t: 'scale(.4) rotate(-90deg)' } : { o: 1, t: 'none' },
+      copyIconB: this.state.copied ? { o: 1, t: 'none' } : { o: 0, t: 'scale(.4) rotate(90deg)' },
+      copyEmail: () => {
+        const v = p.email || email;
+        const done = () => { this.setState({ copied: true }); clearTimeout(this.copyT); this.copyT = setTimeout(() => this.setState({ copied: false }), 1800); };
+        const fb = () => { const ta = document.createElement('textarea'); ta.value = v; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} ta.remove(); done(); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(v).then(done, fb); else fb();
+      },
+      setCanvas: this.setCanvas, drop: this.drop,
+      tools: [
+        { label: 'Adobe Photoshop / Illustrator', icon: 'pen-tool' }, { label: 'Figma / Claude Design', icon: 'figma' },
+        { label: 'Graphic / Web / Packaging', icon: 'package' }, { label: 'Branding / SMM / SEO', icon: 'megaphone' }
+      ],
+      projects: [
+        { title: 'SARLE', description: T.proj[0], tags: [], links: [{ label: T.visit, icon: 'arrow-up-right', href: urls[0] || '#' }], href: urls[0] || '#', image: p.sarleImage || undefined },
+        { title: 'QUEEN OF THE BALTIC', description: T.proj[1], tags: [], links: [{ label: T.wip, icon: 'hourglass', href: '#' }], href: urls[1] || '#', image: p.queenImage || undefined },
+        { title: 'A-MEZTRANS', description: T.proj[2], tags: [], links: [{ label: T.visit, icon: 'arrow-up-right', href: urls[2] || '#' }], href: urls[2] || '#', image: p.ameztransImage || undefined },
+        { title: 'BLACK ANTARRA', description: T.proj[3], tags: [], links: [{ label: T.visit, icon: 'arrow-up-right', href: urls[3] || '#' }], href: urls[3] || '#' }
+      ],
+      email, phone,
+      mailHref: 'mailto:' + email,
+      telHref: 'tel:' + phone.replace(/[^\d+]/g, ''),
+      cvUrl: p.cvUrl || 'cv/'
+    };
+  }
+}
+</script>
+</body>
 </html>
