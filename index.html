@@ -57,7 +57,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
 .am-proj__media video[data-gif]{object-fit:contain;background:var(--surface-sunken)}
 .am-stack{display:flex;flex-wrap:nowrap;align-items:center;padding-left:6px}
 .am-stack__i{position:relative;display:inline-flex;align-items:center;gap:0;height:28px;padding:0 6px;margin-left:-8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-raised);box-shadow:0 0 0 2px var(--surface-card);color:var(--text-strong);font:var(--fw-medium, 500) var(--fs-12, 12px)/1 var(--font-sans);white-space:nowrap;transition:margin 420ms cubic-bezier(.22,1,.36,1),gap 420ms cubic-bezier(.22,1,.36,1),padding 420ms cubic-bezier(.22,1,.36,1),border-color 120ms,background-color 120ms}
-.am-stack__i:nth-child(1){z-index:6}.am-stack__i:nth-child(2){z-index:5}.am-stack__i:nth-child(3){z-index:4}.am-stack__i:nth-child(4){z-index:3}.am-stack__i:nth-child(5){z-index:2}.am-stack__i:nth-child(6){z-index:1}
+.am-stack__i:nth-child(1){z-index:6}.am-stack__i:nth-child(2){z-index:5}.am-stack__i:nth-child(3){z-index:4}.am-stack__i:nth-child(4){z-index:3}.am-stack__i:nth-child(5){z-index:2}.am-stack__i:nth-child(6){z-index:1}.am-stack__i:nth-child(6){z-index:1}
 .am-stack__g{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none}
 .am-stack__m{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:4px;background:var(--surface-inverse);color:var(--text-inverse);font:700 8.5px/1 var(--font-sans);letter-spacing:-0.02em}
 .am-stack__ic{width:14px;height:14px;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
@@ -143,7 +143,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
         <p style="margin:20px 0 0;color:var(--text-muted);text-wrap:pretty">
           <sc-for list="{{ t.lead }}" as="p" hint-placeholder-count="1"><sc-if value="{{ p.b }}"><b style="color:var(--text-strong);font-weight:500">{{ p.t }}</b></sc-if><sc-if value="{{ p.n }}">{{ p.t }}</sc-if></sc-for>
         </p>
-        <div style="margin-top:12px;font:var(--type-meta);color:var(--text-subtle)"><span data-tallinn="1">Tallinn, Estonia · 59.43°N 24.72°E</span></div>
+        <div style="margin-top:12px;font:var(--type-meta);font-family:var(--font-serif);font-size:15px;font-style:italic;color:var(--text-subtle)"><span data-tallinn="1">Tallinn, Estonia · 59.43°N 24.72°E</span></div>
         <div data-hero-cta="1" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
           <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" href="about/" hint-size="110px,42px">{{ t.aboutBtn }}</x-import>
           <button type="button" class="am-btn am-btn--lg" onClick="{{ copyEmail }}" aria-label="{{ copyLabel }}" title="{{ copyLabel }}">
@@ -229,7 +229,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
     </section>
 
     <section id="contact" style="margin-top:96px;scroll-margin-top:80px">
-      <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
+      <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);font-family:var(--font-serif);font-size:15px;font-style:italic;letter-spacing:0;color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
       <p style="margin:12px 0 24px;color:var(--text-muted)">{{ t.contactLead }}</p>
       <div>
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="mail" title="{{ email }}" subtitle="Email" href="{{ mailHref }}" style="overflow-wrap:anywhere" hint-size="100%,70px"></x-import>
@@ -360,7 +360,7 @@ const I18N = {
       { org: 'Фриланс', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Удалённо' }] }
     ],
     basicsTitle: 'Основы', eduLabel: 'Образование', toolsLabel: 'Инструменты и навыки', langsLabel: 'Языки',
-    school1: 'Таллинский политехникум', school2: 'Школа дизайна Художественного центра Старого Таллина',
+    school1: 'Таллинский политехникум', school2: 'Школа дизайна Художественного центра Старого Таллинна',
     edu: 'Профессиональное среднее образование · IT specialist', eduNote: 'Системное и сетевое администрирование',
     edu2: 'Дополнительное образование в медиадизайне · Graphic & Web Design', edu2note: 'Курсы по рисунку, живописи, теории цвета, композиции и программам для графического дизайна.',
     spoken: ['Русский', 'Эстонский', 'Английский'],
@@ -433,6 +433,11 @@ const CARD_TOOLS = [
   { name: 'Illustrator', mark: 'Ai' }, { name: 'Photoshop', mark: 'Ps' },
   { name: 'Claude Code', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg' }, { name: 'Web Design', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/monitor.svg' }, { name: 'Branding Design', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/gem.svg' }
 ];
+const SMM_TOOL = { name: 'SMM', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg' };
+const CARD_TOOLS_BY = {
+  SARLE: CARD_TOOLS.map(t => t.name === 'Photoshop' ? SMM_TOOL : t),
+  'QUEEN OF THE BALTIC': CARD_TOOLS.flatMap(t => t.name === 'Claude Code' ? [t, SMM_TOOL] : [t]),
+};
 const BINS = [150, 75, 40, 25, 0, 25, 40, 75, 150];
 
 class Component extends DCLogic {
@@ -535,8 +540,9 @@ class Component extends DCLogic {
   mountStacks() {
     document.querySelectorAll('#projects .am-proj__body').forEach(body => {
       if (body.querySelector('.am-stack')) return;
+      const card = body.closest('[aria-label]'); const tools = (card && CARD_TOOLS_BY[card.getAttribute('aria-label')]) || CARD_TOOLS;
       const s = document.createElement('div'); s.className = 'am-stack'; s.setAttribute('role', 'list'); s.setAttribute('aria-label', 'Tools');
-      CARD_TOOLS.forEach(t => {
+      tools.forEach(t => {
         const i = document.createElement('span'); i.className = 'am-stack__i'; i.setAttribute('role', 'listitem'); i.tabIndex = 0; i.title = t.name;
         const g = document.createElement('span'); g.className = 'am-stack__g';
         if (t.mark) { const m = document.createElement('span'); m.className = 'am-stack__m'; m.textContent = t.mark; g.appendChild(m); }

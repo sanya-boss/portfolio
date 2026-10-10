@@ -106,7 +106,7 @@ a:hover{color:var(--link-hover)}
 
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:40px;padding:4px;border-radius:var(--radius-lg);border:1px solid var(--border-default);background:var(--surface-card);box-shadow:var(--inset-highlight)">
       <div data-photo="1" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--surface-sunken)">
-        <img src="../assets/images/about-1.jpg" alt="Aleksandr Mežennõi on a scrambler motorcycle" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
+        <img src="../assets/images/about-1.jpg?v=2" alt="Aleksandr Mežennõi on a scrambler motorcycle" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
       </div>
       <div data-photo="1" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--surface-sunken)">
         <img src="../assets/images/about-2.jpg" alt="Aleksandr Mežennõi on a motorcycle at night" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block">
@@ -129,7 +129,7 @@ a:hover{color:var(--link-hover)}
     </div>
 
     <section id="contact" style="margin-top:96px">
-      <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
+      <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);font-family:var(--font-serif);font-size:15px;font-style:italic;letter-spacing:0;color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
       <p style="margin:12px 0 24px;color:var(--text-muted)">{{ t.contactLead }}</p>
       <div>
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="mail" title="aleks.mezenn@gmail.com" subtitle="Email" href="mailto:aleks.mezenn@gmail.com" style="overflow-wrap:anywhere" hint-size="100%,70px"></x-import>
@@ -138,9 +138,9 @@ a:hover{color:var(--link-hover)}
       </div>
     </section>
 
-    <footer style="margin-top:96px;padding-top:20px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
+    <footer style="margin-top:48px;padding-top:20px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
       <span>© 2026 Aleksandr Mežennõi</span>
-      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" icon="house" href="../" style="display:flex;align-items:center" hint-size="100px,28px">{{ t.navHome }}</x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" icon="arrow-up" on-click="{{ goTop }}" style="display:flex;align-items:center" hint-size="90px,28px">{{ t.top }}</x-import>
     </footer>
   </main>
 </div>
@@ -148,7 +148,7 @@ a:hover{color:var(--link-hover)}
 <script type="text/x-dc" data-dc-script>
 const I18N = {
   en: {
-    navHome: 'Portfolio', navAbout: 'About me', back: 'Back to portfolio', light: 'Light theme', dark: 'Dark theme',
+    navHome: 'Portfolio', top: 'Back to top', navAbout: 'About me', back: 'Back to portfolio', light: 'Light theme', dark: 'Dark theme',
     h1a: 'A designer with an interesting background.', h1b: 'And a cool scrambler motorcycle.',
     p1: "I've been doing design since 2021. In that time I've worked freelance and as part of the team at Snape OÜ, creating visual work for clients across very different fields — from cosmetics and restaurants to sport and art.",
     p2: "I enjoy figuring out all kinds of tasks: inventing a brand's character, designing packaging, thinking through an interface or turning a layout into a working website. It's especially satisfying to see my work out in real life — on a shelf, on the street or on a screen.",
@@ -159,7 +159,7 @@ const I18N = {
     line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.', phone: 'Phone', location: 'Location'
   },
   ru: {
-    navHome: 'Портфолио', navAbout: 'Обо мне', back: 'Назад к портфолио', light: 'Светлая тема', dark: 'Тёмная тема',
+    navHome: 'Портфолио', top: 'Наверх', navAbout: 'Обо мне', back: 'Назад к портфолио', light: 'Светлая тема', dark: 'Тёмная тема',
     h1a: 'Дизайнер с интересным бэкграундом.', h1b: 'И на крутом скрэмблер-мотоцикле.',
     p1: 'Занимаюсь дизайном с 2021 года. За это время работал на фрилансе и в команде Snape OÜ, создавал визуальные решения для клиентов из разных сфер — от косметики и ресторанов до спорта и искусства.',
     p2: 'Мне нравится разбираться в разных задачах: придумывать характер бренда, оформлять упаковку, продумывать интерфейс или превращать макет в работающий сайт. Особенно приятно видеть свою работу в жизни — на полке, на улице или на экране.',
@@ -170,7 +170,7 @@ const I18N = {
     line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.', phone: 'Телефон', location: 'Город'
   },
   et: {
-    navHome: 'Portfoolio', navAbout: 'Minust', back: 'Tagasi portfooliosse', light: 'Hele teema', dark: 'Tume teema',
+    navHome: 'Portfoolio', top: 'Üles', navAbout: 'Minust', back: 'Tagasi portfooliosse', light: 'Hele teema', dark: 'Tume teema',
     h1a: 'Huvitava taustaga disainer.', h1b: 'Ja laheda scrambler-mootorrattaga.',
     p1: 'Tegelen disainiga alates 2021. aastast. Selle aja jooksul olen töötanud vabakutselisena ja Snape OÜ meeskonnas ning loonud visuaalseid lahendusi väga eri valdkondade klientidele — kosmeetikast ja restoranidest spordi ja kunstini.',
     p2: 'Mulle meeldib süveneda erinevatesse ülesannetesse: mõelda välja brändi iseloom, kujundada pakend, läbi mõelda kasutajaliides või muuta makett töötavaks veebileheks. Eriti tore on näha oma tööd päriselus — poeriiulil, tänaval või ekraanil.',
