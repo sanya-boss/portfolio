@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Aleksandr Mežennõi</title>
+<meta name="description" content="CV of Aleksandr Mežennõi — graphic and web designer from Tallinn, Estonia. Experience, education, tools and languages.">
+<meta name="author" content="Aleksandr Mežennõi">
+<meta name="theme-color" content="#0F0F0F">
+<link rel="canonical" href="https://sanya-boss.github.io/portfolio/cv/">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aleksandr Mežennõi">
+<meta property="og:title" content="CV — Aleksandr Mežennõi">
+<meta property="og:description" content="CV of Aleksandr Mežennõi — graphic and web designer from Tallinn, Estonia. Experience, education, tools and languages.">
+<meta property="og:url" content="https://sanya-boss.github.io/portfolio/cv/">
+<meta property="og:image" content="https://sanya-boss.github.io/portfolio/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aleksandr Mežennõi — Graphic &amp; Web Designer from Tallinn">
+<meta name="twitter:card" content="summary_large_image">
 <script src="../lib/support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<title>CV — Aleksandr Mežennõi</title>
 <link rel="stylesheet" href="../design-system/tokens/fonts.css">
 <link rel="stylesheet" href="../design-system/tokens/colors.css">
 <link rel="stylesheet" href="../design-system/tokens/typography.css">
@@ -537,7 +552,7 @@ class Component extends DCLogic {
       toggleTheme: () => { const next = theme === 'dark' ? 'light' : 'dark'; const run = () => this.applyTheme(next); if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(run); else run(); this.setState({ theme: next }); },
       goHome: () => { window.location.href = '../'; },
       goAbout: () => { window.location.href = '../about/'; },
- goTop: () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }), download: () => window.print(), tallinnTime: this.state.tl || this.fmt()
+ goTop: () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }), download: () => { const a = document.createElement('a'); a.href = '../assets/cv/Mezhenny-CV-' + ({ en: 'EN', et: 'ET', ru: 'RU' }[this.state.lang] || 'EN') + '.pdf'; a.download = ''; document.body.appendChild(a); a.click(); a.remove(); }, tallinnTime: this.state.tl || this.fmt()
     };
   }
 }

@@ -18,13 +18,16 @@ Trilingual (EN / ET / RU), dark & light theme, plain static HTML — no build st
 ├── about/index.html        About — story, photos, contacts
 ├── cv/index.html           One-page A4 résumé, printable to PDF
 ├── 404.html                Not-found page (GitHub Pages serves it for any missing URL)
+├── sitemap.xml             Page list for Google Search Console
 │
 ├── assets/
-│   ├── favicon.png
+│   ├── favicon.png · apple-touch-icon.png
+│   ├── og-image.jpg        1200×630 link preview (Telegram, LinkedIn, X…)
+│   ├── cv/                 Ready-made CV PDFs: EN · ET · RU
 │   ├── images/             About page photos
 │   ├── logos/              Organisation logos (Snape, Kaitsevägi)
-│   ├── easter-eggs/        Cursor-follow media (estonia.gif, ai-slop.png, kv-meme.png)
-│   └── video/              Project screen recordings (see video/README.md)
+│   ├── easter-eggs/        Cursor-follow media (estonia.webp, ai-slop.webp, kv-meme.webp)
+│   └── video/              Project screen recordings + posters/ (see video/README.md)
 │
 ├── design-system/          Tokens, component CSS and React primitives (am-*)
 │   ├── tokens/             colors · typography · spacing · effects · fonts · base
@@ -59,4 +62,5 @@ Hosted on GitHub Pages from the repository root (`.nojekyll` keeps the `_ds_bund
 
 - Language and theme persist across pages via `localStorage` keys `am_lang` (`en|et|ru`) and `am_theme` (`dark|light`).
 - Fonts (Geist, EB Garamond), React and Lucide icons load from public CDNs.
-- The CV page has a **Download PDF** button — it prints the A4 sheet.
+- The CV page's **Download PDF** button downloads `assets/cv/Mezhenny-CV-{EN|ET|RU}.pdf` for the current language.
+- SEO and link-preview tags (`description`, `og:*`, `twitter:*`, `canonical`) live in each page's static `<head>`, so crawlers and messengers see them without running JavaScript. Absolute URLs point to `https://sanya-boss.github.io/portfolio/` — update them (and `sitemap.xml`) if the site moves to a custom domain.
