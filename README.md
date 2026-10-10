@@ -26,7 +26,7 @@ Trilingual (EN / ET / RU), dark & light theme, plain static HTML — no build st
 │   ├── cv/                 Ready-made CV PDFs: EN · ET · RU
 │   ├── images/             About page photos
 │   ├── logos/              Organisation logos (Snape, Kaitsevägi)
-│   ├── easter-eggs/        Cursor-follow media (estonia.webp, ai-slop.webp, kv-meme.webp)
+│   ├── easter-eggs/        Cursor-follow media (estonia, america, ai-slop, kv-meme · WebP)
 │   └── video/              Project screen recordings + posters/ (see video/README.md)
 │
 ├── design-system/          Tokens, component CSS and React primitives (am-*)

@@ -60,6 +60,7 @@ Same shell (dock with languages, Portfolio/About/CV nav — none active — and 
 - Project card tool stacks are per-card: SARLE = Ai · SMM · Claude Code · Web Design · Branding Design; QUEEN OF THE BALTIC = Ai · Ps · Claude Code · SMM · Web Design · Branding Design; others = Ai · Ps · Claude Code · Web Design · Branding Design. SMM icon: Lucide megaphone.
 - About footer button is "Back to top" (scroll to top); contact→footer gap 48px.
 - CV mobile dock: Portfolio · About · theme.
+- Cursor peek images (desktop hover, follow cursor with easing): Tallinn → estonia.gif; Estonian tag → estonia.gif; English tag → america.png; Kaitsevägi → kv-meme.png; Claude Code/Design tools → ai-slop.png. All preloaded as blobs.
 
 ## Interactions summary
 - Language switch: re-renders all copy; highlight slides; mobile fit-text recalculated.
