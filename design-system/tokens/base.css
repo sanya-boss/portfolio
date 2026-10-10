@@ -7,6 +7,8 @@ a:hover{color:var(--link-hover);text-decoration-color:var(--text-muted)}
 /* No browser-default blue flash on tap/click: neutral greyscale feedback only */
 html{-webkit-tap-highlight-color:transparent}
 button,a,[role="button"],[tabindex],summary,label{-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
-button,[role="button"],.am-iconbtn,.am-btn,.am-tag,.am-badge{-webkit-user-select:none;user-select:none}
+button,[role="button"],.am-iconbtn,.am-btn,.am-tag,.am-badge,.am-row,.am-proj,.am-exp__org,.am-exp__logo,.am-back,canvas{-webkit-user-select:none;user-select:none}
+button,a,[role="button"],.am-row,.am-proj{touch-action:manipulation}
+img{-webkit-user-drag:none}
 :focus:not(:focus-visible){outline:none}
 :focus-visible{outline:2px solid var(--border-focus);outline-offset:2px}
