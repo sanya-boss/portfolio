@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../lib/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>About — Aleksandr Mežennõi</title>
+<meta name="description" content="Aleksandr Mežennõi — designer with a technical background from Tallinn, Estonia.">
+<link rel="stylesheet" href="../design-system/tokens/fonts.css">
+<link rel="stylesheet" href="../design-system/tokens/colors.css">
+<link rel="stylesheet" href="../design-system/tokens/typography.css">
+<link rel="stylesheet" href="../design-system/tokens/spacing.css">
+<link rel="stylesheet" href="../design-system/tokens/effects.css">
+<link rel="stylesheet" href="../design-system/tokens/base.css">
+<link rel="stylesheet" href="../design-system/components/components.css">
+<link rel="stylesheet" href="../design-system/styles.css">
+<script src="../design-system/_ds_bundle.js"></script>
+<script src="../lib/image-slot.js"></script>
+<style>
+:root{--font-mono:var(--font-sans) !important}
+html,body{margin:0;background:var(--surface-page);color:var(--text-body);overflow-x:clip}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover)}
+.am-iconbtn{display:inline-flex;align-items:center;justify-content:center}
+.sc-host-x:has(> .am-iconbtn){display:flex;align-items:center;justify-content:center}
+.sc-host-x > .am-iconbtn{width:34px;height:34px;flex:none}
+[style*="width:44px;height:44px;flex:none"] .am-iconbtn{width:44px !important;height:44px !important}
+.am-iconbtn{transition:background-color 160ms,color 160ms,border-color 160ms,transform 160ms}
+.am-iconbtn:active{transform:scale(.88)}
+::view-transition-old(root),::view-transition-new(root){animation-duration:380ms;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+[data-lang-slot]>*{display:flex;width:100%;height:100%}
+[data-lang-slot] .am-btn{width:100%;height:100%}
+@media (max-width:899px){[data-fit]{white-space:nowrap}}
+@media (max-width:899px){#about-top h1{font-size:30px !important;line-height:1.15 !important}}
+.am-iconbtn .am-icon{transition:transform 200ms cubic-bezier(.22,1,.36,1)}
+.am-back{transition:color 120ms cubic-bezier(.22,1,.36,1)}
+.am-back .am-icon{transition:transform 200ms cubic-bezier(.22,1,.36,1)}
+.am-back:hover{color:var(--text-strong) !important}
+.am-back:hover .am-icon{transform:translateX(-3px)}
+@media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--surface-page);color:var(--text-body);font:var(--type-body);letter-spacing:var(--ls-body)">
+
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div role="group" aria-label="Language" ref="{{ setVGroup }}" style="position:relative;display:flex;flex-direction:column;gap:6px">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ vInd.w }};height:{{ vInd.h }};transform:{{ vInd.tr }};border-radius:{{ vIndRadius }}"></span>
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <div data-lang-slot="1" style="position:relative;display:flex;width:44px;height:28px">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;height:100%;min-width:0;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;transition:color 120ms;color:{{ l.color }}" hint-size="44px,28px">{{ l.label }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+      <span style="width:18px;height:1px;background:var(--border-default)"></span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" data-nav="1" on-click="{{ goHome }}" hint-size="34px,34px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="user" label="{{ t.navAbout }}" active="{{ true }}" data-nav="1" on-click="{{ goTop }}" hint-size="34px,34px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="file-text" label="CV" data-nav="1" on-click="{{ goCv }}" hint-size="34px,34px"></x-import>
+      <span style="width:18px;height:1px;background:var(--border-default)"></span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="{{ themeIcon }}" label="{{ themeLabel }}" data-theme-btn="1" on-click="{{ toggleTheme }}" hint-size="34px,34px"></x-import>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <div data-lang-slot="1" style="position:relative;display:flex;align-items:center;width:48px;height:44px">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;min-width:0;height:44px;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;transition:color 120ms;color:{{ l.color }}" hint-size="48px,44px">{{ l.label }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+      <span style="width:1px;height:18px;background:var(--border-default)"></span>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" data-nav="1" on-click="{{ goHome }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="file-text" label="CV" data-nav="1" on-click="{{ goCv }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="{{ themeIcon }}" label="{{ themeLabel }}" data-theme-btn="1" on-click="{{ toggleTheme }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+    </div>
+  </sc-if>
+
+  <main id="about-top" style="max-width:var(--container);margin:0 auto;padding:112px 20px 128px;padding-top:{{ padT }};padding-bottom:{{ padB }};box-sizing:border-box">
+
+    <a href="../" class="am-back" style="display:inline-flex;align-items:center;gap:6px;font:var(--type-meta);color:var(--text-subtle)">
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Icon" name="arrow-left" size="{{ 12 }}" hint-size="12px,12px"></x-import>
+      <span>{{ t.back }}</span>
+    </a>
+
+    <h1 style="margin:20px 0 0;font:var(--type-display);letter-spacing:var(--ls-display);color:var(--text-strong);text-wrap:balance">
+      <span style="display:block">{{ t.h1a }}</span>
+      <span style="display:block;margin-top:4px;color:var(--text-subtle)">{{ t.h1b }}</span>
+    </h1>
+
+    <p style="margin:28px 0 0;color:var(--text-muted);text-wrap:pretty">{{ t.p1 }}</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:40px;padding:4px;border-radius:var(--radius-lg);border:1px solid var(--border-default);background:var(--surface-card);box-shadow:var(--inset-highlight)">
+      <div data-photo="1" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--surface-sunken)">
+        <img src="../assets/images/about-1.jpg" alt="Aleksandr Mežennõi on a scrambler motorcycle" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block">
+      </div>
+      <div data-photo="1" style="position:relative;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--surface-sunken)">
+        <img src="../assets/images/about-2.jpg" alt="Aleksandr Mežennõi on a motorcycle at night" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block">
+      </div>
+    </div>
+
+    <div style="display:grid;gap:20px;margin-top:40px">
+      <p style="margin:0;color:var(--text-muted);text-wrap:pretty">{{ t.p2 }}</p>
+      <p style="margin:0;color:var(--text-muted);text-wrap:pretty">{{ t.p3 }}</p>
+    </div>
+
+    <section style="margin-top:var(--section-gap)">
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.SectionHeader" title="{{ t.offTitle }}" hint-size="100%,32px"></x-import>
+      <p style="margin:0;color:var(--text-muted);text-wrap:pretty">{{ t.p4 }}</p>
+    </section>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:48px">
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" icon="layers" href="../#projects" hint-size="140px,42px">{{ t.seeWork }}</x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="lg" icon="file-text" href="../cv/" hint-size="70px,42px">CV</x-import>
+    </div>
+
+    <section id="contact" style="margin-top:96px">
+      <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
+      <p style="margin:12px 0 24px;color:var(--text-muted)">{{ t.contactLead }}</p>
+      <div>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="mail" title="aleks.mezenn@gmail.com" subtitle="Email" href="mailto:aleks.mezenn@gmail.com" style="overflow-wrap:anywhere" hint-size="100%,70px"></x-import>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="phone" title="+372 5822 6814" subtitle="{{ t.phone }}" href="tel:+37258226814" hint-size="100%,70px"></x-import>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="map-pin" title="Tallinn, Estonia" subtitle="{{ t.location }}" meta="{{ tallinnTime }}" hint-size="100%,70px"></x-import>
+      </div>
+    </section>
+
+    <footer style="margin-top:96px;padding-top:20px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
+      <span>© 2026 Aleksandr Mežennõi</span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" icon="house" href="../" style="display:flex;align-items:center" hint-size="100px,28px">{{ t.navHome }}</x-import>
+    </footer>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const I18N = {
+  en: {
+    navHome: 'Portfolio', navAbout: 'About me', back: 'Back to portfolio', light: 'Light theme', dark: 'Dark theme',
+    h1a: 'A designer with an interesting background.', h1b: 'And a cool scrambler motorcycle.',
+    p1: "I've been doing design since 2021. In that time I've worked freelance and as part of the team at Snape OÜ, creating visual work for clients across very different fields — from cosmetics and restaurants to sport and art.",
+    p2: "I enjoy figuring out all kinds of tasks: inventing a brand's character, designing packaging, thinking through an interface or turning a layout into a working website. It's especially satisfying to see my work out in real life — on a shelf, on the street or on a screen.",
+    p3: 'At Tallinna Polütehnikum I studied to become an IT specialist. Design I learned separately — at Tallinna Vanalinna Kunstikeskuse Disainikool and in practice, working on client projects. That experience helps me connect visual ideas with technical execution and run projects on my own, from concept to finished result.',
+    offTitle: 'Outside of work',
+    p4: "Motorcycles, trips and plans to see more of the world. One of my nearest goals is a journey across the USA: Las Vegas, the roads of Nevada and the mountains of California. I want to feel what life is like across the ocean — and, further ahead, to try living and working there.",
+    seeWork: 'See projects',
+    line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.', phone: 'Phone', location: 'Location'
+  },
+  ru: {
+    navHome: 'Портфолио', navAbout: 'Обо мне', back: 'Назад к портфолио', light: 'Светлая тема', dark: 'Тёмная тема',
+    h1a: 'Дизайнер с интересным бэкграундом.', h1b: 'И на крутом скрэмблер-мотоцикле.',
+    p1: 'Занимаюсь дизайном с 2021 года. За это время работал на фрилансе и в команде Snape OÜ, создавал визуальные решения для клиентов из разных сфер — от косметики и ресторанов до спорта и искусства.',
+    p2: 'Мне нравится разбираться в разных задачах: придумывать характер бренда, оформлять упаковку, продумывать интерфейс или превращать макет в работающий сайт. Особенно приятно видеть свою работу в жизни — на полке, на улице или на экране.',
+    p3: 'В Tallinna Polütehnikum учился по специальности IT-специалиста. Дизайн изучал отдельно — в Tallinna Vanalinna Kunstikeskuse Disainikool и на практике, работая над проектами клиентов. Этот опыт помогает мне соединять визуальные идеи с технической реализацией и самостоятельно вести проекты от концепции до готового результата.',
+    offTitle: 'За пределами работы',
+    p4: 'Мотоциклы, поездки и планы увидеть больше мира. Одна из ближайших целей — путешествие по США: Лас-Вегас, дороги Невады и горы Калифорнии. Хочется почувствовать жизнь за океаном, а в перспективе — попробовать там пожить и поработать.',
+    seeWork: 'Проекты',
+    line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.', phone: 'Телефон', location: 'Город'
+  },
+  et: {
+    navHome: 'Portfoolio', navAbout: 'Minust', back: 'Tagasi portfooliosse', light: 'Hele teema', dark: 'Tume teema',
+    h1a: 'Huvitava taustaga disainer.', h1b: 'Ja laheda scrambler-mootorrattaga.',
+    p1: 'Tegelen disainiga alates 2021. aastast. Selle aja jooksul olen töötanud vabakutselisena ja Snape OÜ meeskonnas ning loonud visuaalseid lahendusi väga eri valdkondade klientidele — kosmeetikast ja restoranidest spordi ja kunstini.',
+    p2: 'Mulle meeldib süveneda erinevatesse ülesannetesse: mõelda välja brändi iseloom, kujundada pakend, läbi mõelda kasutajaliides või muuta makett töötavaks veebileheks. Eriti tore on näha oma tööd päriselus — poeriiulil, tänaval või ekraanil.',
+    p3: 'Tallinna Polütehnikumis õppisin IT-spetsialistiks. Disaini õppisin eraldi — Tallinna Vanalinna Kunstikeskuse Disainikoolis ja praktikas, klientide projektide kallal töötades. See kogemus aitab mul ühendada visuaalsed ideed tehnilise teostusega ja viia projekte iseseisvalt kontseptsioonist valmis tulemuseni.',
+    offTitle: 'Väljaspool tööd',
+    p4: 'Mootorrattad, reisid ja plaanid näha rohkem maailma. Üks lähimaid eesmärke on reis läbi USA: Las Vegas, Nevada teed ja California mäed. Tahan tunda elu teisel pool ookeani ning tulevikus proovida seal elada ja töötada.',
+    seeWork: 'Projektid',
+    line: 'Alati liinil.', almost: 'peaaegu alati', contactLead: 'Projekt mõttes? Kirjuta või helista — vastan ise.', phone: 'Telefon', location: 'Asukoht'
+  }
+};
+const LANGS = [['en', 'ENG'], ['et', 'EST'], ['ru', 'RUS']];
+const LIGHT = {
+  '--surface-page': '#F2F2F2', '--surface-sunken': '#EDEDED', '--surface-card': '#FFFFFF', '--surface-raised': '#F7F7F7', '--surface-hover': '#EDEDED',
+  '--surface-inverse': '#0F0F0F', '--surface-overlay': 'rgba(242,242,242,.78)',
+  '--text-strong': '#0A0A0A', '--text-body': '#1A1A1A', '--text-muted': '#4A4A4A', '--text-subtle': '#6B6B6B', '--text-disabled': '#A3A3A3', '--text-inverse': '#FFFFFF',
+  '--border-subtle': 'rgba(0,0,0,.08)', '--border-default': 'rgba(0,0,0,.12)', '--border-strong': 'rgba(0,0,0,.22)', '--border-focus': 'rgba(0,0,0,.55)',
+  '--gray-200': '#2E2E2E', '--gray-750': '#E3E3E3', '--signal-live': '#15803D', '--signal-live-dim': 'rgba(21,128,61,.12)',
+  '--inset-highlight': 'inset 0 1px 0 rgba(255,255,255,.8)', '--shadow-md': '0 4px 16px rgba(0,0,0,.08)', '--shadow-lg': '0 16px 48px rgba(0,0,0,.14)', '--link': '#0A0A0A', '--link-hover': '#4A4A4A'
+};
+
+class Component extends DCLogic {
+  state = {
+    lang: (() => { try { return localStorage.getItem('am_lang') || 'en'; } catch (e) { return 'en'; } })(),
+    theme: (() => { try { return localStorage.getItem('am_theme') || 'dark'; } catch (e) { return 'dark'; } })(),
+    mobile: typeof window !== 'undefined' && window.innerWidth < 900
+  };
+  componentDidMount() {
+    this.applyTheme(); this.applyLang();
+    this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m }); };
+    window.addEventListener('resize', this.onResize);
+    this.fitFn = () => requestAnimationFrame(() => this.fitText());
+    window.addEventListener('resize', this.fitFn); this.fitFn(); document.fonts && document.fonts.ready.then(this.fitFn);
+    this.clockT = setInterval(() => { const v = this.fmt(); if (v !== this.state.tl) this.setState({ tl: v }); }, 1000);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('resize', this.fitFn); clearInterval(this.clockT); }
+  fmt() {
+    try {
+      const d = new Date();
+      const time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Tallinn', hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+      const tz = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Tallinn', timeZoneName: 'shortOffset' }).formatToParts(d).find(p => p.type === 'timeZoneName');
+      return time + ' · ' + (tz ? tz.value.replace('GMT', 'UTC') : 'EET');
+    } catch (e) { return ''; }
+  }
+  fitText() {
+    document.querySelectorAll('[data-fit]').forEach(el => {
+      el.style.fontSize = '';
+      if (window.innerWidth >= 900) return;
+      const avail = el.parentElement.clientWidth, base = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = '100px'; const w = el.scrollWidth; el.style.fontSize = '';
+      const size = avail && w ? Math.floor(100 * avail / w * 0.98 * 10) / 10 : base;
+      if (size < base) el.style.fontSize = size + 'px';
+    });
+  }
+  applyTheme(th = this.state.theme) {
+    const s = document.documentElement.style;
+    for (const k in LIGHT) th === 'light' ? s.setProperty(k, LIGHT[k]) : s.removeProperty(k);
+    document.documentElement.style.colorScheme = th;
+    try { localStorage.setItem('am_theme', th); } catch (e) {}
+  }
+  applyLang() {
+    requestAnimationFrame(() => this.measureInd());
+    if (this.fitFn) this.fitFn();
+    document.documentElement.lang = this.state.lang;
+    try { localStorage.setItem('am_lang', this.state.lang); } catch (e) {}
+  }
+  watchGroup(key, el) {
+    const ro = key + 'RO';
+    if (this[ro]) { this[ro].disconnect(); this[ro] = null; }
+    this[key + 'El'] = el;
+    if (el && window.ResizeObserver) {
+      this[ro] = new ResizeObserver(() => this.measureInd()); this[ro].observe(el);
+      new MutationObserver(() => { el.querySelectorAll('[data-lang-slot]').forEach(s => this[ro] && this[ro].observe(s)); this.measureInd(); }).observe(el, { childList: true, subtree: true });
+    }
+    if (el) { requestAnimationFrame(() => this.measureInd()); document.fonts && document.fonts.ready.then(() => this.measureInd()); }
+  }
+  setVGroup = el => { if (el !== this.vEl) this.watchGroup('v', el); };
+  setHGroup = el => { if (el !== this.hEl) this.watchGroup('h', el); };
+  measureInd() {
+    const i = Math.max(0, LANGS.findIndex(([c]) => c === this.state.lang)), next = {};
+    for (const k of ['v', 'h']) {
+      const g = this[k + 'El']; if (!g) continue;
+      const b = g.querySelectorAll('[data-lang-slot]')[i]; if (!b) continue;
+      const gr = g.getBoundingClientRect(), r = b.getBoundingClientRect();
+      const ext = k === 'v' && i === 0 ? 10 : 0, s = 2;
+      const val = { w: (r.width - s * 2) + 'px', h: (r.height + ext - s * 2) + 'px', tr: `translate(${r.left - gr.left + s}px, ${r.top - gr.top - ext + s}px)` };
+      const cur = this.state[k + 'Ind'];
+      if (!cur || cur.w !== val.w || cur.h !== val.h || cur.tr !== val.tr) next[k + 'Ind'] = val;
+    }
+    if (Object.keys(next).length) this.setState(next);
+  }
+  renderVals() {
+    const { lang, theme, mobile } = this.state;
+    const T = I18N[lang] || I18N.en;
+    const i = Math.max(0, LANGS.findIndex(([c]) => c === lang)), last = i === LANGS.length - 1;
+    return {
+      goHome: () => { window.location.href = '../'; },
+      goCv: () => { window.location.href = '../cv/'; },
+      goTop: () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }),
+      t: T, mobile, desktop: !mobile, tallinnTime: this.state.tl || this.fmt(), padT: mobile ? '48px' : '112px', padB: mobile ? '96px' : '32px',
+      vInd: this.state.vInd || { w: '0px', h: '0px', tr: 'none' }, hInd: this.state.hInd || { w: '0px', h: '0px', tr: 'none' },
+      vIndRadius: i === 0 ? '20px 20px 7px 7px' : '7px', hIndRadius: i === 0 ? '22px 6px 6px 22px' : last ? '6px 22px 22px 6px' : '6px',
+      setVGroup: this.setVGroup, setHGroup: this.setHGroup,
+      langs: LANGS.map(([code, label]) => ({ label, on: code === lang, color: code === lang ? 'var(--text-strong)' : 'var(--text-subtle)', pick: () => this.setState({ lang: code }, () => this.applyLang()) })),
+      themeIcon: theme === 'dark' ? 'sun' : 'moon', themeLabel: theme === 'dark' ? T.light : T.dark,
+      toggleTheme: () => {
+        const next = theme === 'dark' ? 'light' : 'dark';
+        const run = () => this.applyTheme(next);
+        if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(run); else run();
+        this.setState({ theme: next });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

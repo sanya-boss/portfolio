@@ -1,33 +1,546 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=../cv.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#111110" />
-    <meta name="robots" content="index,follow" />
-    <meta name="author" content="Aleksandr Mežennõi" />
-    <title>Aleksandr Mežennõi | Graphic / Web Designer & Portfolio</title>
-    <meta name="description" content="Graphic and web designer from Tallinn, Estonia. Portfolio, projects, and CV." />
-    <link rel="icon" type="image/png" href="../favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="../favicon.png" />
-    <style>
-      :root { --bg:#111110; --fg:#f4f1e9; --muted:#c8c0af; --line:rgba(255,255,255,.14); }
-      * { box-sizing:border-box; }
-      html,body { margin:0; min-height:100%; background:var(--bg); color:var(--fg); font-family:Inter,Arial,sans-serif; }
-      body { display:grid; place-items:center; min-height:100vh; padding:24px; }
-      .box { width:min(560px,100%); border:1px solid var(--line); background:rgba(255,255,255,.02); padding:28px 26px; }
-      h1 { margin:0 0 12px; font-size:clamp(2rem,4vw,3rem); letter-spacing:-.04em; }
-      p { margin:0 0 18px; color:var(--muted); line-height:1.6; }
-      a { display:inline-block; color:var(--fg); border:1px solid var(--line); padding:10px 14px; text-decoration:none; }
-      a:hover { opacity:.85; }
-    </style>
-  </head>
-  <body>
-    <main class="box">
-      <h1>Aleksandr Mežennõi</h1>
-      <p>Redirecting to portfolio… If it does not happen, open the page manually.</p>
-      <a href="../cv.html">Open portfolio</a>
-    </main>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../lib/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>CV — Aleksandr Mežennõi</title>
+<link rel="stylesheet" href="../design-system/tokens/fonts.css">
+<link rel="stylesheet" href="../design-system/tokens/colors.css">
+<link rel="stylesheet" href="../design-system/tokens/typography.css">
+<link rel="stylesheet" href="../design-system/tokens/spacing.css">
+<link rel="stylesheet" href="../design-system/tokens/effects.css">
+<link rel="stylesheet" href="../design-system/tokens/base.css">
+<link rel="stylesheet" href="../design-system/components/components.css">
+<link rel="stylesheet" href="../design-system/styles.css">
+<script src="../design-system/_ds_bundle.js"></script>
+<script src="../lib/doc-page.js"></script>
+<style>
+:root{--font-mono:var(--font-sans) !important}
+html,body{margin:0;background:var(--surface-page)}
+doc-page:not(:defined){visibility:hidden}
+doc-page{background:var(--surface-page) !important;padding-top:56px !important;padding-bottom:16px !important;min-height:0 !important}
+.cv-paper{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+a{color:#2A2218;text-decoration:none}
+a:hover{color:#6B5A44}
+.am-iconbtn{display:inline-flex;align-items:center;justify-content:center}
+.sc-host-x:has(> .am-iconbtn){display:flex;align-items:center;justify-content:center}
+.sc-host-x > .am-iconbtn{width:34px;height:34px;flex:none}
+[style*="width:44px;height:44px;flex:none"] .am-iconbtn{width:44px !important;height:44px !important}
+.am-iconbtn{transition:background-color 160ms,color 160ms,border-color 160ms,transform 160ms}
+.am-iconbtn:active{transform:scale(.88)}
+::view-transition-old(root),::view-transition-new(root){animation-duration:380ms;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+[data-lang-slot]>*{display:flex;width:100%;height:100%}
+[data-lang-slot] .am-btn{width:100%;height:100%}
+@media (max-width:999px){footer[data-noprint]{padding-bottom:104px !important}}
+@media print{[data-noprint]{display:none !important}doc-page{zoom:1 !important}}
+@media (max-width:899px){[data-fit]{white-space:nowrap}[data-cv-actions]{width:calc(100% - 32px) !important}}
+</style>
+</helmet>
+
+<div style="position:relative;background:var(--surface-page);min-height:100vh">
+  <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+    <div data-noprint="1" style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div role="group" aria-label="Language" ref="{{ setVGroup }}" style="position:relative;display:flex;flex-direction:column;gap:6px">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ vInd.w }};height:{{ vInd.h }};transform:{{ vInd.tr }};border-radius:{{ vIndRadius }}"></span>
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <div data-lang-slot="1" style="position:relative;display:flex;width:44px;height:28px">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;height:100%;min-width:0;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;transition:color 120ms;color:{{ l.color }}" hint-size="44px,28px">{{ l.label }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+      <span style="width:18px;height:1px;background:var(--border-default)"></span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" data-nav="1" on-click="{{ goHome }}" hint-size="34px,34px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="user" label="{{ t.navAbout }}" data-nav="1" on-click="{{ goAbout }}" hint-size="34px,34px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="file-text" label="CV" active="{{ true }}" data-nav="1" on-click="{{ goTop }}" hint-size="34px,34px"></x-import>
+      <span style="width:18px;height:1px;background:var(--border-default)"></span>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="{{ themeIcon }}" label="{{ themeLabel }}" data-theme-btn="1" on-click="{{ toggleTheme }}" hint-size="34px,34px"></x-import>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div data-noprint="1" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
+        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+          <div data-lang-slot="1" style="position:relative;display:flex;align-items:center;width:48px;height:44px">
+            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;min-width:0;height:44px;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;transition:color 120ms;color:{{ l.color }}" hint-size="48px,44px">{{ l.label }}</x-import>
+          </div>
+        </sc-for>
+      </div>
+      <span style="width:1px;height:18px;background:var(--border-default)"></span>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" data-nav="1" on-click="{{ goHome }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="file-text" label="CV" active="{{ true }}" data-nav="1" on-click="{{ goTop }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="{{ themeIcon }}" label="{{ themeLabel }}" data-theme-btn="1" on-click="{{ toggleTheme }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
+    </div>
+  </sc-if>
+
+
+  <doc-page size="a4">
+    <section class="page cv-paper" data-screen-label="CV" style="position:relative;box-sizing:border-box;padding:56px 60px 48px;background-color:#EEE5D1;background-image:radial-gradient(ellipse at 50% 40%, rgba(255,250,238,.55) 0%, rgba(255,250,238,0) 60%), radial-gradient(ellipse at 50% 50%, rgba(120,90,50,0) 62%, rgba(120,90,50,.16) 100%);color:#2A2218;font:400 13.5px/1.55 var(--font-sans);display:flex;flex-direction:column;gap:28px">
+      <sc-if value="{{ isRu }}" hint-placeholder-val="{{ true }}">
+        <div style="display:contents">
+
+      <header style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;padding-bottom:22px;border-bottom:1.5px solid #2A2218">
+        <div style="display:grid;gap:8px">
+          <h1 style="margin:0;font:400 42px/1 var(--font-serif);letter-spacing:-0.015em;color:#1E1810;white-space:nowrap">Александр Меженный</h1>
+          <div style="font:500 15px/1.3 var(--font-sans);letter-spacing:.01em;color:#5C4E3A">Графический и веб-дизайнер</div>
+        </div>
+        <div style="display:grid;gap:3px;justify-items:end;text-align:right;font:400 12.5px/1.5 var(--font-sans);color:#3E3426">
+          <span>Таллинн, Эстония</span>
+          <a href="tel:+37258226814">+372 5822 6814</a>
+          <a href="mailto:aleks.mezenn@gmail.com">aleks.mezenn@gmail.com</a>
+        </div>
+      </header>
+
+      <p style="margin:0;font:400 14px/1.6 var(--font-sans);color:#2A2218;text-wrap:pretty">Графический и веб-дизайнер из Таллинна с IT-образованием и более чем 5 годами практики. Создаю айдентику, упаковку, сайты и графику для печати и соцсетей — для галерей, сервисных компаний, мероприятий и частных брендов. Веду проект целиком: от брифа и первых набросков до готовых к печати макетов и запущенного сайта. Работаю на русском, эстонском и английском.</p>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:40px;flex:1">
+
+        <div style="display:grid;align-content:start;gap:16px">
+          <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Опыт работы</h2>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">09.2026 —<br>сейчас</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Freelance Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Фриланс · Удалённо</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2026<br>8 мес.</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Срочная служба</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Силы обороны Эстонии · Выру, Тарту</div>
+              <p style="margin:4px 0 0;color:#2A2218;text-wrap:pretty">Параллельно со службой продолжал работать с клиентами как фриланс-дизайнер.</p>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2025<br>6 мес.</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Graphic &amp; Brand Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Snape OÜ · Полная занятость</div>
+              <ul style="margin:6px 0 0;padding-left:14px;display:grid;gap:3px;color:#2A2218">
+                <li>Проектировал интерфейсы с упором на понятную вёрстку и визуальную целостность.</li>
+                <li>Создавал полиграфию — от концепций до макетов, готовых к печати.</li>
+                <li>Разрабатывал графику для соцсетей, рекламные визуалы и презентации.</li>
+                <li>Проектировал упаковку с учётом айдентики, читаемости и подачи продукта.</li>
+                <li>Адаптировал дизайн под цифровые и печатные форматы.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2021 —<br>2025</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Freelance Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Фриланс · Удалённо</div>
+              <p style="margin:4px 0 0;color:#2A2218;text-wrap:pretty">Айдентика, сайты и графика для соцсетей.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside style="display:grid;align-content:start;gap:22px">
+          <div style="display:grid;gap:10px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Образование</h2>
+            <div style="display:grid;gap:2px">
+              <div style="font:600 13px/1.35 var(--font-sans);color:#1E1810">Таллинский политехникум</div>
+              <div style="font:400 12px/1.45 var(--font-sans);color:#5C4E3A">IT specialist · системное и сетевое администрирование</div>
+            </div>
+            <div style="display:grid;gap:2px">
+              <div style="font:600 13px/1.35 var(--font-sans);color:#1E1810">Школа дизайна Художественного центра Старого Таллинна</div>
+              <div style="font:400 12px/1.45 var(--font-sans);color:#5C4E3A">Медиадизайн · Graphic &amp; Web Design</div>
+            </div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Инструменты</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Adobe Illustrator</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Adobe Photoshop</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Figma</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Canva</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Claude Design</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Claude Code</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">ChatGPT</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Office 365</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">GitHub</span></div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Направления</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Брендинг</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Айдентика</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Упаковка</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Полиграфия</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Соцсети</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Веб-дизайн</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">UI-дизайн</span></div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Языки</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Русский</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Эстонский</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Английский</span></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer style="display:flex;justify-content:flex-end;padding-top:12px;border-top:1px solid rgba(42,34,24,.22);font:400 12px/1 var(--font-sans);color:#6B5A44">
+        <span>Таллинн, 2026</span>
+      </footer>
+    </div>
+      </sc-if>
+      <sc-if value="{{ isEn }}" hint-placeholder-val="{{ false }}">
+        <div style="display:contents">
+
+      <header style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;padding-bottom:22px;border-bottom:1.5px solid #2A2218">
+        <div style="display:grid;gap:8px">
+          <h1 style="margin:0;font:400 42px/1 var(--font-serif);letter-spacing:-0.015em;color:#1E1810;white-space:nowrap">Aleksandr Mezhenny</h1>
+          <div style="font:500 15px/1.3 var(--font-sans);letter-spacing:.01em;color:#5C4E3A">Graphic &amp; Web Designer</div>
+        </div>
+        <div style="display:grid;gap:3px;justify-items:end;text-align:right;font:400 12.5px/1.5 var(--font-sans);color:#3E3426">
+          <span>Tallinn, Estonia</span>
+          <a href="tel:+37258226814">+372 5822 6814</a>
+          <a href="mailto:aleks.mezenn@gmail.com">aleks.mezenn@gmail.com</a>
+        </div>
+      </header>
+
+      <p style="margin:0;font:400 14px/1.6 var(--font-sans);color:#2A2218;text-wrap:pretty" >Graphic and web designer from Tallinn with an IT background and more than 5 years of practice. I create visual identities, packaging, websites and graphics for print and social media — for galleries, service companies, events and private brands. I run projects end to end: from the brief and first sketches to print-ready artwork and a launched website. I work in Russian, Estonian and English.</p>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:40px;flex:1">
+
+        <div style="display:grid;align-content:start;gap:16px">
+          <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Experience</h2>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">09.2026 —<br>present</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Freelance Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Freelance · Remote</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2026<br>8 mo.</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Conscript service</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Estonian Defence Forces · Võru, Tartu</div>
+              <p style="margin:4px 0 0;color:#2A2218;text-wrap:pretty">Alongside my service, I kept working with clients as a freelance designer.</p>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2025<br>6 mo.</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Graphic &amp; Brand Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Snape OÜ · Full-time</div>
+              <ul style="margin:6px 0 0;padding-left:14px;display:grid;gap:3px;color:#2A2218">
+                <li>Designed user interfaces with a focus on clear layouts and visual consistency.</li>
+                <li>Created print materials, from initial concepts to production-ready artwork.</li>
+                <li>Developed social media graphics, promotional visuals and presentations.</li>
+                <li>Designed packaging, balancing brand identity, readability and product presentation.</li>
+                <li>Adapted designs across digital and print formats.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2021 —<br>2025</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Freelance Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Freelance · Remote</div>
+              <p style="margin:4px 0 0;color:#2A2218;text-wrap:pretty">Visual identities, websites and social media graphics.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside style="display:grid;align-content:start;gap:22px">
+          <div style="display:grid;gap:10px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Education</h2>
+            <div style="display:grid;gap:2px">
+              <div style="font:600 13px/1.35 var(--font-sans);color:#1E1810">Tallinn Polytechnic School</div>
+              <div style="font:400 12px/1.45 var(--font-sans);color:#5C4E3A">IT specialist · System and network administration</div>
+            </div>
+            <div style="display:grid;gap:2px">
+              <div style="font:600 13px/1.35 var(--font-sans);color:#1E1810">Tallinn Old Town Art Centre Design School</div>
+              <div style="font:400 12px/1.45 var(--font-sans);color:#5C4E3A">Media Design · Graphic &amp; Web Design</div>
+            </div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Tools</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Adobe Illustrator</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Adobe Photoshop</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Figma</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Canva</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Claude Design</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Claude Code</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">ChatGPT</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Office 365</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">GitHub</span></div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Areas</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Branding</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Visual identity</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Packaging</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Print</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Social media</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Web design</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">UI design</span></div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Languages</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Russian</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Estonian</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">English</span></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer style="display:flex;justify-content:flex-end;padding-top:12px;border-top:1px solid rgba(42,34,24,.22);font:400 12px/1 var(--font-sans);color:#6B5A44">
+        <span>Tallinn, 2026</span>
+      </footer>
+    </div>
+      </sc-if>
+      <sc-if value="{{ isEt }}" hint-placeholder-val="{{ false }}">
+        <div style="display:contents">
+
+      <header style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px;padding-bottom:22px;border-bottom:1.5px solid #2A2218">
+        <div style="display:grid;gap:8px">
+          <h1 style="margin:0;font:400 42px/1 var(--font-serif);letter-spacing:-0.015em;color:#1E1810;white-space:nowrap">Aleksandr Mežennõi</h1>
+          <div style="font:500 15px/1.3 var(--font-sans);letter-spacing:.01em;color:#5C4E3A">Graafiline ja veebidisainer</div>
+        </div>
+        <div style="display:grid;gap:3px;justify-items:end;text-align:right;font:400 12.5px/1.5 var(--font-sans);color:#3E3426">
+          <span>Tallinn, Eesti</span>
+          <a href="tel:+37258226814">+372 5822 6814</a>
+          <a href="mailto:aleks.mezenn@gmail.com">aleks.mezenn@gmail.com</a>
+        </div>
+      </header>
+
+      <p style="margin:0;font:400 14px/1.6 var(--font-sans);color:#2A2218;text-wrap:pretty" >Tallinnast pärit graafiline ja veebidisainer IT-hariduse ja üle 5 aasta praktilise kogemusega. Loon identiteete, pakendeid, veebilehti ning graafikat trükiseks ja sotsiaalmeediasse — galeriidele, teenindusettevõtetele, üritustele ja erabrändidele. Viin projekti läbi algusest lõpuni: lähteülesandest ja esimestest visanditest trükivalmis failide ja käivitatud veebileheni. Töötan vene, eesti ja inglise keeles.</p>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:40px;flex:1">
+
+        <div style="display:grid;align-content:start;gap:16px">
+          <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Töökogemus</h2>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">09.2026 —<br>praegu</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Freelance Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Vabakutseline · Kaugtöö</div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2026<br>8 kuud</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Ajateenistus</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Kaitsevägi · Võru, Tartu</div>
+              <p style="margin:4px 0 0;color:#2A2218;text-wrap:pretty">Teenistuse kõrvalt jätkasin klientidega tööd vabakutselise disainerina.</p>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2025<br>6 kuud</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Graphic &amp; Brand Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Snape OÜ · Täistööaeg</div>
+              <ul style="margin:6px 0 0;padding-left:14px;display:grid;gap:3px;color:#2A2218">
+                <li>Kujundasin kasutajaliideseid, keskendudes selgele paigutusele ja visuaalsele järjepidevusele.</li>
+                <li>Lõin trükimaterjale kontseptsioonist trükivalmis failideni.</li>
+                <li>Arendasin sotsiaalmeedia graafikat, reklaamvisuaale ja esitlusi.</li>
+                <li>Kujundasin pakendeid, arvestades brändi identiteeti, loetavust ja toote esitlust.</li>
+                <li>Kohandasin disaini digitaalsetele ja trükiformaatidele.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:92px minmax(0,1fr);gap:14px">
+            <span style="font:400 12px/1.5 var(--font-sans);color:#6B5A44;font-variant-numeric:tabular-nums">2021 —<br>2025</span>
+            <div style="display:grid;gap:2px">
+              <h3 style="margin:0;font:600 14px/1.4 var(--font-sans);color:#1E1810">Freelance Designer</h3>
+              <div style="font:400 12.5px/1.4 var(--font-sans);color:#6B5A44">Vabakutseline · Kaugtöö</div>
+              <p style="margin:4px 0 0;color:#2A2218;text-wrap:pretty">Identiteedid, veebilehed ja sotsiaalmeedia graafika.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside style="display:grid;align-content:start;gap:22px">
+          <div style="display:grid;gap:10px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Haridus</h2>
+            <div style="display:grid;gap:2px">
+              <div style="font:600 13px/1.35 var(--font-sans);color:#1E1810">Tallinna Polütehnikum</div>
+              <div style="font:400 12px/1.45 var(--font-sans);color:#5C4E3A">IT-spetsialist · Süsteemi- ja võrguadministreerimine</div>
+            </div>
+            <div style="display:grid;gap:2px">
+              <div style="font:600 13px/1.35 var(--font-sans);color:#1E1810">Tallinna Vanalinna Kunstikeskuse Disainikool</div>
+              <div style="font:400 12px/1.45 var(--font-sans);color:#5C4E3A">Meediadisain · Graphic &amp; Web Design</div>
+            </div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Tööriistad</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Adobe Illustrator</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Adobe Photoshop</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Figma</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Canva</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Claude Design</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Claude Code</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">ChatGPT</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Office 365</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">GitHub</span></div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Valdkonnad</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Bränding</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Identiteet</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Pakendid</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Trükis</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Sotsiaalmeedia</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Veebidisain</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">UI-disain</span></div>
+          </div>
+
+          <div style="display:grid;gap:8px">
+            <h2 style="margin:0;padding-bottom:6px;border-bottom:1px solid rgba(42,34,24,.22);font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:#5C4E3A">Keeled</h2>
+            <div style="display:flex;flex-wrap:wrap;gap:5px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Vene</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Eesti</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border:1px solid rgba(42,34,24,.28);border-radius:999px;font:500 11.5px/1 var(--font-sans);color:#2A2218;white-space:nowrap">Inglise</span></div>
+          </div>
+        </aside>
+      </div>
+
+      <footer style="display:flex;justify-content:flex-end;padding-top:12px;border-top:1px solid rgba(42,34,24,.22);font:400 12px/1 var(--font-sans);color:#6B5A44">
+        <span>Tallinn, 2026</span>
+      </footer>
+    </div>
+      </sc-if>
+    </section>
+  </doc-page>
+  <div data-noprint="1" data-cv-actions="1" style="box-sizing:border-box;width:min(210mm, calc(100% - 48px));margin:0 auto;padding:0 0 48px;display:flex;flex-wrap:wrap;gap:8px">
+    <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" icon="download" on-click="{{ download }}" hint-size="150px,42px">{{ t.dl }}</x-import>
+    <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="lg" icon="arrow-left" href="../" hint-size="150px,42px">{{ t.toSite }}</x-import>
+  </div>
+  <section data-noprint="1" style="box-sizing:border-box;width:min(210mm, calc(100% - 48px));margin:0 auto;padding:40px 0 48px;border-top:1px solid var(--border-subtle);color:var(--text-body);font:var(--type-body)">
+    <h2 data-fit="shrink" style="margin:0;font:var(--type-display-serif);letter-spacing:var(--ls-heading);color:var(--text-strong);text-wrap:balance">{{ t.line }}<sup style="margin-left:8px;font:var(--type-meta);color:var(--text-subtle);vertical-align:super">{{ t.almost }}</sup></h2>
+    <p style="margin:12px 0 24px;color:var(--text-muted)">{{ t.contactLead }}</p>
+    <div>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="mail" title="aleks.mezenn@gmail.com" subtitle="Email" href="mailto:aleks.mezenn@gmail.com" style="overflow-wrap:anywhere" hint-size="100%,70px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="phone" title="+372 5822 6814" subtitle="{{ t.phone }}" href="tel:+37258226814" hint-size="100%,70px"></x-import>
+      <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.ListRow" icon="map-pin" title="Tallinn, Estonia" subtitle="{{ t.location }}" meta="{{ tallinnTime }}" hint-size="100%,70px"></x-import>
+    </div>
+  </section>
+  <footer data-noprint="1" style="box-sizing:border-box;width:min(210mm, calc(100% - 48px));margin:0 auto;padding:20px 0 32px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
+    <span>© 2026 Aleksandr Mežennõi</span>
+    <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" icon="arrow-up" on-click="{{ goTop }}" style="display:flex;align-items:center" hint-size="90px,28px">{{ t.top }}</x-import>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const I18N = {
+  en: {
+    navHome: 'Portfolio', navAbout: 'About me', back: 'Back to portfolio', light: 'Light theme', dark: 'Dark theme',
+    h1a: 'A designer with an interesting background.', h1b: 'And a cool scrambler motorcycle.',
+    p1: "I've been doing design since 2021. In that time I've worked freelance and as part of the team at Snape OÜ, creating visual work for clients across very different fields — from cosmetics and restaurants to sport and art.",
+    p2: "I enjoy figuring out all kinds of tasks: inventing a brand's character, designing packaging, thinking through an interface or turning a layout into a working website. It's especially satisfying to see my work out in real life — on a shelf, on the street or on a screen.",
+    p3: 'At Tallinna Polütehnikum I studied to become an IT specialist. Design I learned separately — at Tallinna Vanalinna Kunstikeskuse Disainikool and in practice, working on client projects. That experience helps me connect visual ideas with technical execution and run projects on my own, from concept to finished result.',
+    offTitle: 'Outside of work',
+    p4: "Motorcycles, trips and plans to see more of the world. One of my nearest goals is a journey across the USA: Las Vegas, the roads of Nevada and the mountains of California. I want to feel what life is like across the ocean — and, further ahead, to try living and working there.",
+    seeWork: 'See projects', dl: 'Download PDF', toSite: 'To website', top: 'Back to top',
+    line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.', phone: 'Phone', location: 'Location'
+  },
+  ru: {
+    navHome: 'Портфолио', navAbout: 'Обо мне', back: 'Назад к портфолио', light: 'Светлая тема', dark: 'Тёмная тема',
+    h1a: 'Дизайнер с интересным бэкграундом.', h1b: 'И на крутом скрэмблер-мотоцикле.',
+    p1: 'Занимаюсь дизайном с 2021 года. За это время работал на фрилансе и в команде Snape OÜ, создавал визуальные решения для клиентов из разных сфер — от косметики и ресторанов до спорта и искусства.',
+    p2: 'Мне нравится разбираться в разных задачах: придумывать характер бренда, оформлять упаковку, продумывать интерфейс или превращать макет в работающий сайт. Особенно приятно видеть свою работу в жизни — на полке, на улице или на экране.',
+    p3: 'В Tallinna Polütehnikum учился по специальности IT-специалиста. Дизайн изучал отдельно — в Tallinna Vanalinna Kunstikeskuse Disainikool и на практике, работая над проектами клиентов. Этот опыт помогает мне соединять визуальные идеи с технической реализацией и самостоятельно вести проекты от концепции до готового результата.',
+    offTitle: 'За пределами работы',
+    p4: 'Мотоциклы, поездки и планы увидеть больше мира. Одна из ближайших целей — путешествие по США: Лас-Вегас, дороги Невады и горы Калифорнии. Хочется почувствовать жизнь за океаном, а в перспективе — попробовать там пожить и поработать.',
+    seeWork: 'Проекты', dl: 'Скачать PDF', toSite: 'На сайт', top: 'Наверх',
+    line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.', phone: 'Телефон', location: 'Город'
+  },
+  et: {
+    navHome: 'Portfoolio', navAbout: 'Minust', back: 'Tagasi portfooliosse', light: 'Hele teema', dark: 'Tume teema',
+    h1a: 'Huvitava taustaga disainer.', h1b: 'Ja laheda scrambler-mootorrattaga.',
+    p1: 'Tegelen disainiga alates 2021. aastast. Selle aja jooksul olen töötanud vabakutselisena ja Snape OÜ meeskonnas ning loonud visuaalseid lahendusi väga eri valdkondade klientidele — kosmeetikast ja restoranidest spordi ja kunstini.',
+    p2: 'Mulle meeldib süveneda erinevatesse ülesannetesse: mõelda välja brändi iseloom, kujundada pakend, läbi mõelda kasutajaliides või muuta makett töötavaks veebileheks. Eriti tore on näha oma tööd päriselus — poeriiulil, tänaval või ekraanil.',
+    p3: 'Tallinna Polütehnikumis õppisin IT-spetsialistiks. Disaini õppisin eraldi — Tallinna Vanalinna Kunstikeskuse Disainikoolis ja praktikas, klientide projektide kallal töötades. See kogemus aitab mul ühendada visuaalsed ideed tehnilise teostusega ja viia projekte iseseisvalt kontseptsioonist valmis tulemuseni.',
+    offTitle: 'Väljaspool tööd',
+    p4: 'Mootorrattad, reisid ja plaanid näha rohkem maailma. Üks lähimaid eesmärke on reis läbi USA: Las Vegas, Nevada teed ja California mäed. Tahan tunda elu teisel pool ookeani ning tulevikus proovida seal elada ja töötada.',
+    seeWork: 'Projektid', dl: 'Laadi PDF', toSite: 'Veebilehele', top: 'Üles',
+    line: 'Alati liinil.', almost: 'peaaegu alati', contactLead: 'Projekt mõttes? Kirjuta või helista — vastan ise.', phone: 'Telefon', location: 'Asukoht'
+  }
+};
+const LANGS = [['en', 'ENG'], ['et', 'EST'], ['ru', 'RUS']];
+const LIGHT = {
+  '--surface-page': '#F2F2F2', '--surface-sunken': '#EDEDED', '--surface-card': '#FFFFFF', '--surface-raised': '#F7F7F7', '--surface-hover': '#EDEDED',
+  '--surface-inverse': '#0F0F0F', '--surface-overlay': 'rgba(242,242,242,.78)',
+  '--text-strong': '#0A0A0A', '--text-body': '#1A1A1A', '--text-muted': '#4A4A4A', '--text-subtle': '#6B6B6B', '--text-disabled': '#A3A3A3', '--text-inverse': '#FFFFFF',
+  '--border-subtle': 'rgba(0,0,0,.08)', '--border-default': 'rgba(0,0,0,.12)', '--border-strong': 'rgba(0,0,0,.22)', '--border-focus': 'rgba(0,0,0,.55)',
+  '--gray-200': '#2E2E2E', '--gray-750': '#E3E3E3', '--signal-live': '#15803D', '--signal-live-dim': 'rgba(21,128,61,.12)',
+  '--inset-highlight': 'inset 0 1px 0 rgba(255,255,255,.8)', '--shadow-md': '0 4px 16px rgba(0,0,0,.08)', '--shadow-lg': '0 16px 48px rgba(0,0,0,.14)', '--link': '#0A0A0A', '--link-hover': '#4A4A4A'
+};
+
+class Component extends DCLogic {
+  state = {
+    lang: (() => { try { return localStorage.getItem('am_lang') || 'en'; } catch (e) { return 'en'; } })(),
+    theme: (() => { try { return localStorage.getItem('am_theme') || 'dark'; } catch (e) { return 'dark'; } })(),
+    mobile: typeof window !== 'undefined' && window.innerWidth < 1000
+  };
+  componentDidMount() { const kick = () => { const d = document.querySelector('doc-page'); if (d && typeof d._measure === 'function' && d._sheet) { d._raf = null; d._measure(); } }; [0, 100, 400, 1000, 2000].forEach(t => setTimeout(kick, t)); document.fonts && document.fonts.ready.then(kick); this.applyTheme(); requestAnimationFrame(() => this.measureInd()); this.onResize = () => { const m = window.innerWidth < 1000; if (m !== this.state.mobile) this.setState({ mobile: m }); }; window.addEventListener('resize', this.onResize); document.documentElement.lang = this.state.lang; this.fitFn = () => requestAnimationFrame(() => this.fitText()); window.addEventListener('resize', this.fitFn); this.fitFn(); document.fonts && document.fonts.ready.then(this.fitFn); this.t = setInterval(() => { const v = this.fmt(); if (v !== this.state.tl) this.setState({ tl: v }); }, 1000); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearInterval(this.t); window.removeEventListener('resize', this.fitFn); }
+  fitSheet() {
+    const dp = document.querySelector('doc-page'); if (!dp) return;
+    const sheetW = 793.7, pad = 32, vw = document.documentElement.clientWidth;
+    const z = vw < sheetW + pad ? Math.max(0.3, (vw - pad) / sheetW) : 1;
+    if (z < 1) { dp.style.zoom = z; dp.style.setProperty('padding', (24 / z) + 'px 0 ' + (16 / z) + 'px', 'important'); dp.style.setProperty('min-width', '0', 'important'); }
+    else { dp.style.zoom = ''; dp.style.removeProperty('padding'); dp.style.removeProperty('min-width'); }
+  }
+  fitText() {
+    this.fitSheet();
+    document.querySelectorAll('[data-fit]').forEach(el => {
+      el.style.fontSize = '';
+      if (window.innerWidth >= 900) return;
+      const avail = el.parentElement.clientWidth, base = parseFloat(getComputedStyle(el).fontSize);
+      el.style.fontSize = '100px'; const w = el.scrollWidth; el.style.fontSize = '';
+      const size = avail && w ? Math.floor(100 * avail / w * 0.98 * 10) / 10 : base;
+      if (size < base) el.style.fontSize = size + 'px';
+    });
+  }
+  fmt() {
+    try {
+      const d = new Date();
+      const time = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Tallinn', hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+      const tz = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Tallinn', timeZoneName: 'shortOffset' }).formatToParts(d).find(p => p.type === 'timeZoneName');
+      return time + ' · ' + (tz ? tz.value.replace('GMT', 'UTC') : 'EET');
+    } catch (e) { return ''; }
+  }
+  applyTheme(th = this.state.theme) {
+    const s = document.documentElement.style;
+    for (const k in LIGHT) th === 'light' ? s.setProperty(k, LIGHT[k]) : s.removeProperty(k);
+    document.documentElement.style.colorScheme = th;
+    try { localStorage.setItem('am_theme', th); } catch (e) {}
+  }
+  applyLang() {
+    document.documentElement.lang = this.state.lang; if (this.fitFn) this.fitFn();
+    requestAnimationFrame(() => this.measureInd());
+    try { localStorage.setItem('am_lang', this.state.lang); } catch (e) {}
+  }
+  watchGroup(key, el) {
+    const ro = key + 'RO';
+    if (this[ro]) { this[ro].disconnect(); this[ro] = null; }
+    this[key + 'El'] = el;
+    if (el && window.ResizeObserver) {
+      this[ro] = new ResizeObserver(() => this.measureInd()); this[ro].observe(el);
+      new MutationObserver(() => { el.querySelectorAll('[data-lang-slot]').forEach(s => this[ro] && this[ro].observe(s)); this.measureInd(); }).observe(el, { childList: true, subtree: true });
+    }
+    if (el) { requestAnimationFrame(() => this.measureInd()); document.fonts && document.fonts.ready.then(() => this.measureInd()); }
+  }
+  setVGroup = el => { if (el !== this.vEl) this.watchGroup('v', el); };
+  setHGroup = el => { if (el !== this.hEl) this.watchGroup('h', el); };
+  measureInd() {
+    const i = Math.max(0, LANGS.findIndex(([c]) => c === this.state.lang)), next = {};
+    for (const k of ['v', 'h']) {
+      const g = this[k + 'El']; if (!g) continue;
+      const b = g.querySelectorAll('[data-lang-slot]')[i]; if (!b) continue;
+      const gr = g.getBoundingClientRect(), r = b.getBoundingClientRect();
+      const ext = k === 'v' && i === 0 ? 10 : 0, s = 2;
+      const val = { w: (r.width - s * 2) + 'px', h: (r.height + ext - s * 2) + 'px', tr: `translate(${r.left - gr.left + s}px, ${r.top - gr.top - ext + s}px)` };
+      const cur = this.state[k + 'Ind'];
+      if (!cur || cur.w !== val.w || cur.h !== val.h || cur.tr !== val.tr) next[k + 'Ind'] = val;
+    }
+    if (Object.keys(next).length) this.setState(next);
+  }
+  renderVals() {
+    const { lang, theme, mobile } = this.state;
+    const T = I18N[lang] || I18N.en;
+    const i = Math.max(0, LANGS.findIndex(([cc]) => cc === lang)), last = i === LANGS.length - 1;
+    return {
+      t: T, mobile, desktop: !mobile, isRu: lang === 'ru', isEn: lang === 'en', isEt: lang === 'et',
+      vInd: this.state.vInd || { w: '0px', h: '0px', tr: 'none' }, hInd: this.state.hInd || { w: '0px', h: '0px', tr: 'none' },
+      vIndRadius: i === 0 ? '20px 20px 7px 7px' : '7px', hIndRadius: i === 0 ? '22px 6px 6px 22px' : last ? '6px 22px 22px 6px' : '6px',
+      setVGroup: this.setVGroup, setHGroup: this.setHGroup,
+      langs: LANGS.map(([code, label]) => ({ label, on: code === lang, color: code === lang ? 'var(--text-strong)' : 'var(--text-subtle)', pick: () => this.setState({ lang: code }, () => this.applyLang()) })),
+      themeIcon: theme === 'dark' ? 'sun' : 'moon', themeLabel: theme === 'dark' ? T.light : T.dark,
+      toggleTheme: () => { const next = theme === 'dark' ? 'light' : 'dark'; const run = () => this.applyTheme(next); if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(run); else run(); this.setState({ theme: next }); },
+      goHome: () => { window.location.href = '../'; },
+      goAbout: () => { window.location.href = '../about/'; },
+ goTop: () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }), download: () => window.print(), tallinnTime: this.state.tl || this.fmt()
+    };
+  }
+}
+</script>
+</body>
 </html>
