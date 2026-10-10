@@ -8,6 +8,7 @@ Trilingual (EN / ET / RU), dark & light theme, plain static HTML — no build st
 | Portfolio | `/`       | `index.html`          |
 | About     | `/about/` | `about/index.html`    |
 | CV (A4)   | `/cv/`    | `cv/index.html`       |
+| Not found | any other | `404.html`            |
 
 ## Structure
 
@@ -16,6 +17,7 @@ Trilingual (EN / ET / RU), dark & light theme, plain static HTML — no build st
 ├── index.html              Portfolio — hero, tools, experience, projects, contact, Plinko
 ├── about/index.html        About — story, photos, contacts
 ├── cv/index.html           One-page A4 résumé, printable to PDF
+├── 404.html                Not-found page (GitHub Pages serves it for any missing URL)
 │
 ├── assets/
 │   ├── favicon.png

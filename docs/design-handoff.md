@@ -1,12 +1,13 @@
-# Handoff: Aleksandr Mežennõi — Portfolio site (Portfolio · About · CV)
+# Handoff: Aleksandr Mežennõi — Portfolio site (Portfolio · About · CV · 404)
 
 ## Overview
-Personal portfolio for a graphic & web designer from Tallinn. Three pages:
+Personal portfolio for a graphic & web designer from Tallinn. Four pages:
 - **Portfolio** (`Portfolio.dc.html`) — landing: hero, tools, experience, education, projects, contacts, hidden Plinko mini-game.
 - **About** (`About.dc.html`) — personal story with two photos and contacts.
 - **CV** (`CV.dc.html`) — one-page A4 résumé on an "old paper" sheet, printable to PDF.
+- **404** (`404.dc.html`) — not-found page; deploy as `404.html` at site root for GitHub Pages.
 
-All three are trilingual (EN / ET / RU) with a dark/light theme. Language and theme persist across pages via `localStorage` keys `am_lang` (`en|et|ru`, default `en`) and `am_theme` (`dark|light`, default `dark`).
+All pages are trilingual (EN / ET / RU) with a dark/light theme. Language and theme persist across pages via `localStorage` keys `am_lang` (`en|et|ru`, default `en`) and `am_theme` (`dark|light`, default `dark`).
 
 ## About the Design Files
 The files in this bundle are **design references created in HTML** — working prototypes showing intended look and behavior, **not production code to copy directly**. Recreate them in the target codebase's environment (React/Next.js, Astro, Vue…) using its patterns. If no codebase exists yet, a static-site framework (Astro or Next.js static export) is a good fit; deploy target mentioned by the owner is GitHub Pages.
@@ -50,6 +51,15 @@ Back link "← Back to portfolio" (hover: lighter + arrow nudges left 3px). Two-
 
 ### 3. CV (A4, one page)
 Built on `doc-page.js` (explicit pagination, `size="a4"`, one `<section class="page">`). Sheet: paper `#EEE5D1` with two radial gradients (light center, darker edges), ink `#2A2218`/`#1E1810`, secondary `#5C4E3A`/`#6B5A44`, hairlines `rgba(42,34,24,.22)`. Header: name EB Garamond 42px one line (EN: "Aleksandr Mezhenny"; ET: "Aleksandr Mežennõi"; RU: «Александр Меженный»), role 15/500 sans, contacts right-aligned; 1.5px rule. Intro paragraph (sans 14/1.6). Two columns (`1fr 196px`, gap 40): Experience with 92px date column; aside: Education, Tools / Areas / Languages as outline pill chips (22px high, 11.5px). Footer: "Tallinn, 2026" right. Below the sheet (screen only): "Download PDF" (window.print) + ghost "To website", contact block, footer "↑ Back to top". Mobile: sheet scaled with CSS `zoom` to fit width (24px top / 16px gaps unscaled). Print: `print-color-adjust: exact`, all screen chrome hidden.
+
+### 4. 404
+Same shell (dock with languages, Portfolio/About/CV nav — none active — and theme). Main column fills viewport height, content vertically centred: serif italic 15px "Error" label; huge "404" EB Garamond 400, 168px (112px mobile), line-height .9, -0.04em; two-tone H1 "This page doesn't exist." / "Or it rode off somewhere." (RU «Такой страницы нет. / Или она уехала кататься.», ET «Sellist lehte pole. / Või see sõitis kuhugi minema.»); muted paragraph (max 52ch); buttons primary "Back to portfolio" (house) · ghost "About me" (user) · ghost "CV". Footer: © line left, "=)" right (sans, meta). `<meta name="robots" content="noindex">`.
+
+## Recent detail changes
+- Hero meta line "Tallinn, Estonia · 59.43°N 24.72°E" and contact superscript "almost always" are EB Garamond italic 15px (all pages).
+- Project card tool stacks are per-card: SARLE = Ai · SMM · Claude Code · Web Design · Branding Design; QUEEN OF THE BALTIC = Ai · Ps · Claude Code · SMM · Web Design · Branding Design; others = Ai · Ps · Claude Code · Web Design · Branding Design. SMM icon: Lucide megaphone.
+- About footer button is "Back to top" (scroll to top); contact→footer gap 48px.
+- CV mobile dock: Portfolio · About · theme.
 
 ## Interactions summary
 - Language switch: re-renders all copy; highlight slides; mobile fit-text recalculated.
