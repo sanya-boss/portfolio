@@ -61,6 +61,8 @@ Same shell (dock with languages, Portfolio/About/CV nav — none active — and 
 - About footer button is "Back to top" (scroll to top); contact→footer gap 48px.
 - CV mobile dock: Portfolio · About · theme.
 - Cursor peek images (desktop hover, follow cursor with easing): Tallinn → estonia.gif; Estonian tag → estonia.gif; English tag → america.png; Kaitsevägi → kv-meme.png; Claude Code/Design tools → ai-slop.png. All preloaded as blobs.
+- Hero meta place string is translated: ET "Tallinn, Eesti", EN/RU "Tallinn, Estonia".
+- Freelance experience logo square plays YouTube LVVZ2Znt2_0 (youtube-nocookie embed: autoplay, mute, loop, controls=0, fs=0), cropped to cover (iframe 320%×180% centred), pointer-events none + transparent shield span on top so it cannot be paused/opened. Injected in componentDidMount via MutationObserver.
 
 ## Interactions summary
 - Language switch: re-renders all copy; highlight slides; mobile fit-text recalculated.
