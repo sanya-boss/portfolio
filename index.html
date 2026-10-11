@@ -471,8 +471,11 @@ class Component extends DCLogic {
         f.allow = 'autoplay; encrypted-media';
         f.title = 'Freelance';
         f.setAttribute('tabindex', '-1');
-        Object.assign(f.style, { position: 'absolute', top: '50%', left: '50%', width: '320%', height: '180%', transform: 'translate(-50%,-50%)', border: '0', pointerEvents: 'none' });
-        f.addEventListener('load', () => { try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*'); } catch (e) {} });
+        Object.assign(f.style, { position: 'absolute', top: '50%', left: '50%', width: '1280px', height: '720px', maxWidth: 'none', transform: 'translate(-50%,-50%) scale(.08)', transformOrigin: 'center', border: '0', pointerEvents: 'none' });
+        const cmd = fn => { try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: [] }), '*'); } catch (e) {} };
+        f.addEventListener('load', () => { cmd('mute'); cmd('playVideo'); });
+        const keep = setInterval(() => { if (!f.isConnected) return clearInterval(keep); if (!document.hidden) { cmd('mute'); cmd('playVideo'); } }, 2500);
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) cmd('playVideo'); });
         const shield = document.createElement('span');
         shield.setAttribute('aria-hidden', 'true');
         Object.assign(shield.style, { position: 'absolute', inset: '0', zIndex: '1', background: 'transparent' });
