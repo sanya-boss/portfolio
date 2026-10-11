@@ -62,7 +62,7 @@ Same shell (dock with languages, Portfolio/About/CV nav — none active — and 
 - CV mobile dock: Portfolio · About · theme.
 - Cursor peek images (desktop hover, follow cursor with easing): Tallinn → estonia.gif; Estonian tag → estonia.gif; English tag → america.png; Kaitsevägi → kv-meme.png; Claude Code/Design tools → ai-slop.png. All preloaded as blobs.
 - Hero meta place string is translated: ET "Tallinn, Eesti", EN/RU "Tallinn, Estonia".
-- Freelance experience logo squares play `assets/video/freelance.mp4` (128×128 centre crop, muted, looping, no controls, `pointer-events: none`), with `assets/video/posters/freelance.webp` as poster. Injected in componentDidMount via MutationObserver. (The original handoff used a YouTube embed; replaced with a local file to avoid YouTube's pause badge and third-party scripts.)
+- Freelance experience logo squares play `assets/video/freelance.mp4` (128×128, muted, looping, no controls, `pointer-events: none`), with `assets/video/posters/freelance.webp` as poster. Injected in componentDidMount via MutationObserver. (The original handoff used a YouTube embed; replaced with a local file to avoid YouTube's pause badge and third-party scripts.)
 
 ## Interactions summary
 - Language switch: re-renders all copy; highlight slides; mobile fit-text recalculated.
