@@ -121,7 +121,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
   </sc-if>
 
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div class="am-mdock" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
       <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
@@ -131,9 +131,6 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
         </sc-for>
       </div>
       <span style="width:1px;height:18px;background:var(--border-default)"></span>
-      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
-        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" active="{{ true }}" data-nav="1" on-click="{{ goTop }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
-      </div>
       <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="user" label="{{ t.aboutBtn }}" data-nav="1" on-click="{{ goAboutPage }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
       </div>
