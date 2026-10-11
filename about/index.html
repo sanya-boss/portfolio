@@ -82,16 +82,10 @@ a:hover{color:var(--link-hover)}
   </sc-if>
 
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
-      <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
-        <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
-        <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
-          <div data-lang-slot="1" style="position:relative;display:flex;align-items:center;width:48px;height:44px">
-            <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" block="{{ true }}" on-click="{{ l.pick }}" aria-pressed="{{ l.on }}" style="width:100%;min-width:0;height:44px;padding:0;justify-content:center;border-radius:var(--radius-full);background:transparent;transition:color 120ms;color:{{ l.color }}" hint-size="48px,44px">{{ l.label }}</x-import>
-          </div>
-        </sc-for>
+    <div class="am-mdock" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" aria-label="Language" on-click="{{ cycleLang }}" style="width:44px;height:44px;padding:0;justify-content:center;border-radius:var(--radius-full);font-family:var(--font-mono);color:var(--text-muted)" hint-size="44px,44px">{{ langLabel }}</x-import>
       </div>
-      <span style="width:1px;height:18px;background:var(--border-default)"></span>
       <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" data-nav="1" on-click="{{ goHome }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
       </div>
@@ -287,6 +281,8 @@ class Component extends DCLogic {
       vInd: this.state.vInd || { w: '0px', h: '0px', tr: 'none' }, hInd: this.state.hInd || { w: '0px', h: '0px', tr: 'none' },
       vIndRadius: i === 0 ? '20px 20px 7px 7px' : '7px', hIndRadius: i === 0 ? '22px 6px 6px 22px' : last ? '6px 22px 22px 6px' : '6px',
       setVGroup: this.setVGroup, setHGroup: this.setHGroup,
+      langLabel: (LANGS.find(l => l[0] === lang) || LANGS[0])[1],
+      cycleLang: () => { const i = LANGS.findIndex(l => l[0] === lang); this.setState({ lang: LANGS[(i + 1) % LANGS.length][0] }, () => this.applyLang()); },
       langs: LANGS.map(([code, label]) => ({ label, on: code === lang, color: code === lang ? 'var(--text-strong)' : 'var(--text-subtle)', pick: () => this.setState({ lang: code }, () => this.applyLang()) })),
       themeIcon: theme === 'dark' ? 'sun' : 'moon', themeLabel: theme === 'dark' ? T.light : T.dark,
       toggleTheme: () => {
