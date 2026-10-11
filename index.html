@@ -121,7 +121,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
   </sc-if>
 
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+    <div class="am-mdock" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
       <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
@@ -131,6 +131,9 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
         </sc-for>
       </div>
       <span style="width:1px;height:18px;background:var(--border-default)"></span>
+      <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="house" label="{{ t.navHome }}" active="{{ true }}" data-nav="1" on-click="{{ goTop }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
+      </div>
       <div style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none">
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.IconButton" icon="user" label="{{ t.aboutBtn }}" data-nav="1" on-click="{{ goAboutPage }}" style="width:44px;height:44px" hint-size="34px,34px"></x-import>
       </div>
@@ -149,7 +152,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
       <div style="flex:1 1 340px;min-width:0">
         <h1 style="margin:0;font:var(--type-display);letter-spacing:var(--ls-display);color:var(--text-strong);text-wrap:balance">
           <span style="display:block;text-wrap:balance">{{ t.hi }}</span>
-          <span style="display:block;margin-top:10px;color:var(--text-subtle)" data-fit="shrink">{{ t.role }} <span class="am-hl" data-city="1" data-tallinn="1" style="color:var(--text-strong);white-space:nowrap">{{ t.city }}</span></span>
+          <span style="display:block;margin-top:10px;color:var(--text-subtle)" data-fit="shrink">{{ t.role }} <span class="am-hl" data-city="1" data-tallinn="1" style="color:var(--text-strong);white-space:nowrap">{{ t.city }}<sc-if value="{{ temp }}" hint-placeholder-val="{{ false }}"><sup style="margin-left:4px;font:var(--fw-regular) .42em/1 var(--font-sans);letter-spacing:0;color:var(--text-muted);vertical-align:.95em;white-space:nowrap" title="Tallinn, now">{{ temp }}</sup></sc-if></span></span>
         </h1>
         <p style="margin:20px 0 0;color:var(--text-muted);text-wrap:pretty">
           <sc-for list="{{ t.lead }}" as="p" hint-placeholder-count="1"><sc-if value="{{ p.b }}"><b style="color:var(--text-strong);font-weight:500">{{ p.t }}</b></sc-if><sc-if value="{{ p.n }}">{{ p.t }}</sc-if></sc-for>
@@ -456,10 +459,11 @@ class Component extends DCLogic {
     lang: (() => { try { return localStorage.getItem('am_lang') || 'en'; } catch (e) { return 'en'; } })(),
     theme: (() => { try { return localStorage.getItem('am_theme') || 'dark'; } catch (e) { return 'dark'; } })(),
     sound: false, active: 'top', mobile: typeof window !== 'undefined' && window.innerWidth < 900,
-    menuOpen: false, plinkoOpen: false, toolsOpen: false, score: 0, shown: 0, rounds: 0, last: 0
+    menuOpen: false, plinkoOpen: false, toolsOpen: false, temp: '', score: 0, shown: 0, rounds: 0, last: 0
   };
   componentDidMount() {
     this.applyTheme(); this.applyLang();
+    this.loadTemp();
     this.ytFill = () => {
       // Freelance logo squares play a short muted loop (assets/video/freelance.mp4)
       document.querySelectorAll('#experience .am-exp').forEach(x => {
@@ -734,6 +738,15 @@ class Component extends DCLogic {
     const a = d.animate([{ maxHeight: d.offsetHeight + 'px', opacity: 1 }, { maxHeight: '0px', marginTop: '0px', marginBottom: '0px', opacity: 0 }], { duration: 280, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'forwards' });
     a.onfinish = () => { this.passClick = true; head.click(); this.passClick = false; };
   };
+  // Current temperature in Tallinn (Open-Meteo, no key); silently hidden if unavailable
+  loadTemp() {
+    try { const c = JSON.parse(sessionStorage.getItem('am_temp') || 'null'); if (c && Date.now() - c.t < 600000) { this.setState({ temp: c.v }); return; } } catch (e) {}
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=59.437&longitude=24.754&current=temperature_2m').then(r => r.json()).then(d => {
+      const t = d && d.current && d.current.temperature_2m; if (typeof t !== 'number') return;
+      const v = Math.round(t) + '\u00b0'; try { sessionStorage.setItem('am_temp', JSON.stringify({ t: Date.now(), v })); } catch (e) {}
+      this.setState({ temp: v });
+    }).catch(() => {});
+  }
   applyLang() {
     if (this.fitFn) this.fitFn();
     requestAnimationFrame(() => this.measureInd()); document.documentElement.lang = this.state.lang; try { localStorage.setItem('am_lang', this.state.lang); } catch (e) {} }
@@ -867,6 +880,7 @@ class Component extends DCLogic {
     };
     const urls = [p.sarleUrl || 'https://sarle.ee', p.queenUrl, p.ameztransUrl || 'https://a-meztrans.ee', p.antarraUrl || 'https://antarra.ee'];
     return {
+      temp: this.state.temp,
       tallinnTime: this.state.tlTime || this.fmtTallinn(),
       t, mobile, desktop: !mobile, menuOpen, plinkoOpen, score, active, soundOn: sound,
       shownScore: this.state.shown, setScoreEl: this.setScoreEl,
