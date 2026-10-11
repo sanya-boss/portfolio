@@ -5,8 +5,9 @@
 .am-btn:active{transform:scale(.97)}
 .am-btn:focus-visible{outline:none;box-shadow:var(--ring-focus)}
 .am-btn[disabled]{opacity:.4;pointer-events:none}
-.am-btn--primary{background:var(--gray-750);color:var(--text-strong);border-color:var(--border-strong);box-shadow:none}
-.am-btn--primary:hover{background:color-mix(in srgb,var(--gray-750) 90%,var(--text-strong));color:var(--text-strong);border-color:var(--border-strong)}
+/* primary = same grey as the default button (no white buttons) */
+.am-btn--primary{background:var(--surface-raised);color:var(--text-strong);border-color:var(--border-default);box-shadow:none}
+.am-btn--primary:hover{background:var(--surface-hover);color:var(--text-strong);border-color:var(--border-strong)}
 .am-btn--ghost{background:transparent;border-color:transparent;box-shadow:none;color:var(--text-muted)}
 .am-btn--ghost:hover{background:transparent;border-color:transparent;color:var(--text-strong)}
 .am-btn--sm{height:var(--control-h-sm);padding:0 10px;font-size:var(--fs-12);border-radius:var(--radius-sm)}
