@@ -461,27 +461,22 @@ class Component extends DCLogic {
   componentDidMount() {
     this.applyTheme(); this.applyLang();
     this.ytFill = () => {
+      // Freelance logo squares play a short muted loop (assets/video/freelance.mp4)
       document.querySelectorAll('#experience .am-exp').forEach(x => {
         const org = x.querySelector('.am-exp__org'), logo = x.querySelector('.am-exp__logo');
-        if (!org || !logo || !/Freelance|Фриланс|Vabakutseline/i.test(org.textContent) || logo.querySelector('iframe')) return;
+        if (!org || !logo || !/Freelance|Фриланс|Vabakutseline/i.test(org.textContent) || logo.querySelector('video')) return;
         logo.textContent = '';
         Object.assign(logo.style, { position: 'relative', overflow: 'hidden', padding: '0' });
-        const f = document.createElement('iframe');
-        f.src = 'https://www.youtube-nocookie.com/embed/LVVZ2Znt2_0?autoplay=1&mute=1&loop=1&playlist=LVVZ2Znt2_0&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1';
-        f.allow = 'autoplay; encrypted-media';
-        f.title = 'Freelance';
-        f.setAttribute('tabindex', '-1');
-        Object.assign(f.style, { position: 'absolute', top: '50%', left: '50%', width: '1280px', height: '720px', maxWidth: 'none', transform: 'translate(-50%,-50%) scale(.08)', transformOrigin: 'center', border: '0', pointerEvents: 'none' });
-        const cmd = fn => { try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: [] }), '*'); } catch (e) {} };
-        f.addEventListener('load', () => { cmd('mute'); cmd('playVideo'); });
-        const keep = setInterval(() => { if (!f.isConnected) return clearInterval(keep); if (!document.hidden) { cmd('mute'); cmd('playVideo'); } }, 2500);
-        document.addEventListener('visibilitychange', () => { if (!document.hidden) cmd('playVideo'); });
-        const shield = document.createElement('span');
-        shield.setAttribute('aria-hidden', 'true');
-        Object.assign(shield.style, { position: 'absolute', inset: '0', zIndex: '1', background: 'transparent' });
-        ['click', 'mousedown', 'dblclick', 'contextmenu', 'touchstart'].forEach(ev => shield.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); }));
-        logo.appendChild(f);
-        logo.appendChild(shield);
+        const v = document.createElement('video');
+        Object.assign(v, { muted: true, loop: true, playsInline: true, autoplay: true, controls: false, disablePictureInPicture: true });
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true'); v.setAttribute('tabindex', '-1');
+        v.setAttribute('disableremoteplayback', '');
+        v.poster = 'assets/video/posters/freelance.webp';
+        v.src = 'assets/video/freelance.mp4';
+        Object.assign(v.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' });
+        v.addEventListener('contextmenu', e => e.preventDefault());
+        logo.appendChild(v);
+        v.play().catch(() => {});
       });
     };
     this.ytObs = new MutationObserver(() => this.ytFill());
