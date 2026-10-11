@@ -460,6 +460,30 @@ class Component extends DCLogic {
   };
   componentDidMount() {
     this.applyTheme(); this.applyLang();
+    this.ytFill = () => {
+      document.querySelectorAll('#experience .am-exp').forEach(x => {
+        const org = x.querySelector('.am-exp__org'), logo = x.querySelector('.am-exp__logo');
+        if (!org || !logo || !/Freelance|Фриланс|Vabakutseline/i.test(org.textContent) || logo.querySelector('iframe')) return;
+        logo.textContent = '';
+        Object.assign(logo.style, { position: 'relative', overflow: 'hidden', padding: '0' });
+        const f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/LVVZ2Znt2_0?autoplay=1&mute=1&loop=1&playlist=LVVZ2Znt2_0&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0&enablejsapi=1';
+        f.allow = 'autoplay; encrypted-media';
+        f.title = 'Freelance';
+        f.setAttribute('tabindex', '-1');
+        Object.assign(f.style, { position: 'absolute', top: '50%', left: '50%', width: '320%', height: '180%', transform: 'translate(-50%,-50%)', border: '0', pointerEvents: 'none' });
+        f.addEventListener('load', () => { try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*'); } catch (e) {} });
+        const shield = document.createElement('span');
+        shield.setAttribute('aria-hidden', 'true');
+        Object.assign(shield.style, { position: 'absolute', inset: '0', zIndex: '1', background: 'transparent' });
+        ['click', 'mousedown', 'dblclick', 'contextmenu', 'touchstart'].forEach(ev => shield.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); }));
+        logo.appendChild(f);
+        logo.appendChild(shield);
+      });
+    };
+    this.ytObs = new MutationObserver(() => this.ytFill());
+    this.ytObs.observe(document.body, { childList: true, subtree: true });
+    this.ytFill();
     this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m }); if (this.cv) this.layoutPlinko(); };
     this.onScroll = () => {
       let a = 'top';
@@ -594,6 +618,7 @@ class Component extends DCLogic {
     });
   }
   componentWillUnmount() {
+    if (this.ytObs) this.ytObs.disconnect();
     clearInterval(this.clockT); if (this.onTlMove) { window.removeEventListener('mousemove', this.onTlMove); document.removeEventListener('mouseleave', this.onTlLeave); } if (this.tlEl) this.tlEl.remove(); window.removeEventListener('resize', this.fitFn); if (this.vidIO) this.vidIO.disconnect(); if (this.gifIO) this.gifIO.disconnect(); if (this.vidMO) this.vidMO.disconnect();
     window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('keydown', this.onKey); window.removeEventListener('click', this.onDetailClick, true); window.removeEventListener('click', this.onExtLink, true); clearTimeout(this.copyT);
     cancelAnimationFrame(this.raf); cancelAnimationFrame(this.cntRaf);
