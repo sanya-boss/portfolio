@@ -154,7 +154,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
         <p style="margin:20px 0 0;color:var(--text-muted);text-wrap:pretty">
           <sc-for list="{{ t.lead }}" as="p" hint-placeholder-count="1"><sc-if value="{{ p.b }}"><b style="color:var(--text-strong);font-weight:500">{{ p.t }}</b></sc-if><sc-if value="{{ p.n }}">{{ p.t }}</sc-if></sc-for>
         </p>
-        <div style="margin-top:12px;font:var(--type-meta);font-family:var(--font-serif);font-size:15px;font-style:italic;color:var(--text-subtle)"><span data-tallinn="1">Tallinn, Estonia · 59.43°N 24.72°E</span></div>
+        <div style="margin-top:12px;font:var(--type-meta);font-family:var(--font-serif);font-size:15px;font-style:italic;color:var(--text-subtle)"><span data-tallinn="1">{{ t.coords }}</span></div>
         <div data-hero-cta="1" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
           <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" href="about/" hint-size="110px,42px">{{ t.aboutBtn }}</x-import>
           <button type="button" class="am-btn am-btn--lg" onClick="{{ copyEmail }}" aria-label="{{ copyLabel }}" title="{{ copyLabel }}">
@@ -318,7 +318,7 @@ const I18N = {
   en: {
     nav: ['Top', 'About', 'Experience', 'Basics', 'Projects', 'Contact'],
     theme: 'Theme', light: 'Light theme', dark: 'Dark theme', soundOn: 'Sound on', soundOff: 'Sound off', settings: 'Settings', language: 'Language',
-    hi: "Hi, I'm Aleksandr.", role: 'Designer from', city: 'Tallinn',
+    hi: "Hi, I'm Aleksandr.", role: 'Designer from', city: 'Tallinn', coords: 'Tallinn, Estonia · 59.43°N 24.72°E',
     lead: 'I create **visual identities**, **packaging**, **websites** and **graphics** for print and social media — since before the AI boom. I combine design and IT to bring ideas to life: from first sketches to a finished product.',
     aboutBtn: 'About me', navHome: 'Portfolio', copied: 'Email copied', copyEmail: 'Copy email',
     plinkoAside: 'if you suddenly got bored', score: 'Score', rounds: 'Rounds', points: 'points', play: 'Play', hide: 'Hide', drop: 'Drop the ball', plinkoHint: 'Points only. Nothing at stake.',
@@ -351,7 +351,7 @@ const I18N = {
   ru: {
     nav: ['Наверх', 'Обо мне', 'Опыт', 'Основы', 'Проекты', 'Контакты'],
     theme: 'Тема', light: 'Светлая тема', dark: 'Тёмная тема', soundOn: 'Звук вкл.', soundOff: 'Звук выкл.', settings: 'Настройки', language: 'Язык',
-    hi: 'Привет, я Саня.', role: 'Дизайнер из', city: 'Таллинна',
+    hi: 'Привет, я Саня.', role: 'Дизайнер из', city: 'Таллинна', coords: 'Tallinn, Estonia · 59.43°N 24.72°E',
     lead: 'Создаю **айдентику**, **упаковку**, **сайты** и **графику** для печати и соцсетей — ещё до бума ИИ. Соединяю дизайн и IT, чтобы доводить идеи до результата: от первых набросков до готового продукта.',
     aboutBtn: 'Обо мне', navHome: 'Портфолио', copied: 'Email скопирован', copyEmail: 'Скопировать email',
     plinkoAside: 'если вдруг стало скучно', score: 'Счёт', rounds: 'Раунды', points: 'очков', play: 'Играть', hide: 'Скрыть', drop: 'Бросить шар', plinkoHint: 'Только очки. Без ставок.',
@@ -384,7 +384,7 @@ const I18N = {
   et: {
     nav: ['Üles', 'Minust', 'Kogemus', 'Alused', 'Projektid', 'Kontakt'],
     theme: 'Teema', light: 'Hele teema', dark: 'Tume teema', soundOn: 'Heli sees', soundOff: 'Heli väljas', settings: 'Seaded', language: 'Keel',
-    hi: 'Tere, nimi on Aleksandr.', role: 'Disainer', city: 'Tallinnast',
+    hi: 'Tere, nimi on Aleksandr.', role: 'Disainer', city: 'Tallinnast', coords: 'Tallinn, Eesti · 59.43°N 24.72°E',
     lead: 'Loon **identiteete**, **pakendeid**, **veebilehti** ja **graafikat** trükiseks ning sotsiaalmeediasse — juba enne tehisintellekti buumi. Ühendan disaini ja IT, et viia ideed tulemuseni: esimestest visanditest valmis tooteni.',
     aboutBtn: 'Minust', navHome: 'Portfoolio', copied: 'E-post kopeeritud', copyEmail: 'Kopeeri e-post',
     plinkoAside: 'kui äkki igav hakkas', score: 'Skoor', rounds: 'Voorud', points: 'punkti', play: 'Mängi', hide: 'Peida', drop: 'Viska pall', plinkoHint: 'Ainult punktid. Panuseid pole.',
