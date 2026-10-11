@@ -9,6 +9,7 @@ Drop them here with exactly these names, plus a first-frame poster in `posters/<
 | `queen.mp4`     | QUEEN OF THE BALTIC |
 | `ameztrans.mp4` | A-MEZTRANS          |
 | `antarra.mp4`   | BLACK ANTARRA       |
+| `freelance.mp4` | Freelance logo square (128×128, muted loop) |
 
 Recommended: 720p, no audio, ~2–3 MB each, e.g.
 
