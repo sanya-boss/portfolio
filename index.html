@@ -96,13 +96,33 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
 .am-back:hover{color:var(--text-strong) !important}
 .am-back:hover .am-icon{transform:translateX(-3px)}
 @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+
+.am-btn--lg{height:36px !important}
+[data-feat-video]{position:absolute !important;width:2px !important;height:2px !important;left:0;top:0;opacity:0 !important;pointer-events:none}
+[data-feat-canvas]{opacity:0;transition:opacity 600ms cubic-bezier(.22,1,.36,1)}
+[data-feat-canvas].is-on{opacity:1}
+#top header h1:not([data-tv]){visibility:hidden}
+
+html[style*="color-scheme: light"] [data-feat-shade]{background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.55) 100%) !important}
+@media (max-width:899px){[data-feat]{margin-top:32px !important}[data-feat] + #about{margin-top:32px !important}[data-feat-cap]{left:14px !important;right:14px !important;bottom:12px !important;gap:1px !important}[data-feat-t]{font-size:15px !important;font-weight:500 !important}[data-feat-d]{font-size:12px !important;font-weight:400 !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}[data-feat] span[style*="top:12px"]{top:8px !important;left:8px !important;height:18px !important;font-size:10px !important}}
+
+@media (max-width:899px){body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:110px;z-index:19;pointer-events:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}}
+
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary){border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#262626 0%,#1E1E1E 55%,#1C1C1C 100%);border-top-color:rgba(255,255,255,.18);border-radius:9px;color:#F2F2F2;font-weight:600;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary) .am-icon{color:var(--text-muted)}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:linear-gradient(180deg,#2D2D2D 0%,#252525 55%,#232323 100%);border-color:rgba(255,255,255,.16);border-top-color:rgba(255,255,255,.24);color:#fff}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover .am-icon{color:var(--text-strong)}
+html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--primary){background:#FFFFFF;border-color:rgba(0,0,0,.12);color:#111;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(0,0,0,.06)}
+html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:#F5F5F5;border-color:rgba(0,0,0,.2);color:#000}
+
+[data-tcur]::after{content:attr(data-g);position:absolute;left:0;top:0;color:var(--text-strong);text-shadow:0 0 8px currentColor;pointer-events:none;white-space:pre}
 </style>
 </helmet>
 
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-body);font:var(--type-body);letter-spacing:var(--ls-body)">
 
   <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-    <div style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+    <div style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:0 4px 12px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)">
       <div role="group" aria-label="Language" ref="{{ setVGroup }}" style="position:relative;display:flex;flex-direction:column;gap:6px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ vInd.w }};height:{{ vInd.h }};transform:{{ vInd.tr }};border-radius:{{ vIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
@@ -121,7 +141,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
   </sc-if>
 
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:0 4px 12px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)">
       <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
@@ -148,7 +168,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
     <header style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:32px">
       <div style="flex:1 1 340px;min-width:0">
         <h1 style="margin:0;font:var(--type-display);letter-spacing:var(--ls-display);color:var(--text-strong);text-wrap:balance">
-          <span style="display:block;text-wrap:balance">{{ t.hi }}</span>
+          <span data-fit-follow="1" style="display:block;text-wrap:balance">{{ t.hi }}</span>
           <span style="display:block;margin-top:10px;color:var(--text-subtle)" data-fit="shrink">{{ t.role }} <span class="am-hl" data-city="1" data-tallinn="1" style="color:var(--text-strong);white-space:nowrap">{{ t.city }}<sc-if value="{{ temp }}" hint-placeholder-val="{{ false }}"><sup style="margin-left:4px;font:var(--fw-regular) .42em/1 var(--font-sans);letter-spacing:0;color:var(--text-muted);vertical-align:.95em;white-space:nowrap" title="Tallinn, now">{{ temp }}</sup></sc-if></span></span>
         </h1>
         <p style="margin:20px 0 0;color:var(--text-muted);text-wrap:pretty">
@@ -156,7 +176,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
         </p>
         <div style="margin-top:12px;font:var(--type-meta);font-family:var(--font-serif);font-size:15px;font-style:italic;color:var(--text-subtle)"><span data-tallinn="1">{{ t.coords }}</span></div>
         <div data-hero-cta="1" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
-          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" href="about/" hint-size="110px,42px">{{ t.aboutBtn }}</x-import>
+          <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="secondary" size="lg" href="about/" hint-size="110px,42px">{{ t.aboutBtn }}</x-import>
           <button type="button" class="am-btn am-btn--lg" onClick="{{ copyEmail }}" aria-label="{{ copyLabel }}" title="{{ copyLabel }}">
             <span style="position:relative;display:inline-block;width:16px;height:16px;flex:none">
               <span style="position:absolute;inset:0;display:flex;transition:opacity 260ms cubic-bezier(.22,1,.36,1), transform 360ms cubic-bezier(.22,1,.36,1);opacity:{{ copyIconA.o }};transform:{{ copyIconA.t }}">
@@ -173,6 +193,18 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
       </div>
     </header>
 
+    <a href="{{ featUrl }}" target="_blank" rel="noopener" aria-label="SARLE — {{ t.featLabel }}" data-feat="1" style="position:relative;display:block;margin-top:var(--section-gap);border-radius:var(--radius-lg);border:1px solid var(--border-default);overflow:hidden;color:inherit;text-decoration:none;transition:border-color 120ms cubic-bezier(.22,1,.36,1)" style-hover="border-color:var(--border-strong)">
+      <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:center/cover no-repeat url(assets/video/posters/sarle.webp)">
+        <canvas data-feat-canvas="1" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+        <video data-feat-video="1" src="assets/video/sarle.mp4" muted="" autoplay="" loop="" playsinline="" preload="auto" aria-hidden="true" tabindex="-1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></video>
+        <div aria-hidden="true" data-feat-shade="1" style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 50%, color-mix(in srgb, var(--surface-page) 80%, transparent) 100%);pointer-events:none"></div>
+        <span style="position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:var(--radius-xs, 4px);background:rgba(15,15,15,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em">NEW</span>
+        <div data-feat-cap="1" style="position:absolute;left:20px;right:20px;bottom:18px;display:flex;flex-direction:column;gap:2px">
+          <span data-feat-t="1" style="font-size:16px;font-weight:500;line-height:1.2;color:#fff">SARLE</span>
+          <span data-feat-d="1" style="font-size:13px;font-weight:400;color:rgba(255,255,255,.62)">{{ t.featDesc }}</span>
+        </div>
+      </div>
+    </a>
 
     <section id="about" style="margin-top:var(--section-gap);scroll-margin-top:80px">
       <h2 style="margin:0 0 10px;font:var(--type-h2, 400 var(--fs-24)/1.2 var(--font-serif));font-family:var(--font-serif);letter-spacing:var(--ls-heading);color:var(--text-strong)">{{ t.toolsTitle }}</h2>
@@ -181,9 +213,15 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
       </p>
       <div style="display:grid;transition:grid-template-rows 420ms cubic-bezier(.22,1,.36,1), opacity 320ms cubic-bezier(.22,1,.36,1);grid-template-rows:{{ toolsRows }};opacity:{{ toolsOpacity }}" aria-hidden="{{ toolsHidden }}">
         <div style="min-height:0;overflow:hidden">
-          <div style="display:flex;flex-wrap:wrap;gap:6px;padding-top:14px">
+          <div style="display:flex;flex-direction:column;padding-top:14px">
             <sc-for list="{{ allTools }}" as="tl" hint-placeholder-count="6">
-              <span class="am-tag" style="gap:6px"><sc-if value="{{ tl.mark }}"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;flex:none;border-radius:4px;background:var(--surface-inverse);color:var(--text-inverse);font:700 8.5px/1 var(--font-sans);letter-spacing:-0.02em">{{ tl.mark }}</span></sc-if><sc-if value="{{ tl.icon }}"><span class="am-icon" aria-hidden="true" style="width:14px;height:14px;color:var(--text-strong);--am-icon:{{ tl.icon }}"></span></sc-if>{{ tl.name }}</span>
+              <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--border-subtle)">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:10px;border:1px solid var(--border-default);background:{{ tl.bg }};box-shadow:inset 0 1px 0 rgba(255,255,255,.08);color:{{ tl.fg }}"><sc-if value="{{ tl.mark }}"><span style="font:700 14px/1 var(--font-sans);letter-spacing:-0.02em">{{ tl.mark }}</span></sc-if><sc-if value="{{ tl.icon }}"><span class="am-icon" aria-hidden="true" style="width:20px;height:20px;--am-icon:{{ tl.icon }}"></span></sc-if><sc-if value="{{ tl.img }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:24px;height:24px;display:block;background:center/contain no-repeat;background-image:{{ tl.img }}"></span></sc-if></span>
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0">
+                  <span style="font-size:15px;font-weight:500;line-height:1.3;color:var(--text-strong)">{{ tl.name }}</span>
+                  <span style="font-size:13px;line-height:1.3;color:var(--text-subtle)">{{ tl.cat }}</span>
+                </span>
+              </div>
             </sc-for>
           </div>
         </div>
@@ -264,7 +302,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
     </section>
 
     <footer style="margin-top:96px;padding-top:20px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
-      <span>© 2026 Aleksandr Mežennõi</span>
+      <span>© {{ curYear }} Aleksandr Mežennõi</span>
       <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="sm" icon="arrow-up" href="#top" on-click="{{ goTop }}" style="display:flex;align-items:center" hint-size="90px,36px">{{ t.top }}</x-import>
     </footer>
 
@@ -323,7 +361,7 @@ const I18N = {
     aboutBtn: 'About me', navHome: 'Portfolio', copied: 'Email copied', copyEmail: 'Copy email',
     plinkoAside: 'if you suddenly got bored', score: 'Score', rounds: 'Rounds', points: 'points', play: 'Play', hide: 'Hide', drop: 'Drop the ball', plinkoHint: 'Points only. Nothing at stake.',
     toolsTitle: 'Tools I use?', toolsK: 'Tools', areasK: 'Areas', pride: 'my pride', showAll: 'Show all', showLess: 'Show less',
-    toolsText: 'I work across branding, packaging, print, social media and web design. [ai] is my starting point for exploring ideas and developing them into logos, visual identities and graphics. [ps] is where I edit photos, build compositions and create mockups. For web projects, I shape the layout in [figma], then build and refine the site with [cd] and [cc] before publishing it through [gh]. The tools depend on the task — from a business card or campaign visual to packaging or a complete website.',
+    toolsText: 'I work across branding, packaging, print, social media and web design. [ai] is my starting point for exploring ideas and developing them into logos, visual identities and graphics. [ps] is where I edit photos, build compositions and create mockups. For web projects, I shape the layout in [ai], then build and refine the site with [cd] and [cc] before publishing it through [gh]. The tools depend on the task — from a business card or campaign visual to packaging or a complete website.',
     aboutTitle: 'A bit about me', aboutLead: "I've worked both **in a company** and **freelance**, in design and IT.",
     about: [
       ['Approach', 'I adapt fast, step outside a narrow specialisation when the work needs it, talk to clients directly and see every job through to the result.'],
@@ -333,8 +371,8 @@ const I18N = {
     expTitle: 'Story so far', expLead: '5+ years of hands-on experience.',
     exp: [
       { org: 'Freelance', current: true, roles: [{ title: 'Freelance Designer', detail: 'Building this landing page and continuing freelance work.', meta: 'Present · Remote · Full-time' }] },
-      { org: 'Kaitsevägi', roles: [{ title: 'Conscript service', meta: '01.2026 — 08.2026', detail: 'I served in the Estonian Defence Forces, first in the Kuperjanov Infantry Battalion in Võru and then in the Staff and Signal Company in Tartu. Whenever possible, I kept working as a freelance designer alongside my service — collaborating with existing clients and taking on new projects.' }] },
-      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 months · Full-time', bullets: ['Designed user interfaces with a focus on clear layouts and visual consistency.', 'Created print materials, from initial concepts to production-ready artwork.', 'Developed social media graphics, promotional visuals and presentations.', 'Designed packaging, balancing brand identity, readability and product presentation.', 'Worked across digital and print formats, adapting designs to different channels and requirements.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Office 365'], areas: ['UI Design', 'Print Design', 'Social Media', 'Packaging', 'Presentations'] }] },
+      { org: 'Estonian Defence Forces', kv: true, roles: [{ title: 'Conscript service', meta: '01.2026 — 08.2026', detail: 'I served in the Estonian Defence Forces, first in the Kuperjanov Infantry Battalion in Võru and then in the Staff and Signal Company in Tartu. Whenever possible, I kept working as a freelance designer alongside my service — collaborating with existing clients and taking on new projects.' }] },
+      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 months · Full-time', bullets: ['Designed user interfaces with a focus on clear layouts and visual consistency.', 'Created print materials, from initial concepts to production-ready artwork.', 'Developed social media graphics, promotional visuals and presentations.', 'Designed packaging, balancing brand identity, readability and product presentation.', 'Worked across digital and print formats, adapting designs to different channels and requirements.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Microsoft 365'], areas: ['UI Design', 'Print Design', 'Social Media', 'Packaging', 'Presentations'] }] },
       { org: 'Freelance', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Remote' }] }
     ],
     basicsTitle: 'Basics', eduLabel: 'Education', toolsLabel: 'Tools & skills', langsLabel: 'Languages',
@@ -342,7 +380,7 @@ const I18N = {
     edu: 'Vocational secondary education · IT specialist', eduNote: 'System and network administration',
     edu2: 'Continuing education in Media Design · Graphic & Web Design', edu2note: 'Coursework in drawing, painting, colour theory, composition and graphic design software.',
     spoken: ['Russian', 'Estonian', 'English'],
-    projTitle: 'Selected work', visit: 'Visit site', wip: 'Work in progress', projLead: 'My recent projects.',
+    projTitle: 'Selected work', visit: 'Visit site', wip: 'Work in progress', projLead: 'My recent projects.', featLabel: 'Latest project', featDesc: 'Art gallery in Tallinn Old Town',
     proj: ['Art gallery in Tallinn Old Town', 'International beauty pageant', 'Transport company', 'Cattery of Oriental and Siamese cats in Estonia'],
     onRequest: 'More work is available on request.', serviceNote: 'Part of it was made alongside my service.',
     line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.',
@@ -356,7 +394,7 @@ const I18N = {
     aboutBtn: 'Обо мне', navHome: 'Портфолио', copied: 'Email скопирован', copyEmail: 'Скопировать email',
     plinkoAside: 'если вдруг стало скучно', score: 'Счёт', rounds: 'Раунды', points: 'очков', play: 'Играть', hide: 'Скрыть', drop: 'Бросить шар', plinkoHint: 'Только очки. Без ставок.',
     toolsTitle: 'Чем я пользуюсь?', toolsK: 'Инструменты', areasK: 'Направления', pride: 'моя гордость', showAll: 'Показать всё', showLess: 'Свернуть',
-    toolsText: 'Я работаю с брендингом, упаковкой, полиграфией, соцсетями и веб-дизайном. [ai] — моя отправная точка: здесь я исследую идеи и развиваю их в логотипы, фирменные стили и графику. В [ps] я обрабатываю фото, собираю композиции и делаю мокапы. Для веб-проектов я выстраиваю макет в [figma], затем собираю и дорабатываю сайт с помощью [cd] и [cc] и публикую его через [gh]. Инструменты зависят от задачи — от визитки или рекламного визуала до упаковки или полноценного сайта.',
+    toolsText: 'Я работаю с брендингом, упаковкой, полиграфией, соцсетями и веб-дизайном. [ai] — моя отправная точка: здесь я исследую идеи и развиваю их в логотипы, фирменные стили и графику. В [ps] я обрабатываю фото, собираю композиции и делаю мокапы. Для веб-проектов я выстраиваю макет в [ai], затем собираю и дорабатываю сайт с помощью [cd] и [cc] и публикую его через [gh]. Инструменты зависят от задачи — от визитки или рекламного визуала до упаковки или полноценного сайта.',
     aboutTitle: 'Немного обо мне', aboutLead: 'У меня есть опыт работы **в компании** и **на фрилансе** — в дизайне и IT.',
     about: [
       ['Подход', 'Быстро адаптируюсь, готов выходить за рамки узкой специализации, общаюсь с клиентами напрямую и довожу работу до результата.'],
@@ -366,8 +404,8 @@ const I18N = {
     expTitle: 'Опыт', expLead: 'Практический опыт 5+ лет.',
     exp: [
       { org: 'Фриланс', current: true, roles: [{ title: 'Freelance Designer', detail: 'Создаю этот лендинг и продолжаю работать на фрилансе.', meta: 'Сейчас · Удалённо · Полная занятость' }] },
-      { org: 'Kaitsevägi', roles: [{ title: 'Срочная служба', meta: '01.2026 — 08.2026', detail: 'Служил в Силах обороны Эстонии — сначала в пехотном батальоне Куперьянова в Выру, затем в штабной роте и роте связи в Тарту. При возможности параллельно со службой продолжал работать фриланс-дизайнером: сотрудничал с текущими клиентами и брал новые заказы.' }] },
-      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 месяцев · Полная занятость', bullets: ['Проектировал интерфейсы с упором на понятную вёрстку и визуальную целостность.', 'Создавал полиграфию — от первых концепций до макетов, готовых к печати.', 'Разрабатывал графику для соцсетей, рекламные визуалы и презентации.', 'Проектировал упаковку, балансируя айдентику бренда, читаемость и подачу продукта.', 'Работал с цифровыми и печатными форматами, адаптируя дизайн под разные каналы и требования.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Office 365'], areas: ['UI-дизайн', 'Полиграфия', 'Соцсети', 'Упаковка', 'Презентации'] }] },
+      { org: 'Силы Самообороны Эстонии', kv: true, roles: [{ title: 'Срочная служба', meta: '01.2026 — 08.2026', detail: 'Служил в Силах обороны Эстонии — сначала в пехотном батальоне Куперьянова в Выру, затем в штабной роте и роте связи в Тарту. При возможности параллельно со службой продолжал работать фриланс-дизайнером: сотрудничал с текущими клиентами и брал новые заказы.' }] },
+      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 месяцев · Полная занятость', bullets: ['Проектировал интерфейсы с упором на понятную вёрстку и визуальную целостность.', 'Создавал полиграфию — от первых концепций до макетов, готовых к печати.', 'Разрабатывал графику для соцсетей, рекламные визуалы и презентации.', 'Проектировал упаковку, балансируя айдентику бренда, читаемость и подачу продукта.', 'Работал с цифровыми и печатными форматами, адаптируя дизайн под разные каналы и требования.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Microsoft 365'], areas: ['UI-дизайн', 'Полиграфия', 'Соцсети', 'Упаковка', 'Презентации'] }] },
       { org: 'Фриланс', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Удалённо' }] }
     ],
     basicsTitle: 'Основы', eduLabel: 'Образование', toolsLabel: 'Инструменты и навыки', langsLabel: 'Языки',
@@ -375,7 +413,7 @@ const I18N = {
     edu: 'Профессиональное среднее образование · IT specialist', eduNote: 'Системное и сетевое администрирование',
     edu2: 'Дополнительное образование в медиадизайне · Graphic & Web Design', edu2note: 'Курсы по рисунку, живописи, теории цвета, композиции и программам для графического дизайна.',
     spoken: ['Русский', 'Эстонский', 'Английский'],
-    projTitle: 'Избранные работы', visit: 'Открыть сайт', wip: 'В работе', projLead: 'Мои недавние проекты.',
+    projTitle: 'Избранные работы', visit: 'Открыть сайт', wip: 'В работе', projLead: 'Мои недавние проекты.', featLabel: 'Последний проект', featDesc: 'Художественная галерея в Старом Таллинне',
     proj: ['Художественная галерея в Старом Таллинне', 'Международный конкурс красоты', 'Транспортная компания', 'Питомник ориентальных и сиамских кошек в Эстонии'],
     onRequest: 'Другие работы — по запросу.', serviceNote: 'Часть из них сделана параллельно со службой.',
     line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.',
@@ -389,7 +427,7 @@ const I18N = {
     aboutBtn: 'Minust', navHome: 'Portfoolio', copied: 'E-post kopeeritud', copyEmail: 'Kopeeri e-post',
     plinkoAside: 'kui äkki igav hakkas', score: 'Skoor', rounds: 'Voorud', points: 'punkti', play: 'Mängi', hide: 'Peida', drop: 'Viska pall', plinkoHint: 'Ainult punktid. Panuseid pole.',
     toolsTitle: 'Millega ma töötan?', toolsK: 'Tööriistad', areasK: 'Valdkonnad', pride: 'minu uhkus', showAll: 'Näita kõiki', showLess: 'Peida',
-    toolsText: 'Töötan brändingu, pakendite, trükise, sotsiaalmeedia ja veebidisainiga. [ai] on minu lähtepunkt: seal uurin ideid ja arendan neist logosid, visuaalseid identiteete ja graafikat. [ps]-is töötlen fotosid, loon kompositsioone ja mockupe. Veebiprojektide puhul kujundan paigutuse [figma]-s, seejärel ehitan ja viimistlen lehe [cd] ja [cc] abil ning avaldan selle [gh] kaudu. Tööriistad sõltuvad ülesandest — visiitkaardist või kampaaniavisuaalist pakendi või terve veebileheni.',
+    toolsText: 'Töötan brändingu, pakendite, trükise, sotsiaalmeedia ja veebidisainiga. [ai] on minu lähtepunkt: seal uurin ideid ja arendan neist logosid, visuaalseid identiteete ja graafikat. [ps]-is töötlen fotosid, loon kompositsioone ja mockupe. Veebiprojektide puhul kujundan paigutuse [ai]-s, seejärel ehitan ja viimistlen lehe [cd] ja [cc] abil ning avaldan selle [gh] kaudu. Tööriistad sõltuvad ülesandest — visiitkaardist või kampaaniavisuaalist pakendi või terve veebileheni.',
     aboutTitle: 'Natuke minust', aboutLead: 'Mul on kogemust nii **ettevõttes** kui ka **vabakutselisena** — disainis ja IT-s.',
     about: [
       ['Lähenemine', 'Kohanen kiiresti, olen valmis minema kitsast erialast kaugemale, suhtlen klientidega otse ja viin töö tulemuseni.'],
@@ -399,8 +437,8 @@ const I18N = {
     expTitle: 'Kogemus', expLead: '5+ aastat praktilist kogemust.',
     exp: [
       { org: 'Vabakutseline', current: true, roles: [{ title: 'Freelance Designer', detail: 'Loon seda maandumislehte ja jätkan vabakutselisena.', meta: 'Praegu · Kaugtöö · Täistööaeg' }] },
-      { org: 'Kaitsevägi', roles: [{ title: 'Ajateenistus', meta: '01.2026 — 08.2026', detail: 'Teenisin Eesti Kaitseväes, algul Kuperjanovi jalaväepataljonis Võrus ning seejärel staabi- ja sidekompaniis Tartus. Võimaluse korral jätkasin teenistuse kõrvalt vabakutselise disainerina, tehes koostööd olemasolevate klientidega ja võttes vastu uusi tellimusi.' }] },
-      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 kuud · Täistööaeg', bullets: ['Kujundasin kasutajaliideseid, keskendudes selgele paigutusele ja visuaalsele järjepidevusele.', 'Lõin trükimaterjale algsetest kontseptsioonidest trükivalmis failideni.', 'Arendasin sotsiaalmeedia graafikat, reklaamvisuaale ja esitlusi.', 'Kujundasin pakendeid, tasakaalustades brändi identiteeti, loetavust ja toote esitlust.', 'Töötasin nii digitaalsete kui ka trükiformaatidega, kohandades disaini eri kanalite ja nõuete järgi.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Office 365'], areas: ['UI-disain', 'Trükidisain', 'Sotsiaalmeedia', 'Pakendid', 'Esitlused'] }] },
+      { org: 'Kaitsevägi', kv: true, roles: [{ title: 'Ajateenistus', meta: '01.2026 — 08.2026', detail: 'Teenisin Eesti Kaitseväes, algul Kuperjanovi jalaväepataljonis Võrus ning seejärel staabi- ja sidekompaniis Tartus. Võimaluse korral jätkasin teenistuse kõrvalt vabakutselise disainerina, tehes koostööd olemasolevate klientidega ja võttes vastu uusi tellimusi.' }] },
+      { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 kuud · Täistööaeg', bullets: ['Kujundasin kasutajaliideseid, keskendudes selgele paigutusele ja visuaalsele järjepidevusele.', 'Lõin trükimaterjale algsetest kontseptsioonidest trükivalmis failideni.', 'Arendasin sotsiaalmeedia graafikat, reklaamvisuaale ja esitlusi.', 'Kujundasin pakendeid, tasakaalustades brändi identiteeti, loetavust ja toote esitlust.', 'Töötasin nii digitaalsete kui ka trükiformaatidega, kohandades disaini eri kanalite ja nõuete järgi.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Microsoft 365'], areas: ['UI-disain', 'Trükidisain', 'Sotsiaalmeedia', 'Pakendid', 'Esitlused'] }] },
       { org: 'Vabakutseline', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Kaugtöö' }] }
     ],
     basicsTitle: 'Alused', eduLabel: 'Haridus', toolsLabel: 'Tööriistad ja oskused', langsLabel: 'Keeled',
@@ -408,7 +446,7 @@ const I18N = {
     edu: 'Kutsekeskharidus · IT specialist', eduNote: 'Süsteemi- ja võrguadministreerimine',
     edu2: 'Täiendõpe meediadisainis · Graphic & Web Design', edu2note: 'Õpingud joonistamises, maalimises, värviõpetuses, kompositsioonis ja graafilise disaini tarkvaras.',
     spoken: ['Vene', 'Eesti', 'Inglise'],
-    projTitle: 'Valitud tööd', visit: 'Ava leht', wip: 'Töös', projLead: 'Minu hiljutised projektid.',
+    projTitle: 'Valitud tööd', visit: 'Ava leht', wip: 'Töös', projLead: 'Minu hiljutised projektid.', featLabel: 'Viimane projekt', featDesc: 'Kunstigalerii Tallinna vanalinnas',
     proj: ['Kunstigalerii Tallinna vanalinnas', 'Rahvusvaheline iludusvõistlus', 'Transpordiettevõte', 'Orientaal- ja siiami kasside kasvandus Eestis'],
     onRequest: 'Rohkem töid saadan soovi korral.', serviceNote: 'Osa neist valmis ajateenistuse kõrvalt.',
     line: 'Alati liinil.', almost: 'peaaegu alati', contactLead: 'Projekt mõttes? Kirjuta või helista — vastan ise.',
@@ -430,7 +468,21 @@ const TOOLS = {
   claude: { name: 'Claude', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg)' }, cd: { name: 'Claude Design', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg)' },
   cc: { name: 'Claude Code', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg)' }, gh: { name: 'GitHub', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/github.svg)' }
 };
-const ALL_TOOLS = ['ai', 'ps', 'figma', 'cd', 'cc', 'gh'];
+const LU = n => 'url(https://unpkg.com/lucide-static@0.460.0/icons/' + n + '.svg)';
+const TOOL_LIST = [
+  { name: 'Illustrator', mark: 'Ai', c: 'design', bg: '#330000', fg: '#FF9A00' },
+  { name: 'Photoshop', mark: 'Ps', c: 'photo', bg: '#001E36', fg: '#31A8FF' },
+  { name: 'Claude Design', icon: TOOLS.cd.icon, c: 'tune', bg: '#D97757', fg: '#FFFFFF' },
+  { name: 'Claude Code', icon: TOOLS.cc.icon, c: 'dev', bg: '#D97757', fg: '#FFFFFF' },
+  { name: 'GitHub', icon: TOOLS.gh.icon, c: 'dev', bg: '#181717', fg: '#FFFFFF' },
+  { name: 'ChatGPT', icon: 'url(https://cdn.jsdelivr.net/npm/simple-icons@13/icons/openai.svg)', c: 'ai', bg: '#10A37F', fg: '#FFFFFF' },
+  { name: 'Microsoft 365', img: 'url(assets/logos/microsoft-365.svg)', c: 'prod', bg: '#FFFFFF', fg: '#000000' }
+];
+const TOOL_CATS = {
+  en: { design: 'Design', photo: 'Photo editing', tune: 'Design fine-tuning', ai: 'Artificial Intelligence', dev: 'Development', prod: 'Productivity' },
+  ru: { design: 'Дизайн', photo: 'Редактирование фотографий', tune: 'Подгонка дизайна', ai: 'Искусственный интеллект', dev: 'Разработка', prod: 'Продуктивность' },
+  et: { design: 'Disain', photo: 'Fototöötlus', tune: 'Disaini viimistlemine', ai: 'Tehisintellekt', dev: 'Arendus', prod: 'Produktiivsus' }
+};
 const TAG_META = {
   'Adobe Illustrator': { mark: 'Ai' }, 'Adobe Photoshop': { mark: 'Ps' },
   'UI Design': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/layout-template.svg)' }, 'UI-дизайн': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/layout-template.svg)' }, 'UI-disain': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/layout-template.svg)' },
@@ -461,6 +513,8 @@ class Component extends DCLogic {
   componentDidMount() {
     this.applyTheme(); this.applyLang();
     this.loadTemp();
+    requestAnimationFrame(() => this.typeIn());
+    setTimeout(() => { const x = document.querySelector('#top header h1'); if (x && !x.hasAttribute('data-tv')) { x.setAttribute('data-tv', ''); x.querySelectorAll('.am-hl').forEach(c => c.classList.add('is-in')); } }, 1500);
     this.ytFill = () => {
       // Freelance logo squares play a short muted loop (assets/video/freelance.mp4)
       document.querySelectorAll('#experience .am-exp').forEach(x => {
@@ -473,11 +527,11 @@ class Component extends DCLogic {
         v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true'); v.setAttribute('tabindex', '-1');
         v.setAttribute('disableremoteplayback', '');
         v.poster = 'assets/video/posters/freelance.webp';
-        v.src = 'assets/video/freelance.mp4';
+        (this.flOk = this.flOk || fetch('assets/video/freelance.mp4', { method: 'HEAD' }).then(r => r.ok && /video/.test(r.headers.get('content-type') || '')).catch(() => false))
+          .then(ok => { if (ok) { v.src = 'assets/video/freelance.mp4'; v.play().catch(() => {}); } });
         Object.assign(v.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' });
         v.addEventListener('contextmenu', e => e.preventDefault());
         logo.appendChild(v);
-        v.play().catch(() => {});
       });
     };
     this.ytObs = new MutationObserver(() => this.ytFill());
@@ -499,6 +553,10 @@ class Component extends DCLogic {
     this.clockT = setInterval(() => { const t = this.fmtTallinn(); if (t !== this.state.tlTime) this.setState({ tlTime: t }); }, 1000);
     this.vidMO = new MutationObserver(() => this.mountVideos()); this.vidMO.observe(document.body, { childList: true, subtree: true });
     this.mountVideos();
+    this.featIO = new IntersectionObserver(es => es.forEach(e => { const v = e.target; v.muted = true; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: 0.25 });
+    this.featObs = () => { const v = document.querySelector('[data-feat-video]'); if (v && !v.dataset.io) { v.dataset.io = '1'; v.muted = true; const cv = v.parentElement.querySelector('[data-feat-canvas]'); if (cv) { const ctx = cv.getContext('2d'); const loop = () => { this.featRaf = requestAnimationFrame(loop); if (v.paused || v.readyState < 2) return; const r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1), W = Math.round(r.width * dpr), H = Math.round(r.height * dpr); if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; } const vw = v.videoWidth, vh = v.videoHeight; if (!vw) return; const s = Math.max(W / vw, H / vh), dw = vw * s, dh = vh * s; ctx.drawImage(v, (W - dw) / 2, (H - dh) / 2, dw, dh); if (v.currentTime > 0.05 && !cv.classList.contains('is-on')) cv.classList.add('is-on'); }; loop(); } this.featIO.observe(v); } };
+    this.featObs(); requestAnimationFrame(this.featObs); setTimeout(this.featObs, 300);
+    { const v0 = document.querySelector('[data-feat-video]'); if (v0) { v0.muted = true; v0.play().catch(() => {}); } }
     this.initTallinnGif();
     this.fitFn = () => requestAnimationFrame(() => this.fitText());
     window.addEventListener('resize', this.fitFn); this.fitFn();
@@ -515,6 +573,7 @@ class Component extends DCLogic {
   fitText() {
     const mob = window.innerWidth < 900, els = [...document.querySelectorAll('[data-fit]')];
     els.forEach(el => { el.style.fontSize = ''; });
+    const fol = document.querySelector('[data-fit-follow]'); if (fol) fol.style.fontSize = '';
     if (!mob) return;
     const need = el => {
       const avail = el.parentElement.clientWidth, base = parseFloat(getComputedStyle(el).fontSize);
@@ -527,6 +586,17 @@ class Component extends DCLogic {
       hero.forEach(el => { el.style.fontSize = size + 'px'; });
     }
     els.filter(el => el.dataset.fit === 'shrink').forEach(el => { const m = need(el); if (m.size < m.base) el.style.fontSize = m.size + 'px'; });
+    const role = document.querySelector('#top h1 [data-fit]');
+    if (role) {
+      const avail = role.parentElement.clientWidth, base = parseFloat(getComputedStyle(role).fontSize) || 34;
+      const c = role.cloneNode(true); Object.assign(c.style, { position: 'absolute', visibility: 'hidden', left: '-9999px', top: '0', fontSize: '100px', whiteSpace: 'nowrap', display: 'inline-block' });
+      role.parentElement.appendChild(c);
+      const parts = c.querySelectorAll('.sc-interp');
+      let size = base;
+      Object.values(I18N).forEach(L => { if (parts[0]) parts[0].textContent = L.role; if (parts[1]) parts[1].textContent = L.city; const w = c.scrollWidth; if (w) size = Math.min(size, Math.floor(100 * avail / w * 0.98 * 10) / 10); });
+      c.remove();
+      role.style.fontSize = size + 'px'; if (fol) fol.style.fontSize = size + 'px';
+    }
   }
   initTallinnGif() {
     if (this.tlEl || window.matchMedia('(hover: none)').matches) return;
@@ -555,7 +625,7 @@ class Component extends DCLogic {
       const est = lang && /^(Estonian|Эстонский|Eesti)$/.test(lang.textContent.trim()) ? lang : null;
       const eng = lang && /^(English|Английский|Inglise)$/.test(lang.textContent.trim()) ? lang : null;
       const kvOrg = e.target.closest && e.target.closest('#experience .am-exp');
-      const kv = kvOrg && (e.target.closest('.am-exp__org') || e.target.closest('.am-exp__logo')) && /Kaitsev/.test(kvOrg.querySelector('.am-exp__org').textContent) ? kvOrg : null;
+      const kv = kvOrg && (e.target.closest('.am-exp__org') || e.target.closest('.am-exp__logo')) && /Kaitsev|Estonian Defence|Самообороны/.test(kvOrg.querySelector('.am-exp__org').textContent) ? kvOrg : null;
       const tag = e.target.closest && e.target.closest('#about .am-tag');
       const ai = tag && /Claude (Code|Design)/.test(tag.textContent);
       const hit = (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || eng || kv;
@@ -573,6 +643,8 @@ class Component extends DCLogic {
     document.addEventListener('mouseleave', this.onTlLeave);
   }
   mountStacks() {
+    const st = document.querySelector('#projects [aria-label="SARLE"] .am-proj__title');
+    if (st && !st.querySelector('.am-badge')) { const bd = document.createElement('span'); bd.className = 'am-badge am-badge--outline'; bd.textContent = 'Featured'; Object.assign(bd.style, { marginLeft: '8px', verticalAlign: 'middle', position: 'relative', top: '-1px' }); st.appendChild(bd); }
     document.querySelectorAll('#projects .am-proj__body').forEach(body => {
       if (body.querySelector('.am-stack')) return;
       const card = body.closest('[aria-label]'); const tools = (card && CARD_TOOLS_BY[card.getAttribute('aria-label')]) || CARD_TOOLS;
@@ -621,10 +693,50 @@ class Component extends DCLogic {
     clearInterval(this.clockT); if (this.onTlMove) { window.removeEventListener('mousemove', this.onTlMove); document.removeEventListener('mouseleave', this.onTlLeave); } if (this.tlEl) this.tlEl.remove(); window.removeEventListener('resize', this.fitFn); if (this.vidIO) this.vidIO.disconnect(); if (this.gifIO) this.gifIO.disconnect(); if (this.vidMO) this.vidMO.disconnect();
     window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('keydown', this.onKey); window.removeEventListener('click', this.onDetailClick, true); window.removeEventListener('click', this.onExtLink, true); clearTimeout(this.copyT);
     cancelAnimationFrame(this.raf); cancelAnimationFrame(this.cntRaf);
+    if (this.typeStop) this.typeStop();
+    cancelAnimationFrame(this.featRaf);
   }
   componentDidUpdate(_, prev) {
     if (prev.theme !== this.state.theme) { this.applyTheme(); if (this.cv) this.draw(); }
-    if (prev.lang !== this.state.lang) this.applyLang();
+    if (prev.lang !== this.state.lang) { this.applyLang(); this.typeIn(); }
+  }
+  typeIn() {
+    const h1el = document.querySelector('#top header h1');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { if (h1el) h1el.setAttribute('data-tv', ''); return; }
+    if (this.typeStop) this.typeStop();
+    const roots = [document.querySelector('#top header h1')].filter(Boolean);
+    roots.forEach(r => { r.style.minHeight = r.getBoundingClientRect().height + 'px'; [...r.children].forEach(c => { c.style.minHeight = c.getBoundingClientRect().height + 'px'; }); });
+    const jobs = [];
+    roots.forEach((root, ri) => {
+      const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => n.data.trim() && !(n.parentElement && n.parentElement.closest('sup, .am-hl')) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+      let n; while ((n = w.nextNode())) { const orig = n.data, m = null; jobs.push({ n, orig, full: m ? m[1] : orig, tailText: m ? m[2] : '', step: ri === 0 ? 1 : 3, ms: ri === 0 ? 38 : 12 }); }
+    });
+    if (!jobs.length) { if (h1el) h1el.setAttribute('data-tv', ''); document.querySelectorAll('#top h1 .am-hl').forEach(c => c.classList.add('is-in')); return; }
+    const chips = roots.flatMap(r => [...r.querySelectorAll('.am-hl')]);
+    chips.forEach(c => c.classList.remove('is-in'));
+    if (h1el) h1el.setAttribute('data-tv', '');
+    const showChips = () => chips.forEach(c => { void c.offsetWidth; c.classList.add('is-in'); });
+    const G = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+=<>/\\|{}[]アイウエオカキクケコサシスセソ';
+    const rnd = () => G[Math.floor(Math.random() * G.length)];
+    const cur = document.createElement('span');
+    cur.setAttribute('aria-hidden', 'true');
+    cur.setAttribute('data-tcur', ''); Object.assign(cur.style, { position: 'relative', color: 'transparent' });
+    jobs.forEach(j => { j.ghost = document.createElement('span'); j.ghost.setAttribute('aria-hidden', 'true'); j.ghost.style.color = 'transparent'; j.ghost.textContent = j.full; j.n.parentNode.insertBefore(j.ghost, j.n.nextSibling); if (j.tailText) { j.tail = document.createElement('span'); j.tail.setAttribute('aria-hidden', 'true'); j.tail.textContent = j.tailText; j.n.parentNode.insertBefore(j.tail, j.ghost.nextSibling); } j.n.data = ''; });
+    let ji = 0, ci = 0, t = 0, alive = true;
+    const finish = () => { alive = false; clearTimeout(t); cur.remove(); showChips(); jobs.forEach(j => { j.ghost && j.ghost.remove(); j.tail && j.tail.remove(); }); roots.forEach(r => { r.style.minHeight = ''; [...r.children].forEach(x => { x.style.minHeight = ''; }); }); jobs.forEach(j => { if (j.n.data !== j.orig) j.n.data = j.orig; }); this.typeStop = null; };
+    this.typeStop = finish;
+    const tick = () => {
+      if (!alive) return;
+      const j = jobs[ji];
+      if (!j || !j.n.isConnected) return finish();
+      ci = Math.min(j.full.length, ci + j.step);
+      j.n.data = j.full.slice(0, ci);
+      if (ci < j.full.length) { cur.textContent = j.full[ci]; cur.setAttribute('data-g', /\s/.test(j.full[ci]) ? '' : rnd()); if (cur.previousSibling !== j.n) j.n.parentNode.insertBefore(cur, j.n.nextSibling); j.ghost.textContent = j.full.slice(ci + 1); }
+      else { cur.remove(); j.ghost.remove(); if (j.tail) { j.tail.remove(); j.tail = null; j.n.data = j.orig; } ji++; ci = 0; }
+      if (ji >= jobs.length) return finish();
+      t = setTimeout(tick, j.ms);
+    };
+    t = setTimeout(tick, 120);
   }
   applyTheme(th = this.state.theme) {
     const s = document.documentElement.style;
@@ -872,11 +984,13 @@ class Component extends DCLogic {
     const email = p.email || 'aleks.mezenn@gmail.com', phone = p.phone || '+372 5822 6814';
     const t = {
       ...T, lead: md(T.lead), aboutLead: md(T.aboutLead),
-      exp: T.exp.map(e => ({ ...e, logo: e.org === 'Snape OÜ' ? 'assets/logos/logo-snape.png' : e.org === 'Kaitsevägi' ? 'assets/logos/logo-kaitsevagi.png' : undefined, org: e.org === 'Snape OÜ' ? React.createElement(React.Fragment, null, 'Snape OÜ', React.createElement('span', { className: 'am-badge am-badge--outline', style: { marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: -1 } }, 'Featured')) : e.org, roles: e.roles.map(r => r.bullets ? { ...r, detail: this.richDetail(r, T) } : r) })),
+      exp: T.exp.map(e => ({ ...e, logo: e.org === 'Snape OÜ' ? 'assets/logos/logo-snape.png' : e.kv ? 'assets/logos/logo-kaitsevagi.png' : undefined, org: e.org === 'Snape OÜ' ? React.createElement(React.Fragment, null, 'Snape OÜ', React.createElement('span', { className: 'am-badge am-badge--outline', style: { marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: -1 } }, 'Featured')) : e.org, roles: e.roles.map(r => r.bullets ? { ...r, detail: this.richDetail(r, T) } : r) })),
       about: T.about.map(([title, text], i) => ({ n: '0' + (i + 1), title, text }))
     };
     const urls = [p.sarleUrl || 'https://sarle.ee', p.queenUrl, p.ameztransUrl || 'https://a-meztrans.ee', p.antarraUrl || 'https://antarra.ee'];
     return {
+      curYear: new Date().getFullYear(),
+      featUrl: urls[0],
       temp: this.state.temp,
       tallinnTime: this.state.tlTime || this.fmtTallinn(),
       t, mobile, desktop: !mobile, menuOpen, plinkoOpen, score, active, soundOn: sound,
@@ -884,10 +998,7 @@ class Component extends DCLogic {
       mainPadT: mobile ? '64px' : '112px',
       hdrScore: plinkoOpen ? { mh: '0px', mt: '0px', o: 0, t: 'translateY(-4px)' } : { mh: '20px', mt: '4px', o: 1, t: 'none' },
       toolText: T.toolsText.split(/(\[[a-z]+\])/).filter(Boolean).map(x => { const m = x.match(/^\[([a-z]+)\]$/); return m && TOOLS[m[1]] ? { isTool: true, ...TOOLS[m[1]] } : { isText: true, t: x }; }),
-      allTools: ALL_TOOLS.map(k => TOOLS[k]).concat([
-        { name: 'Graphic design', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/pen-tool.svg)' }, { name: 'Web design', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/monitor.svg)' }, { name: 'Packaging', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' },
-        { name: 'Branding', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/gem.svg)' }, { name: 'Print', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/printer.svg)' }, { name: 'SMM', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' }, { name: 'SEO', icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/search.svg)' }
-      ]),
+      allTools: TOOL_LIST.map(x => ({ ...x, cat: (TOOL_CATS[lang] || TOOL_CATS.en)[x.c] })),
       toolsOpen: this.state.toolsOpen, toolsHidden: !this.state.toolsOpen,
       toolsRows: this.state.toolsOpen ? '1fr' : '0fr', toolsOpacity: this.state.toolsOpen ? 1 : 0,
       toolsBtn: this.state.toolsOpen ? T.showLess : T.showAll, toolsIcon: this.state.toolsOpen ? 'chevron-up' : 'chevron-right',
