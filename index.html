@@ -258,7 +258,7 @@ html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--prim
           <h3 style="margin:0;font:var(--type-meta);color:var(--text-subtle)">{{ t.langsLabel }}</h3>
           <div style="grid-column:span 2;min-width:0;display:flex;flex-wrap:wrap;gap:6px">
             <sc-for list="{{ t.spoken }}" as="sp" hint-placeholder-count="3">
-              <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Tag" hint-size="80px,24px">{{ sp }}</x-import>
+              <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Tag" hint-size="80px,24px"><span data-lang-name="1">{{ sp.n }}</span><span style="margin-left:5px;color:var(--text-subtle)">— {{ sp.l }}</span></x-import>
             </sc-for>
           </div>
         </div>
@@ -382,7 +382,7 @@ const I18N = {
     school1: 'Tallinn Polytechnic School', nowW: 'now', dur1: '4 years', dur2: '2.5 years', school2: 'Tallinn Old Town Art Centre Design School',
     edu: 'Vocational secondary education · IT specialist', eduNote: 'Information and communication technology',
     edu2: 'Continuing education in Media Design · Graphic & Web Design', edu2note: 'Coursework in drawing, painting, colour theory, composition and graphic design software.',
-    spoken: ['Russian', 'Estonian', 'English'],
+    spoken: [{ n: 'Russian', l: 'C2' }, { n: 'English', l: 'C1' }, { n: 'Estonian', l: 'B1' }],
     projTitle: 'Selected work', visit: 'Visit site', wip: 'Work in progress', projLead: 'My recent projects.', featLabel: 'Latest project', featDesc: 'Art gallery in Tallinn Old Town',
     proj: ['Art gallery in Tallinn Old Town', 'International beauty pageant', 'Transport company', 'Cattery of Oriental and Siamese cats in Estonia'],
     onRequest: 'More work is available on request.', serviceNote: 'Part of it was made alongside my service.',
@@ -415,7 +415,7 @@ const I18N = {
     school1: 'Таллиннский политехникум', nowW: 'ныне', dur1: '4 года', dur2: '2,5 года', school2: 'Школа дизайна Художественного центра Старого Таллинна',
     edu: 'Профессиональное среднее образование · IT специалист', eduNote: 'Информационные и коммуникационные технологии',
     edu2: 'Дополнительное образование в медиадизайне · Графический и веб-дизайн', edu2note: 'Курсы по рисунку, живописи, теории цвета, композиции и программам для графического дизайна.',
-    spoken: ['Русский', 'Эстонский', 'Английский'],
+    spoken: [{ n: 'Русский', l: 'C2' }, { n: 'Английский', l: 'C1' }, { n: 'Эстонский', l: 'B1' }],
     projTitle: 'Избранные работы', visit: 'Открыть сайт', wip: 'В работе', projLead: 'Мои недавние проекты.', featLabel: 'Последний проект', featDesc: 'Художественная галерея в Старом Таллинне',
     proj: ['Художественная галерея в Старом Таллинне', 'Международный конкурс красоты', 'Транспортная компания', 'Питомник ориентальных и сиамских кошек в Эстонии'],
     onRequest: 'Другие работы — по запросу.', serviceNote: 'Часть из них сделана параллельно со службой.',
@@ -448,7 +448,7 @@ const I18N = {
     school1: 'Tallinna Polütehnikum', nowW: 'praegu', dur1: '4 aastat', dur2: '2,5 aastat', school2: 'Tallinna Vanalinna Kunstikeskuse Disainikool',
     edu: 'Kutsekeskharidus · IT specialist', eduNote: 'Info- ja kommunikatsioonitehnoloogia',
     edu2: 'Täiendõpe meediadisainis · Graafiline ja veebidisain', edu2note: 'Õpingud joonistamises, maalimises, värviõpetuses, kompositsioonis ja graafilise disaini tarkvaras.',
-    spoken: ['Vene', 'Eesti', 'Inglise'],
+    spoken: [{ n: 'Vene', l: 'C2' }, { n: 'Inglise', l: 'C1' }, { n: 'Eesti', l: 'B1' }],
     projTitle: 'Valitud tööd', visit: 'Ava leht', wip: 'Töös', projLead: 'Minu hiljutised projektid.', featLabel: 'Viimane projekt', featDesc: 'Kunstigalerii Tallinna vanalinnas',
     proj: ['Kunstigalerii Tallinna vanalinnas', 'Rahvusvaheline iludusvõistlus', 'Transpordiettevõte', 'Orientaal- ja siiami kasside kasvandus Eestis'],
     onRequest: 'Rohkem töid saadan soovi korral.', serviceNote: 'Osa neist valmis ajateenistuse kõrvalt.',
@@ -626,8 +626,8 @@ class Component extends DCLogic {
     this.onTlMove = e => {
       const row = e.target.closest && e.target.closest('#contact .am-row');
       const lang = e.target.closest && e.target.closest('#basics .am-tag');
-      const est = lang && /^(Estonian|Эстонский|Eesti)$/.test(lang.textContent.trim()) ? lang : null;
-      const eng = lang && /^(English|Английский|Inglise)$/.test(lang.textContent.trim()) ? lang : null;
+      const est = lang && /^(Estonian|Эстонский|Eesti)$/.test((lang.querySelector('[data-lang-name]') || lang).textContent.trim()) ? lang : null;
+      const eng = lang && /^(English|Английский|Inglise)$/.test((lang.querySelector('[data-lang-name]') || lang).textContent.trim()) ? lang : null;
       const kvOrg = e.target.closest && e.target.closest('#experience .am-exp');
       const kv = kvOrg && (e.target.closest('.am-exp__org') || e.target.closest('.am-exp__logo')) && /Kaitsev|Estonian Defence|Самообороны/.test(kvOrg.querySelector('.am-exp__org').textContent) ? kvOrg : null;
       const tag = e.target.closest && e.target.closest('#about .am-tag');
