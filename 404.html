@@ -45,13 +45,24 @@ a:hover{color:var(--link-hover)}
 .am-back:hover{color:var(--text-strong) !important}
 .am-back:hover .am-icon{transform:translateX(-3px)}
 @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
+
+.am-btn--lg{height:36px !important}
+
+@media (max-width:899px){body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:110px;z-index:19;pointer-events:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}}
+
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary){border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,#262626 0%,#1E1E1E 55%,#1C1C1C 100%);border-top-color:rgba(255,255,255,.18);border-radius:9px;color:#F2F2F2;font-weight:600;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary) .am-icon{color:var(--text-muted)}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:linear-gradient(180deg,#2D2D2D 0%,#252525 55%,#232323 100%);border-color:rgba(255,255,255,.16);border-top-color:rgba(255,255,255,.24);color:#fff}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover .am-icon{color:var(--text-strong)}
+html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--primary){background:#FFFFFF;border-color:rgba(0,0,0,.12);color:#111;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(0,0,0,.06)}
+html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:#F5F5F5;border-color:rgba(0,0,0,.2);color:#000}
 </style>
 </helmet>
 
 <div style="min-height:100vh;background:var(--surface-page);color:var(--text-body);font:var(--type-body);letter-spacing:var(--ls-body)">
 
   <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-    <div style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+    <div style="position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 4px 8px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:0 4px 12px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)">
       <div role="group" aria-label="Language" ref="{{ setVGroup }}" style="position:relative;display:flex;flex-direction:column;gap:6px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ vInd.w }};height:{{ vInd.h }};transform:{{ vInd.tr }};border-radius:{{ vIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
@@ -70,7 +81,7 @@ a:hover{color:var(--link-hover)}
   </sc-if>
 
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:var(--shadow-md)">
+    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:1px solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:0 4px 12px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)">
       <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:1px solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
@@ -105,13 +116,13 @@ a:hover{color:var(--link-hover)}
       </h1>
       <p style="margin:24px 0 0;max-width:52ch;color:var(--text-muted);text-wrap:pretty">{{ t.p1 }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:32px">
-        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="primary" size="lg" icon="house" href="./" hint-size="150px,42px">{{ t.home }}</x-import>
+        <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="secondary" size="lg" icon="house" href="./" hint-size="150px,42px">{{ t.home }}</x-import>
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="lg" icon="user" href="about/" hint-size="110px,42px">{{ t.navAbout }}</x-import>
         <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.Button" variant="ghost" size="lg" icon="file-text" href="cv/" hint-size="70px,42px">CV</x-import>
       </div>
     </div>
     <footer style="padding-top:20px;border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font:var(--type-meta);color:var(--text-subtle)">
-      <span>© 2026 Aleksandr Mežennõi</span>
+      <span>© {{ curYear }} Aleksandr Mežennõi</span>
       <span>=)</span>
     </footer>
   </main>
@@ -121,19 +132,19 @@ a:hover{color:var(--link-hover)}
 const I18N = {
   en: {
     navHome: 'Portfolio', navAbout: 'About me', light: 'Light theme', dark: 'Dark theme',
-    code: 'Error', h1a: "This page doesn't exist.", h1b: 'Or it rode off somewhere.',
+    code: 'Error', h1a: "This page doesn't exist.", h1b: 'No need to poke around here.',
     p1: 'The link may be outdated or the page has moved. Everything else is right where it should be.',
     home: 'Back to portfolio'
   },
   ru: {
     navHome: 'Портфолио', navAbout: 'Обо мне', light: 'Светлая тема', dark: 'Тёмная тема',
-    code: 'Ошибка', h1a: 'Такой страницы нет.', h1b: 'Или она уехала кататься.',
+    code: 'Ошибка', h1a: 'Такой страницы нет.', h1b: 'Не нужно тут ковыряться.',
     p1: 'Возможно, ссылка устарела или страница переехала. Всё остальное на месте.',
     home: 'На главную'
   },
   et: {
     navHome: 'Portfoolio', navAbout: 'Minust', light: 'Hele teema', dark: 'Tume teema',
-    code: 'Viga', h1a: 'Sellist lehte pole.', h1b: 'Või see sõitis kuhugi minema.',
+    code: 'Viga', h1a: 'Sellist lehte pole.', h1b: 'Siin pole vaja sorida.',
     p1: 'Link võib olla aegunud või leht on kolinud. Kõik muu on omal kohal.',
     home: 'Avalehele'
   }
@@ -222,6 +233,7 @@ class Component extends DCLogic {
     const T = I18N[lang] || I18N.en;
     const i = Math.max(0, LANGS.findIndex(([c]) => c === lang)), last = i === LANGS.length - 1;
     return {
+      curYear: new Date().getFullYear(),
       goHome: () => { window.location.href = './'; },
       goCv: () => { window.location.href = 'cv/'; },
       goAbout: () => { window.location.href = 'about/'; },
