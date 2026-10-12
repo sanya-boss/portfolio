@@ -20,3 +20,5 @@ body::after{bottom:0;height:112px;background:linear-gradient(to top,color-mix(in
 @media print{body::before,body::after{display:none}}
 /* phones: no blur at the top edge (bottom blur stays) */
 @media (max-width:899px){body::before{display:none}}
+/* desktop: no blur at the bottom edge (phones use the per-page bottom blur under the dock) */
+@media (min-width:900px){body::after{display:none}}
