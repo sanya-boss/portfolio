@@ -18,3 +18,5 @@ body::before,body::after{content:"";position:fixed;left:0;right:0;z-index:15;poi
 body::before{top:0;height:56px;background:linear-gradient(to bottom,color-mix(in srgb,var(--surface-page) 65%,transparent),transparent);-webkit-mask-image:linear-gradient(to bottom,#000 15%,transparent);mask-image:linear-gradient(to bottom,#000 15%,transparent)}
 body::after{bottom:0;height:112px;background:linear-gradient(to top,color-mix(in srgb,var(--surface-page) 65%,transparent),transparent);-webkit-mask-image:linear-gradient(to top,#000 20%,transparent);mask-image:linear-gradient(to top,#000 20%,transparent)}
 @media print{body::before,body::after{display:none}}
+/* phones: no blur at the top edge (bottom blur stays) */
+@media (max-width:899px){body::before{display:none}}
