@@ -81,6 +81,7 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
 .am-stack{flex-wrap:wrap;gap:6px;padding-left:0}
 .am-stack .am-stack__i,.am-stack:hover .am-stack__i,.am-stack:hover .am-stack__i:first-child{margin-left:0;gap:6px;height:28px;padding:0 10px 0 6px;transition:none;border-color:var(--border-default);background:var(--surface-raised);box-shadow:none}
 .am-stack .am-stack__t{max-width:none;opacity:1;transition:none}
+.am-stack .am-stack__i,.am-stack:hover .am-stack__i,.am-stack:hover .am-stack__i:first-child{height:24px;padding:0 7px;gap:6px;border-radius:var(--radius-sm);border-color:var(--border-default);background:var(--surface-raised);box-shadow:none;color:var(--text-strong);font-weight:500}
 }
 #projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions a{pointer-events:none;cursor:not-allowed;opacity:.55;border-style:dashed}
 #projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions{cursor:not-allowed}
@@ -574,7 +575,7 @@ class Component extends DCLogic {
     const mob = window.innerWidth < 900, els = [...document.querySelectorAll('[data-fit]')];
     els.forEach(el => { el.style.fontSize = ''; });
     const fol = document.querySelector('[data-fit-follow]'); if (fol) fol.style.fontSize = '';
-    if (!mob) return;
+    if (!mob) { if (this.typeStop) { const r = document.querySelector('#top header h1'); if (r) { const xs = [r, ...r.children]; xs.forEach(x => { x.style.minHeight = ''; }); const hs = xs.map(x => x.getBoundingClientRect().height); xs.forEach((x, n) => { x.style.minHeight = hs[n] + 'px'; }); } } return; }
     const need = el => {
       const avail = el.parentElement.clientWidth, base = parseFloat(getComputedStyle(el).fontSize);
       el.style.fontSize = '100px'; const w = el.scrollWidth; el.style.fontSize = '';
@@ -597,6 +598,7 @@ class Component extends DCLogic {
       c.remove();
       role.style.fontSize = size + 'px'; if (fol) fol.style.fontSize = size + 'px';
     }
+    if (this.typeStop) { const r = document.querySelector('#top header h1'); if (r) { const xs = [r, ...r.children]; xs.forEach(x => { x.style.minHeight = ''; }); const hs = xs.map(x => x.getBoundingClientRect().height); xs.forEach((x, n) => { x.style.minHeight = hs[n] + 'px'; }); } }
   }
   initTallinnGif() {
     if (this.tlEl || window.matchMedia('(hover: none)').matches) return;
