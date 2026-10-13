@@ -237,7 +237,17 @@ class Component extends DCLogic {
     const jobs = [];
     roots.forEach((root, ri) => {
       const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => n.data.trim() && !(n.parentElement && n.parentElement.closest('sup')) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
-      let n; while ((n = w.nextNode())) jobs.push({ n, full: n.data, step: ri === 0 ? 1 : 3, ms: ri === 0 ? 38 : 12 });
+      let n; while ((n = w.nextNode())) {
+        const orig = n.data, rg = document.createRange(); let full = orig, top = null;
+        for (let k = 0; k < orig.length; k++) {
+          if (orig[k] === ' ' || (k > 0 && orig[k - 1] !== ' ')) continue;
+          rg.setStart(n, k); rg.setEnd(n, k + 1); const r = rg.getClientRects()[0]; if (!r) continue;
+          if (top !== null && r.top > top + r.height / 2 && k > 0 && orig[k - 1] === ' ') full = full.slice(0, k - 1) + '\n' + full.slice(k);
+          top = r.top;
+        }
+        if (full !== orig && n.parentElement) n.parentElement.closest('h1 > *').style.whiteSpace = 'pre-line';
+        jobs.push({ n, orig, full, step: ri === 0 ? 1 : 3, ms: ri === 0 ? 38 : 12 });
+      }
     });
     if (!jobs.length) return;
     const G = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+=<>/\\|{}[]アイウエオカキクケコサシスセソ';
@@ -247,7 +257,7 @@ class Component extends DCLogic {
     cur.setAttribute('data-tcur', ''); Object.assign(cur.style, { position: 'relative', color: 'transparent' });
     jobs.forEach(j => { j.ghost = document.createElement('span'); j.ghost.setAttribute('aria-hidden', 'true'); j.ghost.style.color = 'transparent'; j.ghost.textContent = j.full; j.n.parentNode.insertBefore(j.ghost, j.n.nextSibling); j.n.data = ''; });
     let ji = 0, ci = 0, t = 0, alive = true;
-    const finish = () => { alive = false; clearTimeout(t); cur.remove(); jobs.forEach(j => j.ghost && j.ghost.remove()); roots.forEach(r => { r.style.minHeight = ''; [...r.children].forEach(x => { x.style.minHeight = ''; }); }); jobs.forEach(j => { if (j.n.data !== j.full) j.n.data = j.full; }); this.typeStop = null; };
+    const finish = () => { alive = false; clearTimeout(t); cur.remove(); jobs.forEach(j => j.ghost && j.ghost.remove()); roots.forEach(r => { r.style.minHeight = ''; [...r.children].forEach(x => { x.style.minHeight = ''; x.style.whiteSpace = ''; }); }); jobs.forEach(j => { if (j.n.data !== j.orig) j.n.data = j.orig; }); this.typeStop = null; };
     this.typeStop = finish;
     const tick = () => {
       if (!alive) return;
