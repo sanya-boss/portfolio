@@ -43,7 +43,7 @@ a{color:var(--link);text-decoration:none}
 a:hover{color:var(--link-hover)}
 .am-exp__roles{border-left-color:transparent !important}
 .am-exp__role:not(:last-child)::after{content:"";position:absolute;left:-26px;top:0;bottom:0;border-left:1px solid var(--border-default)}
-.am-exp__detail{overflow:hidden;animation:amDetailIn 380ms cubic-bezier(.22,1,.36,1) both}
+.am-exp__detail{white-space:pre-line;overflow:hidden;animation:amDetailIn 380ms cubic-bezier(.22,1,.36,1) both}
 @keyframes amDetailIn{from{max-height:0;margin-top:0;margin-bottom:0;opacity:0;transform:translateY(-4px)}to{max-height:600px;opacity:1;transform:none}}
 .am-iconbtn{display:inline-flex;align-items:center;justify-content:center}
 .sc-host-x:has(> .am-iconbtn){display:flex;align-items:center;justify-content:center}
@@ -374,7 +374,7 @@ const I18N = {
     expTitle: 'Story so far', expLead: '5+ years of hands-on experience.',
     exp: [
       { org: 'Freelance', current: true, roles: [{ title: 'Freelance Designer', detail: 'Building this landing page and continuing freelance work.', meta: 'Present · Remote · Full-time' }] },
-      { org: 'Estonian Defence Forces', kv: true, roles: [{ title: 'Conscript service', meta: '01.2026 — 08.2026', detail: 'I served in the Estonian Defence Forces, first in the Kuperjanov Infantry Battalion in Võru and then in the Staff and Signal Company in Tartu. Whenever possible, I kept working as a freelance designer alongside my service — collaborating with existing clients and taking on new projects.' }] },
+      { org: 'Estonian Defence Forces', kv: true, roles: [{ title: 'Conscript service', meta: '01.2026 — 08.2026', detail: 'I served in the Estonian Defence Forces, first in the Kuperjanov Infantry Battalion in Võru and then in the Staff and Signal Company in Tartu. Whenever possible, I kept working as a freelance designer alongside my service — collaborating with existing clients and taking on new projects.\n\nI took part in Exercise Kevadtorm 2026, where I spent a week with American service members. Great guys.' }] },
       { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 months · Full-time', bullets: ['Designed user interfaces with a focus on clear layouts and visual consistency.', 'Created print materials, from initial concepts to production-ready artwork.', 'Developed social media graphics, promotional visuals and presentations.', 'Designed packaging, balancing brand identity, readability and product presentation.', 'Worked across digital and print formats, adapting designs to different channels and requirements.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Microsoft 365'], areas: ['UI Design', 'Print Design', 'Social Media', 'Packaging', 'Presentations'] }] },
       { org: 'Freelance', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Remote' }] }
     ],
@@ -407,7 +407,7 @@ const I18N = {
     expTitle: 'Опыт', expLead: 'Практический опыт 5+ лет.',
     exp: [
       { org: 'Фриланс', current: true, roles: [{ title: 'Freelance Designer', detail: 'Создаю этот лендинг и продолжаю работать на фрилансе.', meta: 'Сейчас · Удалённо · Полная занятость' }] },
-      { org: 'Силы Самообороны Эстонии', kv: true, roles: [{ title: 'Срочная служба', meta: '01.2026 — 08.2026', detail: 'Служил в Силах обороны Эстонии — сначала в пехотном батальоне Куперьянова в Выру, затем в штабной роте и роте связи в Тарту. При возможности параллельно со службой продолжал работать фриланс-дизайнером: сотрудничал с текущими клиентами и брал новые заказы.' }] },
+      { org: 'Силы Самообороны Эстонии', kv: true, roles: [{ title: 'Срочная служба', meta: '01.2026 — 08.2026', detail: 'Служил в Силах обороны Эстонии — сначала в пехотном батальоне Куперьянова в Выру, затем в штабной роте и роте связи в Тарту. При возможности параллельно со службой продолжал работать фриланс-дизайнером: сотрудничал с текущими клиентами и брал новые заказы.\n\nПоучаствовал в учениях Kevadtorm 2026, где провёл неделю с американскими военнослужащими. Классные ребята.' }] },
       { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 месяцев · Полная занятость', bullets: ['Проектировал интерфейсы с упором на понятную вёрстку и визуальную целостность.', 'Создавал полиграфию — от первых концепций до макетов, готовых к печати.', 'Разрабатывал графику для соцсетей, рекламные визуалы и презентации.', 'Проектировал упаковку, балансируя айдентику бренда, читаемость и подачу продукта.', 'Работал с цифровыми и печатными форматами, адаптируя дизайн под разные каналы и требования.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Microsoft 365'], areas: ['UI-дизайн', 'Полиграфия', 'Соцсети', 'Упаковка', 'Презентации'] }] },
       { org: 'Фриланс', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Удалённо' }] }
     ],
@@ -440,7 +440,7 @@ const I18N = {
     expTitle: 'Kogemus', expLead: '5+ aastat praktilist kogemust.',
     exp: [
       { org: 'Vabakutseline', current: true, roles: [{ title: 'Freelance Designer', detail: 'Loon seda maandumislehte ja jätkan vabakutselisena.', meta: 'Praegu · Kaugtöö · Täistööaeg' }] },
-      { org: 'Kaitsevägi', kv: true, roles: [{ title: 'Ajateenistus', meta: '01.2026 — 08.2026', detail: 'Teenisin Eesti Kaitseväes, algul Kuperjanovi jalaväepataljonis Võrus ning seejärel staabi- ja sidekompaniis Tartus. Võimaluse korral jätkasin teenistuse kõrvalt vabakutselise disainerina, tehes koostööd olemasolevate klientidega ja võttes vastu uusi tellimusi.' }] },
+      { org: 'Kaitsevägi', kv: true, roles: [{ title: 'Ajateenistus', meta: '01.2026 — 08.2026', detail: 'Teenisin Eesti Kaitseväes, algul Kuperjanovi jalaväepataljonis Võrus ning seejärel staabi- ja sidekompaniis Tartus. Võimaluse korral jätkasin teenistuse kõrvalt vabakutselise disainerina, tehes koostööd olemasolevate klientidega ja võttes vastu uusi tellimusi.\n\nOsalesin õppusel Kevadtorm 2026, kus veetsin nädala koos Ameerika kaitseväelastega. Väga ägedad kutid.' }] },
       { org: 'Snape OÜ', roles: [{ title: 'Graphic & Brand Designer', meta: '2025 · 6 kuud · Täistööaeg', bullets: ['Kujundasin kasutajaliideseid, keskendudes selgele paigutusele ja visuaalsele järjepidevusele.', 'Lõin trükimaterjale algsetest kontseptsioonidest trükivalmis failideni.', 'Arendasin sotsiaalmeedia graafikat, reklaamvisuaale ja esitlusi.', 'Kujundasin pakendeid, tasakaalustades brändi identiteeti, loetavust ja toote esitlust.', 'Töötasin nii digitaalsete kui ka trükiformaatidega, kohandades disaini eri kanalite ja nõuete järgi.'], tools: ['Adobe Illustrator', 'Adobe Photoshop', 'ChatGPT', 'Canva', 'Microsoft 365'], areas: ['UI-disain', 'Trükidisain', 'Sotsiaalmeedia', 'Pakendid', 'Esitlused'] }] },
       { org: 'Vabakutseline', roles: [{ title: 'Freelance Designer', meta: '2021 — 2025 · Kaugtöö' }] }
     ],
@@ -632,8 +632,18 @@ class Component extends DCLogic {
       const kv = kvOrg && (e.target.closest('.am-exp__org') || e.target.closest('.am-exp__logo')) && /Kaitsev|Estonian Defence|Самообороны/.test(kvOrg.querySelector('.am-exp__org').textContent) ? kvOrg : null;
       const tag = e.target.closest && e.target.closest('#about .am-tag');
       const ai = tag && /Claude (Code|Design)/.test(tag.textContent);
-      const hit = (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || eng || kv;
-      const src = ai ? 'assets/easter-eggs/ai-slop.webp' : kv ? 'assets/easter-eggs/kv-meme.webp' : eng ? 'assets/easter-eggs/america.webp' : 'assets/easter-eggs/estonia.webp';
+      const det = e.target.closest && e.target.closest('#experience .am-exp__detail');
+      let usa = null;
+      if (det) {
+        const m = /американскими военнослужащими|American service members|Ameerika kaitseväelastega/.exec(det.textContent);
+        if (m) {
+          const w = document.createTreeWalker(det, NodeFilter.SHOW_TEXT); let n, off = 0, rg = null;
+          while ((n = w.nextNode())) { const L = n.nodeValue.length; if (m.index < off + L) { const s0 = m.index - off; if (s0 + m[0].length <= L) { rg = document.createRange(); rg.setStart(n, s0); rg.setEnd(n, s0 + m[0].length); } break; } off += L; }
+          if (rg && [...rg.getClientRects()].some(r => e.clientX >= r.left - 2 && e.clientX <= r.right + 2 && e.clientY >= r.top - 2 && e.clientY <= r.bottom + 2)) usa = det;
+        }
+      }
+      const hit = usa || (e.target.closest && e.target.closest('[data-tallinn]')) || (row && /Tallinn/.test(row.textContent) ? row : null) || (ai ? tag : null) || est || eng || kv;
+      const src = ai ? 'assets/easter-eggs/ai-slop.webp' : kv ? 'assets/easter-eggs/kv-meme.webp' : (eng || usa) ? 'assets/easter-eggs/america.webp' : 'assets/easter-eggs/estonia.webp';
       tx = e.clientX + 18; ty = e.clientY + 18;
       const w = 182, hh = el.offsetHeight || 160;
       if (tx + w > window.innerWidth - 8) tx = e.clientX - w - 18;

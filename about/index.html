@@ -59,6 +59,10 @@ a:hover{color:var(--link-hover)}
 @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
 
 .am-btn--lg{height:36px !important}
+.am-tlgif{position:fixed;left:0;top:0;z-index:60;width:180px;pointer-events:none;border-radius:var(--radius-md);border:1px solid var(--border-default);box-shadow:var(--shadow-lg);overflow:hidden;background:var(--surface-card);opacity:0;transform:translate3d(-999px,-999px,0) scale(.85);transition:opacity 200ms cubic-bezier(.22,1,.36,1)}
+.am-tlgif img{display:block;width:100%;height:auto}
+.am-tlgif.is-on{opacity:1}
+@media (hover:none){.am-tlgif{display:none}}
 
 @media (max-width:899px){body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:110px;z-index:19;pointer-events:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}}
 
@@ -147,7 +151,7 @@ html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--prim
 
     <section style="margin-top:var(--section-gap)">
       <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.SectionHeader" title="{{ t.offTitle }}" hint-size="100%,32px"></x-import>
-      <p style="margin:0;color:var(--text-muted);text-wrap:pretty">{{ t.p4 }}</p>
+      <p style="margin:0;color:var(--text-muted);text-wrap:pretty"><sc-for list="{{ t.p4 }}" as="q" hint-placeholder-count="1"><sc-if value="{{ q.t }}"><span>{{ q.t }}</span></sc-if><sc-if value="{{ q.c }}"><span style="display:inline-flex;align-items:center;height:22px;padding:0 7px;vertical-align:1px;border-radius:var(--radius-sm);border:1px solid var(--border-default);background:var(--surface-raised);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);white-space:nowrap;font-size:13px;line-height:1;color:var(--text-subtle)">{{ q.c }}</span></sc-if><sc-if value="{{ q.u }}"><span data-usa="1" style="cursor:default">{{ q.u }}</span></sc-if></sc-for></p>
     </section>
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:48px">
@@ -181,7 +185,7 @@ const I18N = {
     p2: "I enjoy figuring out all kinds of tasks: inventing a brand's character, designing packaging, thinking through an interface or turning a layout into a working website. It's especially satisfying to see my work out in real life — on a shelf, on the street or on a screen.",
     p3: 'At Tallinna Polütehnikum I studied to become an IT specialist. Design I learned separately — at Tallinna Vanalinna Kunstikeskuse Disainikool and in practice, working on client projects. That experience helps me connect visual ideas with technical execution and run projects on my own, from concept to finished result.',
     offTitle: 'Outside of work',
-    p4: "Motorcycles, trips and plans to see more of the world. One of my nearest goals is a journey across the USA: Las Vegas, the roads of Nevada and the mountains of California. I want to feel what life is like across the ocean — and, further ahead, to try living and working there.",
+    p4: [{ t: 'Motorcycles, trips and plans to see more of the world. Some of my nearest goals: find a job ' }, { c: 'really hard' }, { t: ', buy a car, visit the USA, get a green card ' }, { c: 'that would be great' }, { t: '. ' }, { u: 'I love America.' }, { t: " And most importantly — don't waste my life." }],
     seeWork: 'See projects',
     line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.', phone: 'Phone', location: 'Location'
   },
@@ -192,7 +196,7 @@ const I18N = {
     p2: 'Мне нравится разбираться в разных задачах: придумывать характер бренда, оформлять упаковку, продумывать интерфейс или превращать макет в работающий сайт. Особенно приятно видеть свою работу в жизни — на полке, на улице или на экране.',
     p3: 'В Tallinna Polütehnikum учился по специальности IT-специалиста. Дизайн изучал отдельно — в Tallinna Vanalinna Kunstikeskuse Disainikool и на практике, работая над проектами клиентов. Этот опыт помогает мне соединять визуальные идеи с технической реализацией и самостоятельно вести проекты от концепции до готового результата.',
     offTitle: 'За пределами работы',
-    p4: 'Мотоциклы, поездки и планы увидеть больше мира. Одна из ближайших целей — путешествие по США: Лас-Вегас, дороги Невады и горы Калифорнии. Хочется почувствовать жизнь за океаном, а в перспективе — попробовать там пожить и поработать.',
+    p4: [{ t: 'Мотоциклы, поездки и планы увидеть больше мира. Одни из ближайших целей — найти работу ' }, { c: 'оч сложно' }, { t: ', купить машину, посетить США, получить грин-карту ' }, { c: 'было бы супер' }, { t: '. ' }, { u: 'Люблю Америку.' }, { t: ' И самое главное — не профукать жизнь.' }],
     seeWork: 'Проекты',
     line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.', phone: 'Телефон', location: 'Город'
   },
@@ -203,7 +207,7 @@ const I18N = {
     p2: 'Mulle meeldib süveneda erinevatesse ülesannetesse: mõelda välja brändi iseloom, kujundada pakend, läbi mõelda kasutajaliides või muuta makett töötavaks veebileheks. Eriti tore on näha oma tööd päriselus — poeriiulil, tänaval või ekraanil.',
     p3: 'Tallinna Polütehnikumis õppisin IT-spetsialistiks. Disaini õppisin eraldi — Tallinna Vanalinna Kunstikeskuse Disainikoolis ja praktikas, klientide projektide kallal töötades. See kogemus aitab mul ühendada visuaalsed ideed tehnilise teostusega ja viia projekte iseseisvalt kontseptsioonist valmis tulemuseni.',
     offTitle: 'Väljaspool tööd',
-    p4: 'Mootorrattad, reisid ja plaanid näha rohkem maailma. Üks lähimaid eesmärke on reis läbi USA: Las Vegas, Nevada teed ja California mäed. Tahan tunda elu teisel pool ookeani ning tulevikus proovida seal elada ja töötada.',
+    p4: [{ t: 'Mootorrattad, reisid ja plaanid näha rohkem maailma. Mõned lähimad eesmärgid: leida töö ' }, { c: 'väga raske' }, { t: ', osta auto, külastada USA-d, saada green card ' }, { c: 'oleks super' }, { t: '. ' }, { u: 'Armastan Ameerikat.' }, { t: ' Ja mis kõige tähtsam — mitte elu raisku lasta.' }],
     seeWork: 'Projektid',
     line: 'Alati liinil.', almost: 'peaaegu alati', contactLead: 'Projekt mõttes? Kirjuta või helista — vastan ise.', phone: 'Telefon', location: 'Asukoht'
   }
@@ -259,6 +263,7 @@ class Component extends DCLogic {
     t = setTimeout(tick, 120);
   }
   componentDidMount() {
+    this.initUsa();
     this.applyTheme(); this.applyLang();
     requestAnimationFrame(() => this.typeIn());
     this.onResize = () => { const m = window.innerWidth < 900; if (m !== this.state.mobile) this.setState({ mobile: m }); };
@@ -267,7 +272,33 @@ class Component extends DCLogic {
     window.addEventListener('resize', this.fitFn); this.fitFn(); document.fonts && document.fonts.ready.then(this.fitFn);
     this.clockT = setInterval(() => { const v = this.fmt(); if (v !== this.state.tl) this.setState({ tl: v }); }, 1000);
   }
-  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('resize', this.fitFn); clearInterval(this.clockT); }
+  initUsa() {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    const el = document.createElement('div'); el.className = 'am-tlgif'; el.setAttribute('aria-hidden', 'true');
+    const img = document.createElement('img'); img.alt = ''; img.src = '../assets/easter-eggs/america.webp'; el.appendChild(img);
+    document.body.appendChild(el); this.usaEl = el;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let tx = 0, ty = 0, x = 0, y = 0, s = .85, ts = .85, on = false, raf = 0;
+    const tick = () => {
+      const k = reduce ? 1 : 0.18;
+      x += (tx - x) * k; y += (ty - y) * k; s += (ts - s) * (reduce ? 1 : 0.2);
+      el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) scale(' + s + ')';
+      if (on || Math.abs(tx - x) + Math.abs(ty - y) > 0.5 || Math.abs(ts - s) > 0.01) raf = requestAnimationFrame(tick); else raf = 0;
+    };
+    this.onUsaMove = e => {
+      const hit = e.target.closest && e.target.closest('[data-usa]');
+      if (hit) {
+        tx = e.clientX + 18; ty = e.clientY + 18;
+        const w = el.offsetWidth || 180, hh = el.offsetHeight || 120;
+        if (tx + w > window.innerWidth - 8) tx = e.clientX - w - 18;
+        if (ty + hh > window.innerHeight - 8) ty = e.clientY - hh - 18;
+        if (!on) { on = true; x = tx; y = ty; ts = 1; el.classList.add('is-on'); }
+        if (!raf) raf = requestAnimationFrame(tick);
+      } else if (on) { on = false; ts = .85; el.classList.remove('is-on'); if (!raf) raf = requestAnimationFrame(tick); }
+    };
+    document.addEventListener('mousemove', this.onUsaMove, { passive: true });
+  }
+  componentWillUnmount() { if (this.onUsaMove) document.removeEventListener('mousemove', this.onUsaMove); if (this.usaEl) this.usaEl.remove(); window.removeEventListener('resize', this.onResize); window.removeEventListener('resize', this.fitFn); clearInterval(this.clockT); }
   fmt() {
     try {
       const d = new Date();
