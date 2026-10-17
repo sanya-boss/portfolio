@@ -82,8 +82,8 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
 .am-stack .am-stack__t{max-width:none;opacity:1;transition:none}
 .am-stack .am-stack__i,.am-stack:hover .am-stack__i,.am-stack:hover .am-stack__i:first-child{height:24px;padding:0 7px;gap:6px;border-radius:var(--radius-sm);border-color:var(--border-default);background:var(--surface-raised);box-shadow:none;color:var(--text-strong);font-weight:500}
 }
-#projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions a{pointer-events:none;cursor:not-allowed;opacity:.55;border-style:dashed}
-#projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions{cursor:not-allowed}
+#projects [aria-label="LIIDIA"] .am-proj__actions a,#projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions a{pointer-events:none;cursor:not-allowed;opacity:.55;border-style:dashed}
+#projects [aria-label="LIIDIA"] .am-proj__actions,#projects [aria-label="QUEEN OF THE BALTIC"] .am-proj__actions{cursor:not-allowed}
 .am-tlgif{position:fixed;left:0;top:0;z-index:60;width:180px;pointer-events:none;border-radius:var(--radius-md);border:1px solid var(--border-default);box-shadow:var(--shadow-lg);overflow:hidden;background:var(--surface-card);opacity:0;transform:translate3d(-999px,-999px,0) scale(.85);transition:opacity 200ms cubic-bezier(.22,1,.36,1)}
 .am-tlgif img{display:block;width:100%;height:auto}
 .am-tlgif.is-on{opacity:1}
@@ -98,6 +98,8 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
 @media (prefers-reduced-motion: reduce){*{transition:none !important;animation:none !important}}
 
 .am-btn--lg{height:36px !important}
+@media (max-width:899px){[data-name-hint]{display:inline !important}[data-name-swap]{cursor:pointer !important}}
+.am-ns-g{color:var(--text-strong);text-shadow:0 0 8px currentColor}
 [data-feat-video]{position:absolute !important;width:2px !important;height:2px !important;left:0;top:0;opacity:0 !important;pointer-events:none}
 [data-feat-canvas]{opacity:0;transition:opacity 600ms cubic-bezier(.22,1,.36,1)}
 [data-feat-canvas].is-on{opacity:1}
@@ -168,7 +170,7 @@ html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--prim
     <header style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:32px">
       <div style="flex:1 1 340px;min-width:0">
         <h1 style="margin:0;font:var(--type-display);letter-spacing:var(--ls-display);color:var(--text-strong);text-wrap:balance">
-          <span data-fit-follow="1" style="display:block;text-wrap:balance">{{ t.hi }}</span>
+          <span data-fit-follow="1" style="display:block;text-wrap:balance">{{ t.hiA }}<span style="position:relative;display:inline-block"><span data-name-swap="1" data-a="{{ t.nameA }}" data-b="{{ t.nameB }}" style="display:inline-block;cursor:default">{{ t.nameA }}</span></span>.</span>
           <span style="display:block;margin-top:10px;color:var(--text-subtle)" data-fit="shrink">{{ t.role }} <span class="am-hl" data-city="1" data-tallinn="1" style="color:var(--text-strong);white-space:nowrap">{{ t.city }}<sc-if value="{{ temp }}" hint-placeholder-val="{{ false }}"><sup style="margin-left:4px;font:var(--fw-regular) .42em/1 var(--font-sans);letter-spacing:0;color:var(--text-muted);vertical-align:.95em;white-space:nowrap" title="Tallinn, now">{{ temp }}</sup></sc-if></span></span>
         </h1>
         <p style="margin:20px 0 0;color:var(--text-muted);text-wrap:pretty">
@@ -246,7 +248,7 @@ html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--prim
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px 24px;padding:16px 0;border-top:1px solid var(--border-subtle)">
           <h3 style="margin:0;font:var(--type-meta);color:var(--text-subtle)">{{ t.eduLabel }}</h3>
           <div style="grid-column:span 2;min-width:0">
-            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:var(--type-h3);color:var(--text-strong)"><a href="https://techno.ee/curriculum/info-ja-kommunikatsioonitehnoloogia/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:var(--text-strong);text-decoration:none" style-hover="color:var(--text-body)">{{ t.school1 }}<span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:var(--radius-sm);border:1px solid var(--border-default);background:var(--surface-raised);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);white-space:nowrap"><span style="font-size:13px;color:var(--text-subtle)">{{ t.nowW }}</span><span class="am-icon" aria-hidden="true" style="width:12px;height:12px;color:var(--text-subtle);--am-icon:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-right.svg)"></span><span style="font-size:13px;font-weight:500;color:var(--text-strong)">Techno TLN</span></span><span class="am-icon" aria-hidden="true" style="width:14px;height:14px;align-self:center;opacity:.7;--am-icon:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-up-right.svg)"></span></a></div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font:var(--type-h3);color:var(--text-strong)"><a href="https://techno.ee/curriculum/info-ja-kommunikatsioonitehnoloogia/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:var(--text-strong);text-decoration:none" style-hover="color:var(--text-body)">{{ t.school1 }}<span style="display:inline-flex;align-items:center;gap:10px;white-space:nowrap"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:var(--radius-sm);border:1px solid var(--border-default);background:var(--surface-raised);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);white-space:nowrap"><span style="font-size:13px;color:var(--text-subtle)">{{ t.nowW }}</span><span class="am-icon" aria-hidden="true" style="width:12px;height:12px;color:var(--text-subtle);--am-icon:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-right.svg)"></span><span style="font-size:13px;font-weight:500;color:var(--text-strong)">Techno TLN</span></span><span class="am-icon" aria-hidden="true" style="width:14px;height:14px;align-self:center;opacity:.7;--am-icon:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-up-right.svg)"></span></span></a></div>
             <div style="margin-top:4px;font:var(--type-small);font-size:var(--fs-14);color:var(--text-muted)">{{ t.edu }} · <span style="white-space:nowrap">{{ t.dur1 }}</span></div>
             <div style="margin-top:4px;font:var(--type-small);font-size:var(--fs-14);color:var(--text-subtle);text-wrap:pretty">{{ t.eduNote }}</div>
             <div style="margin-top:16px;font:var(--type-h3);color:var(--text-strong)"><a href="http://www.tvlkek.ee/est/dkg.html" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:baseline;gap:6px;color:var(--text-strong);text-decoration:none" style-hover="color:var(--text-body)">{{ t.school2 }}<span class="am-icon" aria-hidden="true" style="width:14px;height:14px;align-self:center;opacity:.7;--am-icon:url(https://unpkg.com/lucide-static@0.460.0/icons/arrow-up-right.svg)"></span></a></div>
@@ -359,7 +361,7 @@ const I18N = {
   en: {
     nav: ['Top', 'About', 'Experience', 'Basics', 'Projects', 'Contact'],
     theme: 'Theme', light: 'Light theme', dark: 'Dark theme', soundOn: 'Sound on', soundOff: 'Sound off', settings: 'Settings', language: 'Language',
-    hi: "Hi, I'm Aleksandr.", role: 'Designer from', city: 'Tallinn', coords: 'Tallinn, Estonia · 59.43°N 24.72°E',
+    hi: "Hi, I'm Aleksandr.", hiA: "Hi, I'm ", nameHint: 'tap for surname', nameA: 'Aleksandr', nameB: 'Mezhenny', role: 'Designer from', city: 'Tallinn', coords: 'Tallinn, Estonia · 59.43°N 24.72°E',
     lead: 'I create **visual identities**, **packaging**, **websites** and **graphics** for print and social media — since before the AI boom. I combine design and IT to bring ideas to life: from first sketches to a finished product.',
     aboutBtn: 'About me', navHome: 'Portfolio', copied: 'Email copied', copyEmail: 'Copy email',
     plinkoAside: 'if you suddenly got bored', score: 'Score', rounds: 'Rounds', points: 'points', play: 'Play', hide: 'Hide', drop: 'Drop the ball', plinkoHint: 'Points only. Nothing at stake.',
@@ -384,7 +386,7 @@ const I18N = {
     edu2: 'Continuing education in Media Design · Graphic & Web Design', edu2note: 'Coursework in drawing, painting, colour theory, composition and graphic design software.',
     spoken: [{ n: 'Russian', l: 'C2' }, { n: 'English', l: 'C1' }, { n: 'Estonian', l: 'B1' }],
     projTitle: 'Selected work', visit: 'Visit site', wip: 'Work in progress', projLead: 'My recent projects.', featLabel: 'Latest project', featDesc: 'Art gallery in Tallinn Old Town',
-    proj: ['Art gallery in Tallinn Old Town', 'International beauty pageant', 'Transport company', 'Cattery of Oriental and Siamese cats in Estonia'],
+    projLiidia: 'Guest house by Lake Peipus', proj: ['Art gallery in Tallinn Old Town', 'International beauty pageant', 'Transport company', 'Cattery of Oriental and Siamese cats in Estonia'],
     onRequest: 'More work is available on request.', serviceNote: 'Part of it was made alongside my service.',
     line: 'Always on the line.', almost: 'almost always', contactLead: 'Got a project in mind? Write or call — I answer directly.',
     phone: 'Phone', location: 'Location', openCv: 'Open CV', write: 'Write', top: 'Back to top'
@@ -392,7 +394,7 @@ const I18N = {
   ru: {
     nav: ['Наверх', 'Обо мне', 'Опыт', 'Основы', 'Проекты', 'Контакты'],
     theme: 'Тема', light: 'Светлая тема', dark: 'Тёмная тема', soundOn: 'Звук вкл.', soundOff: 'Звук выкл.', settings: 'Настройки', language: 'Язык',
-    hi: 'Привет, я Саня.', role: 'Дизайнер из', city: 'Таллинна', coords: 'Tallinn, Estonia · 59.43°N 24.72°E',
+    hi: 'Привет, я Саня.', hiA: 'Привет, я ', nameHint: 'нажмите для фамилии', nameA: 'Саня', nameB: 'Меженный', role: 'Дизайнер из', city: 'Таллинна', coords: 'Tallinn, Estonia · 59.43°N 24.72°E',
     lead: 'Создаю **айдентику**, **упаковку**, **сайты** и **графику** для печати и соцсетей — ещё до бума ИИ. Соединяю дизайн и IT, чтобы доводить идеи до результата: от первых набросков до готового продукта.',
     aboutBtn: 'Обо мне', navHome: 'Портфолио', copied: 'Email скопирован', copyEmail: 'Скопировать email',
     plinkoAside: 'если вдруг стало скучно', score: 'Счёт', rounds: 'Раунды', points: 'очков', play: 'Играть', hide: 'Скрыть', drop: 'Бросить шар', plinkoHint: 'Только очки. Без ставок.',
@@ -417,7 +419,7 @@ const I18N = {
     edu2: 'Дополнительное образование в медиадизайне · Графический и веб-дизайн', edu2note: 'Курсы по рисунку, живописи, теории цвета, композиции и программам для графического дизайна.',
     spoken: [{ n: 'Русский', l: 'C2' }, { n: 'Английский', l: 'C1' }, { n: 'Эстонский', l: 'B1' }],
     projTitle: 'Избранные работы', visit: 'Открыть сайт', wip: 'В работе', projLead: 'Мои недавние проекты.', featLabel: 'Последний проект', featDesc: 'Художественная галерея в Старом Таллинне',
-    proj: ['Художественная галерея в Старом Таллинне', 'Международный конкурс красоты', 'Транспортная компания', 'Питомник ориентальных и сиамских кошек в Эстонии'],
+    projLiidia: 'Гостевой дом у Чудского озера', proj: ['Художественная галерея в Старом Таллинне', 'Международный конкурс красоты', 'Транспортная компания', 'Питомник ориентальных и сиамских кошек в Эстонии'],
     onRequest: 'Другие работы — по запросу.', serviceNote: 'Часть из них сделана параллельно со службой.',
     line: 'Всегда на связи.', almost: 'почти всегда', contactLead: 'Есть проект? Пишите или звоните — отвечаю лично.',
     phone: 'Телефон', location: 'Город', openCv: 'Открыть CV', write: 'Написать', top: 'Наверх'
@@ -425,7 +427,7 @@ const I18N = {
   et: {
     nav: ['Üles', 'Minust', 'Kogemus', 'Alused', 'Projektid', 'Kontakt'],
     theme: 'Teema', light: 'Hele teema', dark: 'Tume teema', soundOn: 'Heli sees', soundOff: 'Heli väljas', settings: 'Seaded', language: 'Keel',
-    hi: 'Tere, nimi on Aleksandr.', role: 'Disainer', city: 'Tallinnast', coords: 'Tallinn, Eesti · 59.43°N 24.72°E',
+    hi: 'Tere, nimi on Aleksandr.', hiA: 'Tere, nimi on ', nameHint: 'puuduta perenime', nameA: 'Aleksandr', nameB: 'Mežennõi', role: 'Disainer', city: 'Tallinnast', coords: 'Tallinn, Eesti · 59.43°N 24.72°E',
     lead: 'Loon **identiteete**, **pakendeid**, **veebilehti** ja **graafikat** trükiseks ning sotsiaalmeediasse — juba enne tehisintellekti buumi. Ühendan disaini ja IT, et viia ideed tulemuseni: esimestest visanditest valmis tooteni.',
     aboutBtn: 'Minust', navHome: 'Portfoolio', copied: 'E-post kopeeritud', copyEmail: 'Kopeeri e-post',
     plinkoAside: 'kui äkki igav hakkas', score: 'Skoor', rounds: 'Voorud', points: 'punkti', play: 'Mängi', hide: 'Peida', drop: 'Viska pall', plinkoHint: 'Ainult punktid. Panuseid pole.',
@@ -450,7 +452,7 @@ const I18N = {
     edu2: 'Täiendõpe meediadisainis · Graafiline ja veebidisain', edu2note: 'Õpingud joonistamises, maalimises, värviõpetuses, kompositsioonis ja graafilise disaini tarkvaras.',
     spoken: [{ n: 'Vene', l: 'C2' }, { n: 'Inglise', l: 'C1' }, { n: 'Eesti', l: 'B1' }],
     projTitle: 'Valitud tööd', visit: 'Ava leht', wip: 'Töös', projLead: 'Minu hiljutised projektid.', featLabel: 'Viimane projekt', featDesc: 'Kunstigalerii Tallinna vanalinnas',
-    proj: ['Kunstigalerii Tallinna vanalinnas', 'Rahvusvaheline iludusvõistlus', 'Transpordiettevõte', 'Orientaal- ja siiami kasside kasvandus Eestis'],
+    projLiidia: 'Külalistemaja Peipsi järve ääres', proj: ['Kunstigalerii Tallinna vanalinnas', 'Rahvusvaheline iludusvõistlus', 'Transpordiettevõte', 'Orientaal- ja siiami kasside kasvandus Eestis'],
     onRequest: 'Rohkem töid saadan soovi korral.', serviceNote: 'Osa neist valmis ajateenistuse kõrvalt.',
     line: 'Alati liinil.', almost: 'peaaegu alati', contactLead: 'Projekt mõttes? Kirjuta või helista — vastan ise.',
     phone: 'Telefon', location: 'Asukoht', openCv: 'Ava CV', write: 'Kirjuta', top: 'Üles'
@@ -493,8 +495,8 @@ const TAG_META = {
   'Social Media': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' }, 'Соцсети': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' }, 'Sotsiaalmeedia': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/megaphone.svg)' },
   'Packaging': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' }, 'Упаковка': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' }, 'Pakendid': { icon: 'url(https://unpkg.com/lucide-static@0.460.0/icons/package.svg)' }
 };
-const PROJECT_VIDEOS = { SARLE: 'assets/video/sarle.mp4', 'QUEEN OF THE BALTIC': 'assets/video/queen.mp4', 'A-MEZTRANS': 'assets/video/ameztrans.mp4', 'BLACK ANTARRA': 'assets/video/antarra.mp4' };
-const GIF_VIDEOS = { 'BLACK ANTARRA': true, 'A-MEZTRANS': true, SARLE: true, 'QUEEN OF THE BALTIC': true };
+const PROJECT_VIDEOS = { LIIDIA: 'assets/video/liidia.mp4', SARLE: 'assets/video/sarle.mp4', 'QUEEN OF THE BALTIC': 'assets/video/queen.mp4', 'A-MEZTRANS': 'assets/video/ameztrans.mp4', 'BLACK ANTARRA': 'assets/video/antarra.mp4' };
+const GIF_VIDEOS = { LIIDIA: true, 'BLACK ANTARRA': true, 'A-MEZTRANS': true, SARLE: true, 'QUEEN OF THE BALTIC': true };
 const CARD_TOOLS = [
   { name: 'Illustrator', mark: 'Ai' }, { name: 'Photoshop', mark: 'Ps' },
   { name: 'Claude Code', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg' }, { name: 'Web Design', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/monitor.svg' }, { name: 'Branding Design', icon: 'https://unpkg.com/lucide-static@0.460.0/icons/gem.svg' }
@@ -503,6 +505,7 @@ const SMM_TOOL = { name: 'SMM', icon: 'https://unpkg.com/lucide-static@0.460.0/i
 const CARD_TOOLS_BY = {
   SARLE: CARD_TOOLS.map(t => t.name === 'Photoshop' ? SMM_TOOL : t),
   'QUEEN OF THE BALTIC': CARD_TOOLS.flatMap(t => t.name === 'Claude Code' ? [t, SMM_TOOL] : [t]),
+  LIIDIA: CARD_TOOLS.flatMap(t => t.name === 'Photoshop' ? [t, SMM_TOOL] : [t]),
 };
 const BINS = [150, 75, 40, 25, 0, 25, 40, 75, 150];
 
@@ -514,6 +517,33 @@ class Component extends DCLogic {
     menuOpen: false, plinkoOpen: false, toolsOpen: false, temp: '', score: 0, shown: 0, rounds: 0, last: 0
   };
   componentDidMount() {
+    this.nameSwap = (() => {
+      const CH = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#%&*<>/=+';
+      const esc = c => c === '<' ? '&lt;' : c === '>' ? '&gt;' : c === '&' ? '&amp;' : c;
+      const run = (el, to) => {
+        cancelAnimationFrame(el._raf); el._to = to;
+        const from = el._cur || el.textContent, n = Math.max(from.length, to.length), t0 = performance.now(), step = 38;
+        const tick = now => {
+          const k = (now - t0) / step; let out = '', done = true;
+          for (let i = 0; i < n; i++) {
+            if (k >= i + 3) out += esc(to[i] || '');
+            else { done = false; out += k >= i - 1 ? (to[i] || from[i] ? '<span class="am-ns-g">' + esc(CH[(Math.random() * CH.length) | 0]) + '</span>' : '') : esc(from[i] || ''); }
+          }
+          el.innerHTML = out;
+          if (!done) el._raf = requestAnimationFrame(tick); else el._cur = to;
+        };
+        el._raf = requestAnimationFrame(tick);
+      };
+      const touch = () => window.matchMedia('(hover: none)').matches || window.innerWidth < 900;
+      const on = e => { if (touch()) return; const t = e.target.closest && e.target.closest('[data-name-swap]'); if (t && !(e.relatedTarget && t.contains(e.relatedTarget))) run(t, t.dataset.b); };
+      const off = e => { if (touch()) return; const t = e.target.closest && e.target.closest('[data-name-swap]'); if (t && !(e.relatedTarget && t.contains(e.relatedTarget))) run(t, t.dataset.a); };
+      let auto = setInterval(() => { if (!touch()) return; const t = document.querySelector('[data-name-swap]'); if (t) run(t, (t._to || t.dataset.a) === t.dataset.a ? t.dataset.b : t.dataset.a); }, 7000);
+      const click = e => { const t = e.target.closest && e.target.closest('[data-name-swap]'); if (!t || !touch()) return; clearInterval(auto); run(t, (t._to || t.dataset.a) === t.dataset.a ? t.dataset.b : t.dataset.a); };
+      document.addEventListener('mouseover', on); document.addEventListener('mouseout', off); document.addEventListener('click', click);
+      const mo = new MutationObserver(ms => ms.forEach(m => { const el = m.target; if (m.attributeName !== 'data-a' || !el.matches || !el.matches('[data-name-swap]')) return; cancelAnimationFrame(el._raf); el._cur = el._to = undefined; el.textContent = el.dataset.a; }));
+      mo.observe(document.body, { attributes: true, subtree: true, attributeFilter: ['data-a'] });
+      return () => { clearInterval(auto); mo.disconnect(); document.removeEventListener('mouseover', on); document.removeEventListener('mouseout', off); document.removeEventListener('click', click); };
+    })();
     this.applyTheme(); this.applyLang();
     this.loadTemp();
     requestAnimationFrame(() => this.typeIn());
@@ -712,7 +742,7 @@ class Component extends DCLogic {
   }
   componentDidUpdate(_, prev) {
     if (prev.theme !== this.state.theme) { this.applyTheme(); if (this.cv) this.draw(); }
-    if (prev.lang !== this.state.lang) { this.applyLang(); this.typeIn(); }
+    if (prev.lang !== this.state.lang) { this.applyLang(); document.querySelectorAll('[data-name-swap]').forEach(el => { cancelAnimationFrame(el._raf); el._cur = el._to = undefined; el.textContent = el.dataset.a; }); this.typeIn(); }
   }
   typeIn() {
     const h1el = document.querySelector('#top header h1');
@@ -1082,6 +1112,7 @@ class Component extends DCLogic {
       ],
       projects: [
         { title: 'SARLE', description: T.proj[0], tags: [], links: [{ label: T.visit, icon: 'arrow-up-right', href: urls[0] || '#' }], href: urls[0] || '#', image: p.sarleImage || undefined },
+        { title: 'LIIDIA', description: T.projLiidia, tags: [], links: [{ label: T.wip, icon: 'hourglass', href: '#' }], href: '#' },
         { title: 'QUEEN OF THE BALTIC', description: T.proj[1], tags: [], links: [{ label: T.wip, icon: 'hourglass', href: '#' }], href: urls[1] || '#', image: p.queenImage || undefined },
         { title: 'A-MEZTRANS', description: T.proj[2], tags: [], links: [{ label: T.visit, icon: 'arrow-up-right', href: urls[2] || '#' }], href: urls[2] || '#', image: p.ameztransImage || undefined },
         { title: 'BLACK ANTARRA', description: T.proj[3], tags: [], links: [{ label: T.visit, icon: 'arrow-up-right', href: urls[3] || '#' }], href: urls[3] || '#' }
