@@ -43,3 +43,5 @@
 --type-meta:var(--fw-regular) var(--fs-12)/1.4 var(--font-mono);
 --type-overline:var(--fw-medium) var(--fs-10)/1 var(--font-mono);
 }
+/* Mobile: slightly smaller text */
+@media (max-width:899px){:root{--fs-15:14px;--fs-14:13px;--fs-13:12.5px}}
