@@ -7,10 +7,11 @@
 --radius-full:999px;
 
 /* Shadows are near-invisible on black; depth comes from borders + inset highlight */
---inset-highlight:inset 0 1px 0 rgba(255,255,255,.05);
+--hairline:.5px;
+--inset-highlight:none;
 --shadow-sm:0 1px 2px rgba(0,0,0,.5);
---shadow-md:0 4px 16px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
---shadow-lg:0 16px 48px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
+--shadow-md:0 4px 16px rgba(0,0,0,.45);
+--shadow-lg:0 16px 48px rgba(0,0,0,.6);
 --ring-focus:0 0 0 1px var(--surface-page),0 0 0 3px var(--border-focus);
 
 --blur-glass:saturate(140%) blur(14px); /* @kind other */
