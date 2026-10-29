@@ -69,4 +69,4 @@ Intentional additions: **Icon** — a wrapper so every component draws Lucide gl
 - **Logo:** none provided — use the name in EB Garamond (see Brand → Wordmark card).
 
 ## Fonts
-Google Fonts substitutes (no font files supplied): **Geist**, **Geist Mono**, **EB Garamond**, imported in `tokens/fonts.css`.
+Google Fonts substitutes (no font files supplied): **Geist**, **Geist Mono**, **EB Garamond**, self-hosted in `fonts/` (declared in `tokens/fonts.css`, preloaded in each page head).
