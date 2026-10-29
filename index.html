@@ -588,7 +588,7 @@ class Component extends DCLogic {
     this.vidMO = new MutationObserver(() => this.mountVideos()); this.vidMO.observe(document.body, { childList: true, subtree: true });
     this.mountVideos();
     this.featIO = new IntersectionObserver(es => es.forEach(e => { const v = e.target; v.muted = true; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: 0.25 });
-    this.featObs = () => { const v = document.querySelector('[data-feat-video]'); if (v && !v.dataset.io) { v.dataset.io = '1'; v.muted = true; const cv = v.parentElement.querySelector('[data-feat-canvas]'); if (cv) { const ctx = cv.getContext('2d'); const loop = () => { this.featRaf = requestAnimationFrame(loop); if (v.paused || v.readyState < 2) return; const r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1), W = Math.round(r.width * dpr), H = Math.round(r.height * dpr); if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; } const vw = v.videoWidth, vh = v.videoHeight; if (!vw) return; const s = Math.max(W / vw, H / vh), dw = vw * s, dh = vh * s; ctx.drawImage(v, (W - dw) / 2, (H - dh) / 2, dw, dh); if (v.currentTime > 0.05 && !cv.classList.contains('is-on')) cv.classList.add('is-on'); }; loop(); } this.featIO.observe(v); } };
+    this.featObs = () => { const v = document.querySelector('[data-feat-video]'); if (v && !v.dataset.io) { v.dataset.io = '1'; v.muted = true; v.loop = true; v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); }); const cv = v.parentElement.querySelector('[data-feat-canvas]'); if (cv) { const ctx = cv.getContext('2d'); const loop = () => { this.featRaf = requestAnimationFrame(loop); if (v.paused || v.readyState < 2) return; const r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1), W = Math.round(r.width * dpr), H = Math.round(r.height * dpr); if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; } const vw = v.videoWidth, vh = v.videoHeight; if (!vw) return; const s = Math.max(W / vw, H / vh), dw = vw * s, dh = vh * s; ctx.drawImage(v, (W - dw) / 2, (H - dh) / 2, dw, dh); if (v.currentTime > 0.05 && !cv.classList.contains('is-on')) cv.classList.add('is-on'); }; loop(); } this.featIO.observe(v); } };
     this.featObs(); requestAnimationFrame(this.featObs); setTimeout(this.featObs, 300);
     { const v0 = document.querySelector('[data-feat-video]'); if (v0) { v0.muted = true; v0.play().catch(() => {}); } }
     this.initTallinnGif();
@@ -715,6 +715,7 @@ class Component extends DCLogic {
       const v = document.createElement('video');
       Object.assign(v, { muted: true, loop: true, playsInline: true, preload: 'metadata' });
       v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+      v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); });
       v.poster = src.replace('video/', 'video/posters/').replace('.mp4', '.webp');
       v.src = src;
       if (GIF_VIDEOS[card.getAttribute('aria-label')]) {
