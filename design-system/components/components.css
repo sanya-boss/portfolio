@@ -101,3 +101,7 @@ html:not([style*="color-scheme: light"]) :is(.am-tag,.am-hl,.am-chip,.am-row__th
 :is(.am-btn,.am-btn:hover,.am-iconbtn,.am-tag,.am-badge--outline,.am-hl,.am-chip,.am-row__thumb,.am-acc,.am-proj,.am-proj:hover,.am-proj__media,
 .am-exp__logo,.am-dock,.am-stack__i,.am-stack__i:hover,.am-stack__i.is-open,.am-field,.am-inline,.am-tlgif,
 [style*="border:var(--hairline) solid"],[style*="border: var(--hairline) solid"]){border-color:transparent !important}
+/* Outlines kept on while the rest are off: featured video card, FEATURED badge, tool icon tiles, contact icon tiles, mobile bottom menu.
+   Same width and colour as the section dividers (--hairline, --border-subtle). */
+html body :is([data-feat],.am-badge--outline,[data-tool-tile],[data-mdock]):is(*,:hover){border-color:var(--border-subtle) !important}
+html body .am-row .am-row__thumb.am-row__thumb{border-color:var(--border-subtle) !important}

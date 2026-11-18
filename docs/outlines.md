@@ -1,6 +1,6 @@
 # Outlines (hairline borders)
 
-**Status: all outlines are switched off** by the "Outlines OFF" block at the end of
+**Status: outlines are switched off, except** the featured video card, the FEATURED badge, the tool icon tiles (Tools I use → Show all) , the contact icon tiles and the mobile bottom menu ("Outlines kept on" rule right after the off block). Otherwise all are off by the "Outlines OFF" block at the end of
 `design-system/components/components.css`. Delete that block to bring them back — nothing else was removed,
 so every border below returns exactly as it was. Section dividers (`border-top`/`border-bottom` lines),
 the experience timeline connector and the Plinko board's inner column divider were never part of the switch.
