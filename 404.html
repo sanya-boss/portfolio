@@ -56,9 +56,9 @@ a:hover{color:var(--link-hover)}
 
 @media (max-width:899px){body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:110px;z-index:19;pointer-events:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}}
 
-.am-btn:not(.am-btn--ghost):not(.am-btn--primary){border:var(--hairline) solid transparent;background:#202020;border-radius:9px;color:#F2F2F2;font-weight:600}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary){border:var(--hairline) solid rgba(255,255,255,.1);background:#202020;border-radius:9px;color:#F2F2F2;font-weight:600}
 .am-btn:not(.am-btn--ghost):not(.am-btn--primary) .am-icon{color:var(--text-muted)}
-.am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:#292929;border-color:transparent;color:#fff}
+.am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:#292929;border-color:rgba(255,255,255,.16);color:#fff}
 .am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover .am-icon{color:var(--text-strong)}
 html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--primary){background:#FFFFFF;border-color:rgba(0,0,0,.12);color:#111;box-shadow:none}
 html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--primary):hover{background:#F5F5F5;border-color:rgba(0,0,0,.2);color:#000}
@@ -87,7 +87,7 @@ html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--prim
   </sc-if>
 
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
-    <div data-mdock="1" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:var(--hairline) solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:0 4px 12px rgba(0,0,0,.28)">
+    <div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:4px;padding:4px;border-radius:var(--radius-full);border:var(--hairline) solid var(--border-default);background:var(--surface-overlay);backdrop-filter:var(--blur-glass);-webkit-backdrop-filter:var(--blur-glass);box-shadow:0 4px 12px rgba(0,0,0,.28)">
       <div role="group" aria-label="Language" ref="{{ setHGroup }}" style="position:relative;display:flex;gap:2px">
         <span aria-hidden="true" style="position:absolute;left:0;top:0;box-sizing:border-box;background:var(--surface-raised);border:var(--hairline) solid var(--border-default);box-shadow:var(--inset-highlight);transition:transform 420ms cubic-bezier(.22,1,.36,1), border-radius 420ms cubic-bezier(.22,1,.36,1);width:{{ hInd.w }};height:{{ hInd.h }};transform:{{ hInd.tr }};border-radius:{{ hIndRadius }}"></span>
         <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
