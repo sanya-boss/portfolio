@@ -91,3 +91,7 @@ textarea.am-field{min-height:110px;resize:vertical}
 .am-dock__item:hover .am-dock__tip{opacity:1;transform:translateY(-50%) translateX(0)}
 .am-dock--h .am-dock__item:hover .am-dock__tip{transform:translateX(-50%) translateY(0)}
 .am-hl{background:var(--surface-raised);border:var(--hairline) solid var(--border-default);border-radius:var(--radius-sm);padding:0 8px;color:var(--text-strong);box-shadow:var(--inset-highlight)}
+
+/* Outline hierarchy (dark theme): hairlines frame containers (cards, media, dock, dividers, outline badges);
+   small inline elements (tags, chips, highlights, icon tiles, tool pills) sit on fill alone. */
+html:not([style*="color-scheme: light"]) :is(.am-tag,.am-hl,.am-row__thumb,.am-stack__i,.am-stack__i:hover,.am-stack__i.is-open,.am-proj__media){border-color:transparent !important;box-shadow:none}
