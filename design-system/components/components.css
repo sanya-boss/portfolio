@@ -21,7 +21,7 @@
 .am-tag{display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 7px;border-radius:var(--radius-sm);border:var(--hairline) solid var(--border-default);background:var(--surface-raised);color:var(--text-strong);font:var(--fw-medium) var(--fs-13)/1 var(--font-sans);vertical-align:middle;white-space:nowrap;box-shadow:var(--inset-highlight)}
 .am-badge{display:inline-flex;align-items:center;gap:5px;height:18px;padding:0 6px;border-radius:var(--radius-xs);font:var(--type-overline);letter-spacing:var(--ls-caps);text-transform:uppercase;background:var(--gray-750);color:var(--text-muted)}
 .am-badge--solid{background:var(--gray-750);color:var(--text-strong)}
-.am-badge--outline{background:transparent;border:var(--hairline) solid var(--border-strong);color:var(--text-muted)}
+.am-badge--outline{padding-top:1px;background:transparent;border:var(--hairline) solid var(--border-strong);color:var(--text-muted)}
 .am-badge--live{background:var(--signal-live-dim);color:var(--signal-live)}
 .am-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
 .am-dot--pulse{box-shadow:0 0 0 0 currentColor;animation:am-pulse 2s var(--ease-out) infinite}
