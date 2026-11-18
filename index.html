@@ -694,7 +694,7 @@ class Component extends DCLogic {
   }
   mountStacks() {
     const st = document.querySelector('#projects [aria-label="SARLE"] .am-proj__title');
-    if (st && !st.querySelector('.am-badge')) { const bd = document.createElement('span'); bd.className = 'am-badge am-badge--outline'; bd.textContent = 'Featured'; Object.assign(bd.style, { marginLeft: '8px', verticalAlign: 'middle', position: 'relative', top: '-1px' }); st.appendChild(bd); }
+    if (st && !st.querySelector('.am-badge')) { const bd = document.createElement('span'); bd.className = 'am-badge am-badge--outline'; bd.textContent = 'Featured'; Object.assign(bd.style, { marginLeft: '8px', verticalAlign: 'middle', position: 'relative', top: '-0.5px' }); st.appendChild(bd); }
     document.querySelectorAll('#projects .am-proj__body').forEach(body => {
       if (body.querySelector('.am-stack')) return;
       const card = body.closest('[aria-label]'); const tools = (card && CARD_TOOLS_BY[card.getAttribute('aria-label')]) || CARD_TOOLS;
@@ -1035,7 +1035,7 @@ class Component extends DCLogic {
     const email = p.email || 'aleks.mezenn@gmail.com', phone = p.phone || '+372 5822 6814';
     const t = {
       ...T, lead: md(T.lead), aboutLead: md(T.aboutLead),
-      exp: T.exp.map(e => ({ ...e, logo: e.org === 'Snape OÜ' ? 'assets/logos/logo-snape.png' : e.kv ? 'assets/logos/logo-kaitsevagi.png' : undefined, org: e.org === 'Snape OÜ' ? React.createElement(React.Fragment, null, 'Snape OÜ', React.createElement('span', { className: 'am-badge am-badge--outline', style: { marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: -1 } }, 'Featured')) : e.org, roles: e.roles.map(r => r.bullets ? { ...r, detail: this.richDetail(r, T) } : r) })),
+      exp: T.exp.map(e => ({ ...e, logo: e.org === 'Snape OÜ' ? 'assets/logos/logo-snape.png' : e.kv ? 'assets/logos/logo-kaitsevagi.png' : undefined, org: e.org === 'Snape OÜ' ? React.createElement(React.Fragment, null, 'Snape OÜ', React.createElement('span', { className: 'am-badge am-badge--outline', style: { marginLeft: 8, verticalAlign: 'middle', position: 'relative', top: -0.5 } }, 'Featured')) : e.org, roles: e.roles.map(r => r.bullets ? { ...r, detail: this.richDetail(r, T) } : r) })),
       about: T.about.map(([title, text], i) => ({ n: '0' + (i + 1), title, text }))
     };
     const urls = [p.sarleUrl || 'https://sarle.ee', p.queenUrl, p.ameztransUrl || 'https://a-meztrans.ee', p.antarraUrl || 'https://antarra.ee'];
