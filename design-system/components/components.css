@@ -95,3 +95,9 @@ textarea.am-field{min-height:110px;resize:vertical}
 /* Outline hierarchy (dark theme): hairlines frame containers (cards, media, dock, dividers, outline badges);
    small inline elements (tags, chips, highlights, icon tiles, tool pills) sit on fill alone. */
 html:not([style*="color-scheme: light"]) :is(.am-tag,.am-hl,.am-chip,.am-row__thumb,.am-stack__i,.am-stack__i:hover,.am-stack__i.is-open,.am-proj__media){border-color:transparent !important;box-shadow:none}
+
+/* Outlines OFF (temporary) — every frame/outline on the site is hidden here; dividers and the timeline connector stay.
+   To bring outlines back, delete this block (the hierarchy above then applies again). Where they were and the old hierarchy: docs/outlines.md */
+:is(.am-btn,.am-btn:hover,.am-iconbtn,.am-tag,.am-badge--outline,.am-hl,.am-chip,.am-row__thumb,.am-acc,.am-proj,.am-proj:hover,.am-proj__media,
+.am-exp__logo,.am-dock,.am-stack__i,.am-stack__i:hover,.am-stack__i.is-open,.am-field,.am-inline,.am-tlgif,
+[style*="border:var(--hairline) solid"],[style*="border: var(--hairline) solid"]){border-color:transparent !important}
