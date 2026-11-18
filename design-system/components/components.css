@@ -94,4 +94,4 @@ textarea.am-field{min-height:110px;resize:vertical}
 
 /* Outline hierarchy (dark theme): hairlines frame containers (cards, media, dock, dividers, outline badges);
    small inline elements (tags, chips, highlights, icon tiles, tool pills) sit on fill alone. */
-html:not([style*="color-scheme: light"]) :is(.am-tag,.am-hl,.am-row__thumb,.am-stack__i,.am-stack__i:hover,.am-stack__i.is-open,.am-proj__media){border-color:transparent !important;box-shadow:none}
+html:not([style*="color-scheme: light"]) :is(.am-tag,.am-hl,.am-chip,.am-row__thumb,.am-stack__i,.am-stack__i:hover,.am-stack__i.is-open,.am-proj__media){border-color:transparent !important;box-shadow:none}

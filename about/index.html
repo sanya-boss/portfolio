@@ -157,7 +157,7 @@ html[style*="color-scheme: light"] .am-btn:not(.am-btn--ghost):not(.am-btn--prim
 
     <section style="margin-top:var(--section-gap)">
       <x-import component-from-global-scope="AleksandrMeEnnIDesignSystem_ba8917.SectionHeader" title="{{ t.offTitle }}" hint-size="100%,32px"></x-import>
-      <p style="margin:0;color:var(--text-muted);text-wrap:pretty"><sc-for list="{{ t.p4 }}" as="q" hint-placeholder-count="1"><sc-if value="{{ q.t }}"><span>{{ q.t }}</span></sc-if><sc-if value="{{ q.c }}"><span style="display:inline-flex;align-items:center;height:22px;padding:0 7px;vertical-align:1px;border-radius:var(--radius-sm);border:var(--hairline) solid var(--border-default);background:var(--surface-raised);white-space:nowrap;font-size:13px;line-height:1;color:var(--text-subtle)">{{ q.c }}</span></sc-if><sc-if value="{{ q.u }}"><span data-usa="1" style="cursor:default">{{ q.u }}</span></sc-if></sc-for></p>
+      <p style="margin:0;color:var(--text-muted);text-wrap:pretty"><sc-for list="{{ t.p4 }}" as="q" hint-placeholder-count="1"><sc-if value="{{ q.t }}"><span>{{ q.t }}</span></sc-if><sc-if value="{{ q.c }}"><span class="am-chip" style="display:inline-flex;align-items:center;height:22px;padding:0 7px;vertical-align:1px;border-radius:var(--radius-sm);border:var(--hairline) solid var(--border-default);background:var(--surface-raised);white-space:nowrap;font-size:13px;line-height:1;color:var(--text-subtle)">{{ q.c }}</span></sc-if><sc-if value="{{ q.u }}"><span data-usa="1" style="cursor:default">{{ q.u }}</span></sc-if></sc-for></p>
     </section>
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:48px">
