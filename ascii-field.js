@@ -10,6 +10,9 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tScale = reduce ? 0.15 : 1;
   let cv, ctx, dpr = 1, w = 0, h = 0, mx = -1e4, my = -1e4, mAct = 0, last = 0, lastInput = 0;
+  let enabled = localStorage.getItem('am-ascii') === 'on', btn = null;
+  const FADE_MS = 900; let fadeFrom = enabled ? 1 : 0, fadeT0 = -1e9, busyAnim = false;
+  const fadeP = ts => { const k = Math.min(1, (ts - fadeT0) / FADE_MS); const e = 1 - Math.pow(1 - k, 3); return fadeFrom + ((enabled ? 1 : 0) - fadeFrom) * e; };
   let waves = [], trail = [], down = false, lastPt = null, focused = true, atlas = null, colors = {};
   const now = () => performance.now() / 1000 * tScale;
 
@@ -40,14 +43,16 @@
     if (!r || r.width < 200 || r.width > w - 200) return { l: (w - 720) / 2 - PAD, r: (w + 720) / 2 + PAD };
     return { l: r.left - PAD + 20, r: r.right + PAD - 20 };
   }
-  const inGutter = x => { const c = column(); return w >= MIN_W && x > DOCK && (x < c.l || x > c.r); };
+  const inGutter = x => { const c = column(); return enabled && w >= MIN_W && x > DOCK && (x < c.l || x > c.r); };
   const blit = (ch, hot, x, y) => { const i = atlas.idx[ch]; if (i === undefined) return; const s = atlas.cw; ctx.drawImage(atlas.sheet, i * s, hot ? s : 0, s, s, (x - CELL / 2) * dpr, (y - CELL / 2) * dpr, s, s); };
 
   function frame(ts) {
     requestAnimationFrame(frame);
-    if (w < MIN_W || document.hidden || !focused) { if (last !== -1) { ctx.clearRect(0, 0, cv.width, cv.height); last = -1; } return; }
+    placeButton();
+    const fp = fadeP(ts), fading = ts - fadeT0 < FADE_MS;
+    if (fp <= 0.001 || w < MIN_W || document.hidden || !focused) { if (last !== -1) { ctx.clearRect(0, 0, cv.width, cv.height); last = -1; } return; }
     const t = now();
-    const busy = down || waves.length || trail.length || ts - lastInput < IDLE_AFTER;
+    const busy = fading || down || waves.length || trail.length || ts - lastInput < IDLE_AFTER;
     if (ts - last < 1000 / (busy ? FPS_ACTIVE : FPS_IDLE)) return; last = ts;
     const col = column(), sy = scrollY * 0.15;
     ctx.clearRect(0, 0, cv.width, cv.height);
@@ -80,9 +85,12 @@
         }
         const k = Math.min(1, (v + glow * 0.9 + hit + ink * 1.2) * ef);
         if (k < 0.06) continue;
+        let edgeCell = false;
+        if (fp < 1) { const th = hash(cx * 0.37, ry * 0.91) * 0.85 + (1 - ry / rows) * 0.15; if (th > fp) continue; edgeCell = fp - th < 0.12; }
         let ch = RAMP[Math.min(RAMP.length - 1, Math.floor(k * RAMP.length))];
         if (ink > 0.25 || hit > 0.35 || (glow > 0.4 && hash(cx, ry + Math.floor(t * 10)) > 0.7)) ch = GLY[Math.floor(hash(cx + Math.floor(t * 18), ry) * GLY.length)];
-        const hot = ink > 0.2 || hit > 0.3 || glow > 0.5;
+        if (edgeCell) ch = GLY[Math.floor(hash(cx + Math.floor(t * 30), ry + 7) * GLY.length)];
+        const hot = edgeCell || ink > 0.2 || hit > 0.3 || glow > 0.5;
         ctx.globalAlpha = hot ? Math.min(1, 0.35 + k) : 0.18 + k * 0.6;
         blit(ch, hot, x, y);
       }
@@ -125,7 +133,49 @@
     });
     addEventListener('pointerup', () => { down = false; lastPt = null; });
     new MutationObserver(readColors).observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class', 'data-theme'] });
+    makeButton();
     requestAnimationFrame(frame);
+  }
+  function paintBtn() {
+    btn.setAttribute('aria-pressed', String(enabled));
+    btn.title = enabled ? 'Turn ASCII off' : 'Turn ASCII on';
+    btn.lastChild.textContent = enabled ? 'ASCII on' : 'ASCII off';
+    btn.firstChild.style.opacity = enabled ? '1' : '.35';
+  }
+  function scrambleLabel() {
+    const target = btn.lastChild.textContent, t0 = performance.now(), dur = 420;
+    btn.firstChild.style.transform = 'scale(1.8)';
+    setTimeout(() => { btn.firstChild.style.transform = 'scale(1)'; }, 160);
+    const step = () => {
+      const p = Math.min(1, (performance.now() - t0) / dur);
+      btn.lastChild.textContent = target.split('').map((c, i) => c === ' ' || i / target.length < p ? c : GLY[Math.floor(Math.random() * GLY.length)]).join('');
+      if (p < 1) requestAnimationFrame(step); else btn.lastChild.textContent = target;
+    };
+    step();
+  }
+  function placeButton() {
+    const slot = document.querySelector('[data-ascii-toggle]');
+    if (!slot) return;
+    if (btn.parentNode !== slot) slot.appendChild(btn);
+    slot.style.display = w < MIN_W ? 'none' : 'inline-flex';
+  }
+  function makeButton() {
+    btn = document.createElement('button'); btn.type = 'button';
+    btn.style.cssText = 'all:unset;outline:none;border:0;box-shadow:none;background:none;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;gap:6px;color:var(--text-subtle, #6B6B6B);font:inherit;cursor:pointer;transition:color 120ms cubic-bezier(.22,1,.36,1)';
+    const dot = document.createElement('span'); dot.style.cssText = 'width:6px;height:6px;border-radius:9px;flex:none;background:var(--signal-live, #22C55E);transition:opacity 300ms cubic-bezier(.22,1,.36,1), transform 200ms cubic-bezier(.22,1,.36,1)';
+    const lbl = document.createElement('span'); lbl.style.cssText = 'display:inline-block;min-width:9ch;font-variant-numeric:tabular-nums'; btn.append(dot, lbl);
+    btn.addEventListener('mouseenter', () => { btn.style.color = 'var(--text-strong, #FFFFFF)'; });
+    btn.addEventListener('mouseleave', () => { btn.style.color = 'var(--text-subtle, #6B6B6B)'; });
+        btn.addEventListener('click', () => {
+      if (busyAnim) return;
+      const ts = performance.now(); fadeFrom = fadeP(ts); fadeT0 = ts;
+      enabled = !enabled; localStorage.setItem('am-ascii', enabled ? 'on' : 'off');
+      waves = []; trail = []; down = false; last = 0; lastInput = ts;
+      busyAnim = true; btn.style.cursor = 'default'; btn.setAttribute('aria-busy', 'true');
+      paintBtn(); scrambleLabel();
+      setTimeout(() => { busyAnim = false; btn.style.cursor = 'pointer'; btn.removeAttribute('aria-busy'); }, FADE_MS);
+    });
+    paintBtn(); placeButton();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
