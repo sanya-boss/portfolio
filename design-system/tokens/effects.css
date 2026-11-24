@@ -14,7 +14,7 @@
 --shadow-lg:0 16px 48px rgba(0,0,0,.6);
 --ring-focus:0 0 0 1px var(--surface-page),0 0 0 3px var(--border-focus);
 
---blur-glass:saturate(140%) blur(14px); /* @kind other */
+--blur-glass:saturate(140%) blur(10px); /* @kind other */
 --fade-bottom:linear-gradient(180deg,rgba(15,15,15,0) 0%,rgba(15,15,15,.92) 100%); /* @kind other */
 --sheen-top:linear-gradient(180deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 40%); /* @kind other */
 

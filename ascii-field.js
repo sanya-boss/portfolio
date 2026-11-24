@@ -157,7 +157,8 @@
     const slot = document.querySelector('[data-ascii-toggle]');
     if (!slot) return;
     if (btn.parentNode !== slot) slot.appendChild(btn);
-    slot.style.display = w < MIN_W ? 'none' : 'inline-flex';
+    const disp = w < MIN_W ? 'none' : 'inline-flex';
+    if (slot.style.display !== disp) slot.style.display = disp;
   }
   function makeButton() {
     btn = document.createElement('button'); btn.type = 'button';
