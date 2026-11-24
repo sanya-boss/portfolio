@@ -26,9 +26,6 @@
 <meta property="og:image:alt" content="Aleksandr Mežennõi — Graphic &amp; Web Designer from Tallinn">
 <meta name="twitter:card" content="summary_large_image">
 <script src="lib/support.js"></script>
-<link rel="stylesheet" href="js/reveal.css">
-<script>(function(d){if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){d.classList.add('rv');setTimeout(function(){if(!window.__rvOk)d.classList.remove('rv')},4000)}})(document.documentElement)</script>
-<script src="js/reveal.js"></script>
 </head>
 <body>
 <x-dc>
@@ -109,9 +106,9 @@ html[style*="color-scheme: light"] .am-exp__logo img{filter:invert(1)}
 .am-btn--lg{height:36px !important}
 @media (max-width:899px){[data-name-hint]{display:inline !important}[data-name-swap]{cursor:pointer !important}}
 .am-ns-g{color:var(--text-strong);text-shadow:0 0 8px currentColor}
-[data-feat-video]{position:absolute !important;width:2px !important;height:2px !important;left:0;top:0;opacity:0 !important;pointer-events:none}
-[data-feat-canvas]{opacity:0;transition:opacity 600ms cubic-bezier(.22,1,.36,1)}
-[data-feat-canvas].is-on{opacity:1}
+[data-feat-video]{opacity:0;transition:opacity 600ms cubic-bezier(.22,1,.36,1);pointer-events:none}
+[data-feat-video].is-on{opacity:1}
+[data-feat-canvas]{display:none}
 #top header h1:not([data-tv]){visibility:hidden}
 
 html[style*="color-scheme: light"] [data-feat-shade]{background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,.55) 100%) !important}
@@ -572,7 +569,7 @@ class Component extends DCLogic {
         v.setAttribute('disableremoteplayback', '');
         v.poster = 'assets/video/posters/freelance.webp';
         (this.flOk = this.flOk || fetch('assets/video/freelance.mp4', { method: 'HEAD' }).then(r => r.ok && /video/.test(r.headers.get('content-type') || '')).catch(() => false))
-          .then(ok => { if (ok) { v.src = 'assets/video/freelance.mp4'; v.play().catch(() => {}); } });
+          .then(ok => { if (ok) { v.src = 'assets/video/freelance.mp4'; this.flIO = this.flIO || new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); })); this.flIO.observe(v); } });
         Object.assign(v.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' });
         v.addEventListener('contextmenu', e => e.preventDefault());
         logo.appendChild(v);
@@ -598,7 +595,7 @@ class Component extends DCLogic {
     this.vidMO = new MutationObserver(() => this.mountVideos()); this.vidMO.observe(document.body, { childList: true, subtree: true });
     this.mountVideos();
     this.featIO = new IntersectionObserver(es => es.forEach(e => { const v = e.target; v.muted = true; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: 0.25 });
-    this.featObs = () => { const v = document.querySelector('[data-feat-video]'); if (v && !v.dataset.io) { v.dataset.io = '1'; v.muted = true; v.loop = true; v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); }); const cv = v.parentElement.querySelector('[data-feat-canvas]'); if (cv) { const ctx = cv.getContext('2d'); const loop = () => { this.featRaf = requestAnimationFrame(loop); if (v.paused || v.readyState < 2) return; const r = cv.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1), W = Math.round(r.width * dpr), H = Math.round(r.height * dpr); if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; } const vw = v.videoWidth, vh = v.videoHeight; if (!vw) return; const s = Math.max(W / vw, H / vh), dw = vw * s, dh = vh * s; ctx.drawImage(v, (W - dw) / 2, (H - dh) / 2, dw, dh); if (v.currentTime > 0.05 && !cv.classList.contains('is-on')) cv.classList.add('is-on'); }; loop(); } this.featIO.observe(v); } };
+    this.featObs = () => { const v = document.querySelector('[data-feat-video]'); if (v && !v.dataset.io) { v.dataset.io = '1'; v.muted = true; v.loop = true; v.addEventListener('ended', () => { v.currentTime = 0; v.play().catch(() => {}); }); const on = () => { if (v.currentTime > 0.05) { v.classList.add('is-on'); v.removeEventListener('timeupdate', on); } }; v.addEventListener('timeupdate', on); this.featIO.observe(v); } };
     this.featObs(); requestAnimationFrame(this.featObs); setTimeout(this.featObs, 300);
     { const v0 = document.querySelector('[data-feat-video]'); if (v0) { v0.muted = true; v0.play().catch(() => {}); } }
     this.initTallinnGif();
@@ -734,7 +731,7 @@ class Component extends DCLogic {
         v.addEventListener('pause', () => { if (v.dataset.inview === '1') v.play().catch(() => {}); });
         v.addEventListener('volumechange', () => { if (!v.muted) v.muted = true; });
         v.addEventListener('contextmenu', e => e.preventDefault());
-        if (!this.gifIO) this.gifIO = new IntersectionObserver(es => es.forEach(e => { const el = e.target; el.dataset.inview = e.isIntersecting ? '1' : '0'; if (e.isIntersecting) el.play().catch(() => {}); }), { threshold: 0.25 });
+        if (!this.gifIO) this.gifIO = new IntersectionObserver(es => es.forEach(e => { const el = e.target; el.dataset.inview = e.isIntersecting ? '1' : '0'; if (e.isIntersecting) el.play().catch(() => {}); else el.pause(); }), { threshold: 0.25 });
         media.appendChild(v); this.gifIO.observe(v); return;
       }
       media.appendChild(v);
@@ -746,7 +743,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     if (this.ytObs) this.ytObs.disconnect();
-    clearInterval(this.clockT); if (this.onTlMove) { window.removeEventListener('mousemove', this.onTlMove); document.removeEventListener('mouseleave', this.onTlLeave); } if (this.tlEl) this.tlEl.remove(); window.removeEventListener('resize', this.fitFn); if (this.vidIO) this.vidIO.disconnect(); if (this.gifIO) this.gifIO.disconnect(); if (this.vidMO) this.vidMO.disconnect();
+    clearInterval(this.clockT); if (this.onTlMove) { window.removeEventListener('mousemove', this.onTlMove); document.removeEventListener('mouseleave', this.onTlLeave); } if (this.tlEl) this.tlEl.remove(); window.removeEventListener('resize', this.fitFn); if (this.vidIO) this.vidIO.disconnect(); if (this.gifIO) this.gifIO.disconnect(); if (this.flIO) this.flIO.disconnect(); if (this.vidMO) this.vidMO.disconnect();
     window.removeEventListener('resize', this.onResize); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('keydown', this.onKey); window.removeEventListener('click', this.onDetailClick, true); window.removeEventListener('click', this.onExtLink, true); clearTimeout(this.copyT);
     cancelAnimationFrame(this.raf); cancelAnimationFrame(this.cntRaf);
     if (this.typeStop) this.typeStop();
